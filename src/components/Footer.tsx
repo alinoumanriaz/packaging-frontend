@@ -1,0 +1,198 @@
+'use client'
+import Link from "next/link";
+import React from "react";
+import { BiPhone } from "react-icons/bi";
+import { BsChevronRight } from "react-icons/bs";
+import { FcFactory } from "react-icons/fc";
+import Container from "./Container";
+import { usePathname } from "next/navigation";
+
+const Footer = () => {
+  const pathname = usePathname();
+    
+      // const [loginFormOpen, setLoginFormOpen] = useState(false);
+  
+    if (pathname.startsWith('/user')) {
+      return null;
+    }
+  return (
+    <>
+      <footer className=" h-fit bg-green-950 mt-5 sm:pt-0 relative overflow-hidden flex justify-center bg-darkmodebtncolor flex-col items-center">
+        <Container>
+          <div className="border-t border-gray-600/20 border-b flex justify-center">
+            <div className="grid grid-cols-5 my-16 w-full">
+              <div className=" col-span-2 md:p-4 text-sm flex">
+                <div className=" flex flex-col space-y-4">
+                  <div className="">
+                    <Link
+                      href="/"
+                      className="flex space-x-3 items-center font-medium text-lg md:text-xl text-white"
+                    >
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg ">
+                        <FcFactory className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <span className="text-white text-2xl font-bold">
+                          PackagePro
+                        </span>
+                        <p className="text-sm text-gray-400">
+                          Premium Packaging Solutions
+                        </p>
+                      </div>
+                    </Link>
+                  </div>
+                  <p className="text-gray-300 leading-relaxed">
+                    Leading manufacturer of custom packaging boxes with over 15
+                    years of experience. We specialize in eco-friendly, durable
+                    packaging solutions for businesses of all sizes.
+                  </p>
+
+                  {/* Contact Info Cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="bg-slate-800/50 border-slate-700 rounded-xl">
+                      <div className="p-4">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center">
+                            <BiPhone className="w-5 h-5 text-blue-400" />
+                          </div>
+                          <div>
+                            <p className="text-white font-medium">
+                              Sales Hotline
+                            </p>
+                            <p className="text-sm text-gray-400">
+                              1-800-PACK-BOX
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-slate-800/50 border-slate-700 rounded-xl">
+                      <div className="p-4">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center">
+                            <BiPhone className="w-5 h-5 text-blue-400" />
+                          </div>
+                          <div>
+                            <p className="text-white font-medium">
+                              Sales Hotline
+                            </p>
+                            <p className="text-sm text-gray-400">
+                              1-800-PACK-BOX
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <div className="flex flex-col space-y-4">
+                  <h3 className="text-white pl-2 font-bold text-xl flex items-center">
+                    {/* <FcFactory className="w-5 h-5 mr-2 text-blue-400" /> */}
+                    Products
+                  </h3>
+                  <ul className="space-y-3 text-sm">
+                    {[
+                      "Custom Printed Boxes",
+                      "Shipping Boxes",
+                      "Retail Packaging",
+                      "Food Packaging",
+                      "Cosmetic Boxes",
+                      "Electronics Packaging",
+                      "Mailer Boxes",
+                      "Gift Boxes",
+                      "Display Boxes",
+                      "Corrugated Boxes",
+                    ].map((item, index) => (
+                      <li key={index}>
+                        <Link
+                          href="#"
+                          className="flex items-center text-white/50 hover:text-white transition-colors group"
+                        >
+                          <BsChevronRight className="w-3 h-3 mr-2 text-white/50 group-hover:text-white transition-colors" />
+                          {item}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <div className="flex flex-col  space-y-4">
+                  <h3 className="text-white pl-2 font-bold text-xl flex items-center">
+                    {/* <FcFactory className="w-5 h-5 mr-2 text-blue-400" /> */}
+                    Products
+                  </h3>
+                  <ul className="space-y-3 text-sm">
+                    {[
+                      "Custom Design Service",
+                      "3D Mockup Creation",
+                      "Bulk Order Discounts",
+                      "Rush Production",
+                      "Quality Assurance",
+                      "Packaging Consultation",
+                      "Prototype Development",
+                      "Inventory Management",
+                      "White Label Solutions",
+                      "Drop Shipping",
+                    ].map((item, index) => (
+                      <li key={index}>
+                        <Link
+                          href="#"
+                          className="flex items-center text-white/50 hover:text-white transition-colors group"
+                        >
+                          <BsChevronRight className="w-3 h-3 mr-2 text-white/50 group-hover:text-white transition-colors" />
+                          {item}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <div className="flex flex-col space-y-4">
+                  <h3 className="text-white pl-2 font-bold text-xl flex items-center">
+                    {/* <FcFactory className="w-5 h-5 mr-2 text-blue-400" /> */}
+                    Products
+                  </h3>
+                  <ul className="space-y-3 text-sm">
+                    {[
+                      "Packaging Calculator",
+                      "Size Guide",
+                      "Material Specifications",
+                      "Design Templates",
+                      "Sustainability Report",
+                      "Industry Blog",
+                      "Case Studies",
+                      "FAQ",
+                      "Shipping Information",
+                      "Return Policy",
+                    ].map((item, index) => (
+                      <li key={index}>
+                        <Link
+                          href="#"
+                          className="flex items-center text-white/50 hover:text-white transition-colors group"
+                        >
+                          <BsChevronRight className="w-3 h-3 mr-2 text-white/50 group-hover:text-white transition-colors" />
+                          {item}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+        <Container>
+          <div className="my-4 w-full text-sm text-neutral-400">
+            © 2024 Astra AI INC. All rights reserved.
+          </div>
+        </Container>
+      </footer>
+    </>
+  );
+};
+
+export default Footer;
