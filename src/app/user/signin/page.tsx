@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [islogin, setIslogin] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const loading = false;
   const [registerUser] = useMutation(USER_REGISTER)
   const [loginUser] = useMutation(LOGIN_USER)
 const Router = useRouter()
@@ -42,7 +42,7 @@ const Router = useRouter()
         password: form.password
       }
       console.log('submit login form')
-      const { data, errors } = await loginUser({ 
+      const { data } = await loginUser({ 
         variables: { input: loginForm },
         fetchPolicy: 'no-cache' // Important for auth
       });
