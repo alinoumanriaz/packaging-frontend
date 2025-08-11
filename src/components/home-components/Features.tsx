@@ -14,7 +14,7 @@ const Features = () => {
                     <div className='grid grid-cols-4 gap-x-4 gap-y-6'>
                         {
                             [...Array(8)].map((_, idx) => (
-                                <div key={idx} className='flex flex-col space-y-2 '>
+                                <div key={idx} className='flex flex-col space-y-2 bg-[#f1eee3] p-4 rounded-lg '>
                                     <BsBoxes className='size-8' />
                                     <div className='font-bold'>Shopping Bag</div>
                                     <div className=''>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>

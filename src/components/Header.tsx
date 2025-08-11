@@ -1,5 +1,6 @@
 "use client";
 import { useAppSelector } from "@/redux/hooks";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { BiSearch } from "react-icons/bi";
@@ -22,7 +23,7 @@ const Header = () => {
       {/* main header  */}
       <div className="w-full flex justify-center items-center">
         <div className=" w-[95%] flex justify-between items-center py-4 ">
-          <div className="font-semibold text-3xl">PackBox</div>
+          <Link href={'/'} className="font-semibold text-3xl">PackBox</Link>
           <div className="relative">
             <input
               className="border-style placeholder:text-gray-400/60 text-sm w-96 outline-none focus:ring-1 focus:ring-gray-700/40 py-2 pl-2 pr-8 bg-white rounded-md"
@@ -42,21 +43,21 @@ const Header = () => {
         </div>
       </div>
       {/* navbar */}
-      <div className="w-full flex justify-center items-center ">
+      <div className="w-full flex justify-center items-center">
         <div className="w-[95%] flex justify-between items-center text-[15px] text-gray-800">
-          <div className="font-semibold">All Products</div>
+          <Link href={'/pages/category'} className="font-semibold">All Products</Link>
           <div className="w-0.5 h-5 bg-gray-200"></div>
           <div className=" flex justify-center items-center space-x-8 pb-2 pt-1">
-            <div>Gifts and Entertainments</div>
-            <div>Fashion and clothings</div>
+            <Link href={'/pages/category/slug'}>Gifts and Entertainments</Link>
+            <Link href={'/pages/blogs/slug'}>Fashion and clothings</Link>
             <div>categring industory</div>
             <div>wellness and beauty</div>
             <div>further</div>
           </div>
           <div className="w-0.5 h-5 bg-gray-200"></div>
           <div className=" flex justify-center items-center  space-x-8">
-            <div>Sustinbility</div>
-            <div>Compny</div>
+            <Link href={'/pages/blogs/slug'}>Sustinbility</Link>
+            <Link href={'/pages/blogs'}>Compny</Link>
           </div>
         </div>
       </div>

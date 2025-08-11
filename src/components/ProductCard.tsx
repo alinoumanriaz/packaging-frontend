@@ -3,9 +3,9 @@ import React from 'react'
 
 const ProductCard = () => {
     return (
-        <div className=''>
+        <div className='w-full'>
             <Image
-                className='rounded-md'
+                className='rounded-md w-[32rem] max-h-[32rem]'
                 src={'/moe.png'}
                 alt='image'
                 width={300}

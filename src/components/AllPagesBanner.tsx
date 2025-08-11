@@ -1,19 +1,32 @@
 import React from "react";
-import Container from "./Container";
 
 interface IProps {
   title: string;
   description: string;
+  imageUrl?: string;
 }
 
-const AllPagesBanner = ({ title, description }: IProps) => {
+const AllPagesBanner = ({ title, description, imageUrl }: IProps) => {
   return (
-    <Container>
-      <div className="flex flex-col justify-center items-center h-60">
-        <div className="text-5xl font-bold">{title}</div>
+      <div
+        style={
+          imageUrl
+            ? {
+                backgroundImage: `url(${imageUrl})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }
+            : {}
+        }
+        className={`flex flex-col justify-center items-center w-full ${
+          imageUrl ? "h-80 my-4 text-white " : "h-60"
+        }`}
+      >
+        <div className="w-full text-center backdrop-blur-sm h-1/2 flex flex-col justify-center items-center">
+          <div className="text-5xl font-bold">{title}</div>
         <div>{description}</div>
+        </div>
       </div>
-    </Container>
   );
 };
 

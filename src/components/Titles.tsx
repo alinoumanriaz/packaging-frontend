@@ -8,7 +8,7 @@ interface titleProps {
 const Titles = ({title,subtitle}: titleProps) => {
     return (
         <div className='text-center flex flex-col space-y-4'>
-            <div className='text-5xl font-semibold '>{title}</div>
+            <div className='text-5xl font-extrabold '>{title}</div>
             <div className='text-gray-600'>{subtitle}</div>
         </div>
     )
