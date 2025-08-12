@@ -1,4 +1,6 @@
+'use client'
 import Container from '@/components/Container'
+import RequestQuote from '@/components/RequestQuote'
 import Titles from '@/components/Titles'
 import Image from 'next/image'
 import React from 'react'
@@ -9,10 +11,10 @@ const page = () => {
 
         <div className='flex-col w-full space-y-12 mb-20'>
             <Container>
-                <div className='grid grid-cols-2 my-12' >
-                    <div className='pr-8 '>
+                <div className='grid grid-cols-2 my-12 h-full ' >
+                    <div className='pr-8  h-full'>
                         <Image
-                            className='rounded-2xl'
+                            className='rounded-2xl h-[550px] w-full sticky top-6'
                             src={'/moe.png'}
                             alt='product'
                             width={1100}
@@ -24,6 +26,7 @@ const page = () => {
                             <h1 className='font-semibold text-4xl'>Printed Color Postal Box</h1>
                             <p className='text-gray-600'>Sturdy cardboard box with a color printed brand. designed to make shipments from your ecommerce.</p>
                         </div>
+                        <RequestQuote />
 
                     </div>
                 </div>
@@ -46,6 +49,7 @@ const page = () => {
                                 ))
                             }
                         </div>
+                        
                     </div>
                 </div>
             </Container>

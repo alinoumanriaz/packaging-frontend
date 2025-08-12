@@ -90,20 +90,18 @@ const Footer = () => {
                 <div className="flex flex-col space-y-4">
                   <h3 className="text-white pl-2 font-bold text-xl flex items-center">
                     {/* <FcFactory className="w-5 h-5 mr-2 text-blue-400" /> */}
-                    Products
+                    Information
                   </h3>
                   <ul className="space-y-3 text-sm">
                     {[
-                      "Custom Printed Boxes",
-                      "Shipping Boxes",
-                      "Retail Packaging",
-                      "Food Packaging",
-                      "Cosmetic Boxes",
-                      "Electronics Packaging",
-                      "Mailer Boxes",
-                      "Gift Boxes",
-                      "Display Boxes",
-                      "Corrugated Boxes",
+                      "Contact Us",
+                      "About Us",
+                      "Delivery Info",
+                      "Privacy Policy",
+                      "Terms & Conditions",
+                      "Blogs",
+                      "Portfolio",
+                      "Sitemap",
                     ].map((item, index) => (
                       <li key={index}>
                         <Link
@@ -122,20 +120,16 @@ const Footer = () => {
                 <div className="flex flex-col  space-y-4">
                   <h3 className="text-white pl-2 font-bold text-xl flex items-center">
                     {/* <FcFactory className="w-5 h-5 mr-2 text-blue-400" /> */}
-                    Products
+                    Popular Products
                   </h3>
                   <ul className="space-y-3 text-sm">
                     {[
-                      "Custom Design Service",
-                      "3D Mockup Creation",
-                      "Bulk Order Discounts",
-                      "Rush Production",
-                      "Quality Assurance",
-                      "Packaging Consultation",
-                      "Prototype Development",
-                      "Inventory Management",
-                      "White Label Solutions",
-                      "Drop Shipping",
+                      "Soap Boxes",
+                      "Pillow Boxes",
+                      "Rigid Boxes",
+                      "Kraft Boxes",
+                      "Mylar Bags",
+                      "Gable Boxes",
                     ].map((item, index) => (
                       <li key={index}>
                         <Link
@@ -154,7 +148,7 @@ const Footer = () => {
                 <div className="flex flex-col space-y-4">
                   <h3 className="text-white pl-2 font-bold text-xl flex items-center">
                     {/* <FcFactory className="w-5 h-5 mr-2 text-blue-400" /> */}
-                    Products
+                    Information
                   </h3>
                   <ul className="space-y-3 text-sm">
                     {[

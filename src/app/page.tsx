@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <div className="flex-col space-y-28 mb-20">
       <HeroBanner />
-      <PromiseList />
       <CategoryList />
+      <PromiseList />
       <FeaturedProducts />
       <Features />
       {/* <LeftImageWithContent content={leftSideContent} /> */}

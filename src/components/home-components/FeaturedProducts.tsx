@@ -8,7 +8,7 @@ const FeaturedProducts = () => {
     <Container>
       <div className="flex flex-col justify-center items-center space-y-10">
         <Titles
-          title="Featured"
+          title="Featured Products"
           subtitle="make your trend stand out with our personolized packging solution"
         />
         <div className="w-[91%]">
