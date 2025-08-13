@@ -6,7 +6,7 @@ import { Package, Leaf, Truck, MessageCircle } from "lucide-react";
 const Features = () => {
   const data = [
     {
-      imageUrl: Package, // icon component
+      imageUrl: Package,
       title: "Minimum Order",
       subtitle: "Order from just 50 units, perfect for small businesses.",
     },

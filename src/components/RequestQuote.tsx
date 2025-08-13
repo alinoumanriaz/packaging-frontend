@@ -42,7 +42,7 @@ export default function RequestQuote() {
   };
 
   return (
-    <div className="w-full py-6 rounded-lg ">
+    <div className="w-full py-6 rounded-lg">
       <div className="">
         <div>
           <h1 className="text-2xl font-bold mb-6">Request Quote</h1>
@@ -93,22 +93,19 @@ export default function RequestQuote() {
 
             <h2 className="text-xl font-bold mb-4">Product Specifications</h2>
 
-            <div className="mb-4">
-              <label className="block text-gray-700 font-medium mb-2">
-                Box Style
-              </label>
-              <div className="flex items-center mb-2">
-                <input
-                  type="radio"
+            <div className="mb-4 flex justify-between items-center space-x-2">
+                <select
                   id="gallantBox"
                   name="boxStyle"
-                  value="Gallant box style"
-                  checked={formData.boxStyle === "Gallant box style"}
+                  value=""
                   onChange={handleChange}
-                  className="mr-2"
-                />
-                <label htmlFor="gallantBox">Gallant box style</label>
-              </div>
+                  className="w-full px-4 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">Select Box Style</option>
+                  <option value="Type A">Type A</option>
+                  <option value="Type B">Type B</option>
+                  <option value="Type C">Type C</option>
+                </select>
 
               <select
                 name="productType"
@@ -120,6 +117,18 @@ export default function RequestQuote() {
                 <option value="Type A">Type A</option>
                 <option value="Type B">Type B</option>
                 <option value="Type C">Type C</option>
+              </select>
+              <select
+                name="color"
+                value={formData.color}
+                onChange={handleChange}
+                className="w-full px-4 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="Gallant color">Gallant color</option>
+                <option value="Red">Red</option>
+                <option value="Blue">Blue</option>
+                <option value="Green">Green</option>
+                <option value="Black">Black</option>
               </select>
             </div>
 
@@ -159,24 +168,6 @@ export default function RequestQuote() {
                   />
                 </div>
               </div>
-            </div>
-
-            <div className="mb-4">
-              <label className="block text-gray-700 font-sm mb-2">
-                Preferred Color
-              </label>
-              <select
-                name="color"
-                value={formData.color}
-                onChange={handleChange}
-                className="w-full px-4 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="Gallant color">Gallant color</option>
-                <option value="Red">Red</option>
-                <option value="Blue">Blue</option>
-                <option value="Green">Green</option>
-                <option value="Black">Black</option>
-              </select>
             </div>
 
             <div className="border-t border-gray-200 my-6"></div>

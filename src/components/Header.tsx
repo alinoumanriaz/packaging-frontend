@@ -6,7 +6,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
 import { GoChevronDown } from "react-icons/go";
 import { RiShoppingCartLine } from "react-icons/ri";
-import IndustryMenu from "./megamenu/IndustryMenu";
+import MegaMenu from "./megamenu/MegaMenu";
 
 type MegaMenuType = "Industry" | "Material" | "Style" | "";
 
@@ -161,7 +161,7 @@ const Header = () => {
           onMouseLeave={handleMenuClose}
           className="absolute w-full left-0 z-20"
         >
-          <IndustryMenu
+          <MegaMenu
             onClose={() => setMegaMenu({ open: false, type: "" })}
             type={megaMenu.type}
           />
