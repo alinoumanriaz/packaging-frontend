@@ -4,42 +4,53 @@ import Titles from "../Titles";
 import { Package, Leaf, Truck, MessageCircle } from "lucide-react";
 
 const Features = () => {
-  const data = [
+  const features = [
     {
-      imageUrl: Package,
+      icon: Package,
       title: "Minimum Order",
-      subtitle: "Order from just 50 units, perfect for small businesses.",
+      description: "Order from just 50 units, perfect for small businesses",
     },
     {
-      imageUrl: Leaf,
-      title: "Eco-friendly Material",
-      subtitle: "Sustainable and recyclable packaging materials.",
+      icon: Leaf,
+      title: "Eco-friendly Materials",
+      description: "Sustainable and recyclable packaging solutions",
     },
     {
-      imageUrl: Truck,
-      title: "Delivery in 3 Days",
-      subtitle: "Fast production and delivery for urgent needs.",
+      icon: Truck,
+      title: "Fast Delivery",
+      description: "Quick turnaround with delivery in as little as 3 days",
     },
     {
-      imageUrl: MessageCircle,
-      title: "Free Advice",
-      subtitle: "Get expert guidance for your packaging needs.",
+      icon: MessageCircle,
+      title: "Expert Support",
+      description: "Free professional guidance for your packaging needs",
     },
   ];
+
   return (
     <Container>
-      <div className="w-[90%]">
-        <div className=" flex flex-col justify-center items-center space-y-14">
-          <Titles title="Why we are best in packaging industry" />
-          <div className="grid grid-cols-4 gap-x-4 gap-y-6">
-            {data.map((item, idx) => (
+      <div className="flex flex-col items-center">
+        <Titles
+          title="Why Choose Our Packaging Solutions"
+          subtitle="Quality, sustainability, and service that sets us apart"
+        />
+        
+        <div className="w-full mt-10 md:mt-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {features.map((feature, index) => (
               <div
-                key={idx}
-                className="flex flex-col space-y-2 bg-[#f1eee3] p-4 rounded-lg "
+                key={index}
+                className="group flex flex-col p-6 md:p-8 bg-[#f1eee3] hover:ring-1 hover:ring-green-400 rounded-xl transition-all duration-300"
               >
-                <item.imageUrl className="size-8" />
-                <div className="font-bold">{item.title}</div>
-                <div className="">{item.subtitle}</div>
+                <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-white shadow-sm group-hover:bg-green-50 transition-colors">
+                  <feature.icon className="size-6 text-green-600" />
+                </div>
+                <h3 className="text-lg font-bold mb-2 text-gray-900">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>

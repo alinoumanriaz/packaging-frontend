@@ -1,17 +1,20 @@
-import React from 'react'
+import React from "react";
 
 interface titleProps {
-    title: string;
-    subtitle?: string;
+  title?: string;
+  subtitle?: string;
+  paragraph?: string;
+  className?: string;
 }
 
-const Titles = ({title,subtitle}: titleProps) => {
-    return (
-        <div className='text-center flex flex-col space-y-4'>
-            <div className='text-5xl font-extrabold '>{title}</div>
-            <div className='text-gray-600'>{subtitle}</div>
-        </div>
-    )
-}
+const Titles = ({ title, subtitle, paragraph, className }: titleProps) => {
+  return (
+    <div className={`text-center ${className} flex flex-col space-y-4`}>
+      <h2 className="md:text-5xl text-3xl font-extrabold ">{title}</h2>
+      <h3 className="text-gray-600">{subtitle}</h3>
+      <p className="text-gray-600">{paragraph}</p>
+    </div>
+  );
+};
 
-export default Titles
+export default Titles;

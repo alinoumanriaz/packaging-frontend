@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import React, { useState, useRef, useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
 import { GoChevronDown } from "react-icons/go";
-import { RiShoppingCartLine } from "react-icons/ri";
+import { RiMenuLine, RiCloseLine, RiUserLine } from "react-icons/ri";
 import MegaMenu from "./megamenu/MegaMenu";
 
 type MegaMenuType = "Industry" | "Material" | "Style" | "";
@@ -22,6 +22,7 @@ const Header = () => {
     open: false,
     type: "",
   });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuTimer = useRef<NodeJS.Timeout | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
 
@@ -35,13 +36,17 @@ const Header = () => {
   const handleMenuClose = () => {
     menuTimer.current = setTimeout(() => {
       setMegaMenu({ open: false, type: "" });
-    }, 200); // Small delay to allow moving to mega menu
+    }, 200);
   };
 
   const cancelMenuClose = () => {
     if (menuTimer.current) {
       clearTimeout(menuTimer.current);
     }
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   useEffect(() => {
@@ -59,54 +64,79 @@ const Header = () => {
   return (
     <header className="relative">
       {/* top header */}
-      <div className="bg-green-950 text-sm text-white flex justify-center items-center h-8 w-full">
+      <div className="bg-green-950 text-sm text-white text-center py-1 px-4 w-full">
         Free shipping on orders over $50
       </div>
       
       {/* main header */}
       <div className="w-full flex justify-center items-center">
-        <div className="w-[95%] flex justify-between items-center py-4">
-          <Link href={"/"} className="font-semibold text-3xl">
+        <div className="w-full px-4 md:px-6 lg:px-8 flex justify-between items-center py-3 md:py-4">
+          {/* Mobile menu button */}
+          <button 
+            className="md:hidden p-2"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <RiCloseLine className="size-6" />
+            ) : (
+              <RiMenuLine className="size-6" />
+            )}
+          </button>
+          
+          <Link href={"/"} className="font-semibold text-2xl md:text-3xl">
             PackBox
           </Link>
-          <div className="relative">
+          
+          {/* Search bar - hidden on mobile */}
+          <div className="hidden md:block relative flex-1 max-w-md mx-4">
             <input
-              className="border-style placeholder:text-gray-400/60 text-sm w-96 outline-none focus:ring-1 focus:ring-gray-700/40 py-2 pl-2 pr-8 bg-white rounded-md"
+              className="border border-gray-300 placeholder:text-gray-400/60 text-sm w-full outline-none focus:ring-1 focus:ring-gray-700/40 py-2 pl-3 pr-8 bg-white rounded-md"
               placeholder="Search by product, categories..."
               type="search"
               aria-label="Search products"
             />
-            <BiSearch className="absolute size-5 top-2 right-2.5 z-10 text-gray-500" />
+            <BiSearch className="absolute size-5 top-2.5 right-3 z-10 text-gray-500" />
           </div>
-          <div className="flex justify-end items-center space-x-6">
+          
+          <div className="flex items-center space-x-4 md:space-x-6">
             {user ? (
-              <Link href="/account" className="hover:text-green-700 transition">
+              <Link 
+                href="/account" 
+                className="hidden sm:inline hover:text-green-700 transition text-sm md:text-base"
+              >
                 {user.username}
               </Link>
             ) : (
-              <Link href="/login" className="hover:text-green-700 transition">
+              <Link 
+                href="/login" 
+                className="hidden sm:inline hover:text-green-700 transition text-sm md:text-base"
+              >
                 Login
               </Link>
             )}
-            <button className="w-10 h-10 border-style flex justify-center items-center bg-white shadow-2xs rounded-md hover:bg-gray-50 transition">
-              <RiShoppingCartLine className="size-5" />
-              <span className="sr-only">Cart</span>
+            <button 
+              className="w-9 h-9 md:w-10 md:h-10 border border-gray-200 flex justify-center items-center bg-white shadow-xs rounded-md hover:bg-gray-50 transition"
+              aria-label="Shopping cart"
+            >
+              <RiUserLine className="size-5" />
+              <span className="sr-only">User</span>
             </button>
           </div>
         </div>
       </div>
       
-      {/* navbar */}
-      <div className="w-full flex justify-center items-center">
-        <div className="w-[95%] flex justify-between items-center text-[15px] text-gray-800">
-          <Link href={"/pages/category"} className="font-semibold hover:text-green-700 transition">
+      {/* Desktop navbar */}
+      <div className="hidden md:flex w-full justify-center items-center">
+        <div className="w-full px-6 lg:px-8 flex justify-between items-center text-[15px] text-gray-800">
+          <Link href={"/pages/category"} className="font-semibold hover:text-green-700 transition py-3">
             All Products
           </Link>
           
-          <div className="w-0.5 h-5 bg-gray-200"></div>
+          <div className="w-px h-5 bg-gray-200"></div>
           
           <div 
-            className="flex justify-center items-center space-x-8 pb-2 pt-1"
+            className="flex justify-center items-center space-x-6 lg:space-x-8 py-2"
             ref={navRef}
           >
             <div
@@ -114,8 +144,8 @@ const Header = () => {
               onMouseLeave={handleMenuClose}
               className="flex justify-center items-center cursor-pointer hover:text-green-700 transition"
             >
-              <span className="pr-2">Boxes By Industry</span>
-              <GoChevronDown className="size-4" />
+              <span className="pr-1.5">Boxes By Industry</span>
+              <GoChevronDown className="size-3.5" />
             </div>
             
             <div
@@ -123,8 +153,8 @@ const Header = () => {
               onMouseLeave={handleMenuClose}
               className="flex justify-center items-center cursor-pointer hover:text-green-700 transition"
             >
-              <span className="pr-2">Boxes By Material</span>
-              <GoChevronDown className="size-4" />
+              <span className="pr-1.5">Boxes By Material</span>
+              <GoChevronDown className="size-3.5" />
             </div>
             
             <div
@@ -132,8 +162,8 @@ const Header = () => {
               onMouseLeave={handleMenuClose}
               className="flex justify-center items-center cursor-pointer hover:text-green-700 transition"
             >
-              <span className="pr-2">Boxes By Style</span>
-              <GoChevronDown className="size-4" />
+              <span className="pr-1.5">Boxes By Style</span>
+              <GoChevronDown className="size-3.5" />
             </div>
             
             <Link href="/blog" className="hover:text-green-700 transition">
@@ -141,9 +171,9 @@ const Header = () => {
             </Link>
           </div>
           
-          <div className="w-0.5 h-5 bg-gray-200"></div>
+          <div className="w-px h-5 bg-gray-200"></div>
           
-          <div className="flex justify-center items-center space-x-8">
+          <div className="flex justify-center items-center space-x-6 lg:space-x-8">
             <Link href="/sustainability" className="hover:text-green-700 transition">
               Sustainability
             </Link>
@@ -154,12 +184,151 @@ const Header = () => {
         </div>
       </div>
       
-      {/* Mega Menu */}
-      {megaMenu.open && (
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-b shadow-sm">
+          <div className="px-4 py-3">
+            {/* Mobile search */}
+            <div className="relative mb-4">
+              <input
+                className="border border-gray-300 placeholder:text-gray-400/60 text-sm w-full outline-none focus:ring-1 focus:ring-gray-700/40 py-2 pl-3 pr-8 bg-white rounded-md"
+                placeholder="Search products..."
+                type="search"
+                aria-label="Search products"
+              />
+              <BiSearch className="absolute size-5 top-2.5 right-3 z-10 text-gray-500" />
+            </div>
+            
+            <div className="flex flex-col space-y-4">
+              <Link 
+                href="/pages/category" 
+                className="font-medium hover:text-green-700 transition py-1"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                All Products
+              </Link>
+              
+              <div className="border-t border-gray-100 pt-2">
+                <button 
+                  className="flex items-center justify-between w-full py-2"
+                  onClick={() => setMegaMenu(prev => ({
+                    open: prev.type === "Industry" ? !prev.open : true,
+                    type: "Industry"
+                  }))}
+                >
+                  <span>Boxes By Industry</span>
+                  <GoChevronDown className={`size-4 transition-transform ${megaMenu.open && megaMenu.type === "Industry" ? "rotate-180" : ""}`} />
+                </button>
+                
+                {megaMenu.open && megaMenu.type === "Industry" && (
+                  <div className="pl-4 py-2">
+                    <MegaMenu 
+                      type="Industry" 
+                      mobile 
+                      onClose={() => setMegaMenu({ open: false, type: "" })}
+                    />
+                  </div>
+                )}
+              </div>
+              
+              <div className="border-t border-gray-100 pt-2">
+                <button 
+                  className="flex items-center justify-between w-full py-2"
+                  onClick={() => setMegaMenu(prev => ({
+                    open: prev.type === "Material" ? !prev.open : true,
+                    type: "Material"
+                  }))}
+                >
+                  <span>Boxes By Material</span>
+                  <GoChevronDown className={`size-4 transition-transform ${megaMenu.open && megaMenu.type === "Material" ? "rotate-180" : ""}`} />
+                </button>
+                
+                {megaMenu.open && megaMenu.type === "Material" && (
+                  <div className="pl-4 py-2">
+                    <MegaMenu 
+                      type="Material" 
+                      mobile 
+                      onClose={() => setMegaMenu({ open: false, type: "" })}
+                    />
+                  </div>
+                )}
+              </div>
+              
+              <div className="border-t border-gray-100 pt-2">
+                <button 
+                  className="flex items-center justify-between w-full py-2"
+                  onClick={() => setMegaMenu(prev => ({
+                    open: prev.type === "Style" ? !prev.open : true,
+                    type: "Style"
+                  }))}
+                >
+                  <span>Boxes By Style</span>
+                  <GoChevronDown className={`size-4 transition-transform ${megaMenu.open && megaMenu.type === "Style" ? "rotate-180" : ""}`} />
+                </button>
+                
+                {megaMenu.open && megaMenu.type === "Style" && (
+                  <div className="pl-4 py-2">
+                    <MegaMenu 
+                      type="Style" 
+                      mobile 
+                      onClose={() => setMegaMenu({ open: false, type: "" })}
+                    />
+                  </div>
+                )}
+              </div>
+              
+              <Link 
+                href="/blog" 
+                className="py-1 hover:text-green-700 transition"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Blog
+              </Link>
+              
+              <Link 
+                href="/sustainability" 
+                className="py-1 hover:text-green-700 transition"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Sustainability
+              </Link>
+              
+              <Link 
+                href="/about" 
+                className="py-1 hover:text-green-700 transition"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Company
+              </Link>
+              
+              {user ? (
+                <Link 
+                  href="/account" 
+                  className="py-1 hover:text-green-700 transition border-t border-gray-100 pt-3"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  My Account
+                </Link>
+              ) : (
+                <Link 
+                  href="/login" 
+                  className="py-1 hover:text-green-700 transition border-t border-gray-100 pt-3"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Login
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Mega Menu (Desktop) */}
+      {megaMenu.open && !mobileMenuOpen && (
         <div 
           onMouseEnter={cancelMenuClose}
           onMouseLeave={handleMenuClose}
-          className="absolute w-full left-0 z-20"
+          className="absolute w-full left-0 z-20 hidden md:block"
         >
           <MegaMenu
             onClose={() => setMegaMenu({ open: false, type: "" })}

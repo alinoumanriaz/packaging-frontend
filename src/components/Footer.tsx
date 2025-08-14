@@ -10,25 +10,25 @@ import { usePathname } from "next/navigation";
 const Footer = () => {
   const pathname = usePathname();
     
-      // const [loginFormOpen, setLoginFormOpen] = useState(false);
+  if (pathname.startsWith('/user')) {
+    return null;
+  }
   
-    if (pathname.startsWith('/user')) {
-      return null;
-    }
   return (
     <>
-      <footer className=" h-fit bg-green-950 mt-5 sm:pt-0 relative overflow-hidden flex justify-center bg-darkmodebtncolor flex-col items-center">
+      <footer className="h-fit bg-green-950 mt-5 sm:pt-0 relative overflow-hidden flex justify-center bg-darkmodebtncolor flex-col items-center">
         <Container>
           <div className="border-t border-gray-600/20 border-b flex justify-center">
-            <div className="grid grid-cols-5 my-16 w-full">
-              <div className=" col-span-2 md:p-4 text-sm flex">
-                <div className=" flex flex-col space-y-4">
-                  <div className="">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 my-8 md:my-16 w-full gap-8 md:gap-4">
+              {/* Company Info - spans full width on mobile, 2 cols on md, 2 cols on lg */}
+              <div className="col-span-1 md:col-span-2 lg:col-span-2 p-4 text-sm flex">
+                <div className="flex flex-col space-y-4">
+                  <div>
                     <Link
                       href="/"
                       className="flex space-x-3 items-center font-medium text-lg md:text-xl text-white"
                     >
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg ">
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
                         <FcFactory className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -41,7 +41,7 @@ const Footer = () => {
                       </div>
                     </Link>
                   </div>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
                     Leading manufacturer of custom packaging boxes with over 15
                     years of experience. We specialize in eco-friendly, durable
                     packaging solutions for businesses of all sizes.
@@ -74,10 +74,10 @@ const Footer = () => {
                           </div>
                           <div>
                             <p className="text-white font-medium">
-                              Sales Hotline
+                              Support Line
                             </p>
                             <p className="text-sm text-gray-400">
-                              1-800-PACK-BOX
+                              1-800-SUPPORT
                             </p>
                           </div>
                         </div>
@@ -86,10 +86,11 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex justify-center">
-                <div className="flex flex-col space-y-4">
-                  <h3 className="text-white pl-2 font-bold text-xl flex items-center">
-                    {/* <FcFactory className="w-5 h-5 mr-2 text-blue-400" /> */}
+              
+              {/* Information Column */}
+              <div className="flex justify-start md:justify-center px-4">
+                <div className="flex flex-col space-y-4 w-full">
+                  <h3 className="text-white pl-2 font-bold text-lg md:text-xl">
                     Information
                   </h3>
                   <ul className="space-y-3 text-sm">
@@ -116,10 +117,11 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="flex justify-center">
-                <div className="flex flex-col  space-y-4">
-                  <h3 className="text-white pl-2 font-bold text-xl flex items-center">
-                    {/* <FcFactory className="w-5 h-5 mr-2 text-blue-400" /> */}
+              
+              {/* Products Column */}
+              <div className="flex justify-start md:justify-center px-4">
+                <div className="flex flex-col space-y-4 w-full">
+                  <h3 className="text-white pl-2 font-bold text-lg md:text-xl">
                     Popular Products
                   </h3>
                   <ul className="space-y-3 text-sm">
@@ -144,11 +146,12 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              <div className="flex justify-center">
-                <div className="flex flex-col space-y-4">
-                  <h3 className="text-white pl-2 font-bold text-xl flex items-center">
-                    {/* <FcFactory className="w-5 h-5 mr-2 text-blue-400" /> */}
-                    Information
+              
+              {/* Resources Column */}
+              <div className="flex justify-start md:justify-center px-4">
+                <div className="flex flex-col space-y-4 w-full">
+                  <h3 className="text-white pl-2 font-bold text-lg md:text-xl">
+                    Resources
                   </h3>
                   <ul className="space-y-3 text-sm">
                     {[
@@ -157,11 +160,8 @@ const Footer = () => {
                       "Material Specifications",
                       "Design Templates",
                       "Sustainability Report",
-                      "Industry Blog",
                       "Case Studies",
                       "FAQ",
-                      "Shipping Information",
-                      "Return Policy",
                     ].map((item, index) => (
                       <li key={index}>
                         <Link
@@ -180,7 +180,7 @@ const Footer = () => {
           </div>
         </Container>
         <Container>
-          <div className="my-4 w-full text-sm text-neutral-400">
+          <div className="my-4 w-full text-sm text-neutral-400 text-center md:text-left">
             © 2024 Astra AI INC. All rights reserved.
           </div>
         </Container>

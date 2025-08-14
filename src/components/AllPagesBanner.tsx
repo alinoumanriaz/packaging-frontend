@@ -1,8 +1,8 @@
 import React from "react";
 
 interface IProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   imageUrl?: string;
 }
 
