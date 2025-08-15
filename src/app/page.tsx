@@ -10,7 +10,7 @@ import StyleBoxesSection from "@/components/home-components/StyleBoxesSection";
 
 export default function Home() {
   return (
-    <div className="flex-col space-y-24 mb-20">
+    <div className="flex-col space-y-16 md:space-y-24 mb-20">
       <HeroBanner />
       <MaterialBoxesSection />
       <IndustryBoxesSection />

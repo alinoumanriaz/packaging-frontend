@@ -64,16 +64,16 @@ const Header = () => {
   return (
     <header className="relative">
       {/* top header */}
-      <div className="bg-green-950 text-sm text-white text-center py-1 px-4 w-full">
+      <div className="bg-green-950 text-xs md:text-sm text-white text-center py-1 px-4 w-full">
         Free shipping on orders over $50
       </div>
       
       {/* main header */}
       <div className="w-full flex justify-center items-center">
-        <div className="w-full px-4 md:px-6 lg:px-8 flex justify-between items-center py-3 md:py-4">
+        <div className="w-full px-4 md:px-6 lg:px-10 flex justify-between items-center py-3 md:py-4 ">
           {/* Mobile menu button */}
           <button 
-            className="md:hidden p-2"
+            className="md:hidden w-9 h-9 md:w-10 md:h-10 border border-gray-200 flex justify-center items-center bg-white shadow-xs rounded-md hover:bg-gray-50 transition"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
@@ -117,7 +117,6 @@ const Header = () => {
             )}
             <button 
               className="w-9 h-9 md:w-10 md:h-10 border border-gray-200 flex justify-center items-center bg-white shadow-xs rounded-md hover:bg-gray-50 transition"
-              aria-label="Shopping cart"
             >
               <RiUserLine className="size-5" />
               <span className="sr-only">User</span>
@@ -128,7 +127,7 @@ const Header = () => {
       
       {/* Desktop navbar */}
       <div className="hidden md:flex w-full justify-center items-center">
-        <div className="w-full px-6 lg:px-8 flex justify-between items-center text-[15px] text-gray-800">
+        <div className="w-full px-6 lg:px-10 flex justify-between items-center text-[15px] text-gray-800">
           <Link href={"/pages/category"} className="font-semibold hover:text-green-700 transition py-3">
             All Products
           </Link>
@@ -186,7 +185,7 @@ const Header = () => {
       
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b shadow-sm">
+        <div className="md:hidden w-full bg-white border-b shadow-sm">
           <div className="px-4 py-3">
             {/* Mobile search */}
             <div className="relative mb-4">

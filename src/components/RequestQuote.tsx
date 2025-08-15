@@ -43,15 +43,15 @@ export default function RequestQuote() {
 
   return (
     <div className="w-full py-6 rounded-lg">
-      <div className="">
-        <div>
-          <h1 className="text-2xl font-bold mb-6">Request Quote</h1>
-          <p className="text-gray-600 mb-6">
+      <div className=" w-full">
+        <div className="w-full">
+          <h1 className="text-2xl font-bold md:mb-6 mb-2">Request Quote</h1>
+          <p className="text-gray-600 mb-6 text-sm">
             Fill out the form below to get a personalized quote
           </p>
 
           <form onSubmit={handleSubmit}>
-            <div className="mb-4 flex">
+            <div className="mb-4 flex flex-col md:flex-row">
               <InputBox
                 type="text"
                 name="fullName"
@@ -78,7 +78,7 @@ export default function RequestQuote() {
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-4 flex">
               <InputBox
                 name="quantity"
                 type="number"
@@ -93,7 +93,7 @@ export default function RequestQuote() {
 
             <h2 className="text-xl font-bold mb-4">Product Specifications</h2>
 
-            <div className="mb-4 flex justify-between items-center space-x-2">
+            <div className="mb-4 flex justify-between items-center space-y-2 md:space-x-2 md:space-y-0 md:flex-row flex-col">
                 <select
                   id="gallantBox"
                   name="boxStyle"
