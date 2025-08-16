@@ -13,6 +13,7 @@ export default async function Home() {
     body: JSON.stringify({
       query: GET_ALL_MATERIAL.loc?.source.body,
     }),
+    cache: "force-cache",
   });
   const { data } = await res.json();
   console.log({ matdata: data });

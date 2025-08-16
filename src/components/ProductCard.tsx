@@ -1,19 +1,28 @@
 import Image from 'next/image'
 import React from 'react'
 
-const ProductCard = () => {
+export interface ProductCardProps {
+    _id: string;
+    name: string;
+    slug: string;
+    imageUrl: string[];
+    material?: { slug: string };
+    industry?: { slug: string };
+    style?: { slug: string };
+};
+
+const ProductCard = ({ data }: { data: ProductCardProps }) => {
     return (
         <div className='w-full'>
             <Image
-                className='rounded-md w-[32rem] max-h-[32rem]'
-                src={'/moe.png'}
-                alt='image'
+                className='rounded-md w-full aspect-square object-cover'
+                src={data.imageUrl[0] || '/moe.png'}
+                alt={data.name}
                 width={300}
-                height={60}
+                height={300}
             />
             <div className='p-2'>
-                <h3 className='font-bold text-md'>product anem</h3>
-                <div className='text-gray-600'>categornae</div>
+                <h3 className='font-bold text-md'>{data.name}</h3>
             </div>
         </div>
     )

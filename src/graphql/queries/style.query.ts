@@ -1,0 +1,17 @@
+import { gql } from "@apollo/client";
+
+export const GET_ALL_STYLE = gql`
+  query {
+    getAllStyle {
+      _id
+      name
+      slug
+      iconName
+      imageUrl
+      bannerImage
+      description
+      createdAt
+      updatedAt
+    }
+  }
+`;

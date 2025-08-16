@@ -12,8 +12,6 @@ interface MegaMenuProps {
   mobile?: boolean;
 }
 
-
-
 const MegaMenu: React.FC<MegaMenuProps> = ({ type, onClose, mobile = false }) => {
   const renderContent = () => {
     switch (type) {
