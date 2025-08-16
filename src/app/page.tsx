@@ -9,7 +9,7 @@ import StyleBoxesSection from "@/components/home-components/StyleBoxesSection";
 import { GET_ALL_MATERIAL } from "@/graphql/queries/material.query";
 
 export default async function Home() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
+  const res = await fetch(`${process.env.API_URL}/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
