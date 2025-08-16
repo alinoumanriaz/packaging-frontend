@@ -3,9 +3,11 @@ import { revalidatePath } from "next/cache";
 export async function POST(req) {
   const body = await req.json();
   const { paths, token } = body;
+  console.log({frontendRevalidaationAPIWork: paths})
+  console.log({frontendRevalidaationAPIWork: token})
 
   // Check for authorization token
-  if (token !== process.env.REVALIDATE_SECRET) {
+  if (token !== process.env.FRONTEND_REVALIDATE_SECRET) {
     return new Response(JSON.stringify({ message: "Unauthorized" }), {
       status: 401,
     });
