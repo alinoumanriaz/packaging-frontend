@@ -1,15 +1,29 @@
+"use client";
 import React from "react";
 import Container from "../Container";
 import Titles from "../Titles";
 import Image from "next/image";
-import Link from 'next/link';
-import { MaterialItems } from "@/custom-data/data";
+import Link from "next/link";
 
-const MaterialBoxesSection = () => {
+export interface IMaterial {
+  name: string;
+  slug: string;
+  iconName: string;
+  imageUrl?: string;
+  bannerImage?: string;
+  description?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface MaterialBoxesSectionProps {
+  materials: IMaterial[];
+}
+
+const MaterialBoxesSection = ({materials}: MaterialBoxesSectionProps) => {
   return (
     <Container>
       <div className="flex w-[90%] flex-col items-center space-y-8 md:space-y-12">
-        
         <Titles
           title="Boxes By Material"
           subtitle="Packaging offers a variety of custom packaging solutions and project assistance with pricing and service you will love."
@@ -17,15 +31,15 @@ const MaterialBoxesSection = () => {
 
         <div className="w-full ">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-            {MaterialItems.map((item, idx) => (
+            {materials.map((item: IMaterial, idx: number) => (
               <Link
                 key={idx}
-                href={item.href}
+                href={item.slug}
                 className="group text-center flex flex-col space-y-3 transition-transform hover:scale-[1.02]"
               >
                 <div className="relative aspect-square overflow-hidden rounded-xl shadow-md">
                   <Image
-                    src={item.imageUrl}
+                    src={item.imageUrl || "/moe.png"}
                     alt={item.name}
                     fill
                     className="object-cover transition-transform group-hover:scale-105"

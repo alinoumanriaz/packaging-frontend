@@ -2,15 +2,25 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-      domains: [
-        'avatar.vercel.sh',
-        'via.placeholder.com',
-        'source.unsplash.com',
-        'dummyimage.com',
-        'picsum.photos',
-        'images.unsplash.com',
-      ]
-    }
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/dvu49dsgg/image/upload/**",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+        pathname: "**",
+      },
+    ],
+  },
+  reactStrictMode: true,
 };
 
 export default nextConfig;
