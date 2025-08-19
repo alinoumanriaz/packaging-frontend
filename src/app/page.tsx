@@ -30,7 +30,7 @@ export default async function Home() {
         }
       `,
     }),
-    cache: "no-cache",
+    cache: "force-cache",
   });
   const { data } = await res.json();
   const AllIndustries = data?.getAllIndustry || [];
