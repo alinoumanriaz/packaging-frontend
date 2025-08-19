@@ -104,7 +104,7 @@ interface PageProps {
 
 const Page = async ({ params }: PageProps) => {
   const allProducts = await getAllProducts();
-  const { slug } = await params;
+  const { slug } = params;
   console.log({ allProducts: allProducts });
 
   const categoryData = await getCategoryData(slug);
