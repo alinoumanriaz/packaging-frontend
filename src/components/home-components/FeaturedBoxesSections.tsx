@@ -36,7 +36,7 @@ const FeaturedBoxesSections = ({featuredData, title, subTitle}: MaterialBoxesSec
             {featuredData.map((item: IFeaturedSectionData, idx: number) => (
               <Link
                 key={idx}
-                href={item.slug}
+                href={`/${item.slug}`}
                 className="group text-center flex flex-col space-y-3 transition-transform hover:scale-[1.02]"
               >
                 <div className="relative aspect-square overflow-hidden rounded-xl shadow-md">
