@@ -7,9 +7,19 @@ interface CategoryItem {
   slug: string;
 }
 
+// Helper function to get API URL with validation
+function getApiUrl(): string {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (!apiUrl) {
+    throw new Error("NEXT_PUBLIC_API_URL environment variable is not defined");
+  }
+  return apiUrl;
+}
+
 // 1. Generate static params for all slugs
 export async function generateStaticParams() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
+  const apiUrl = getApiUrl();
+  const res = await fetch(`${apiUrl}/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -30,6 +40,10 @@ export async function generateStaticParams() {
     cache: "no-store",
   });
 
+  if (!res.ok) {
+    throw new Error(`Failed to fetch static params: ${res.status}`);
+  }
+
   const { data } = await res.json();
 
   const materials: CategoryItem[] = data?.getAllMaterial || [];
@@ -42,7 +56,8 @@ export async function generateStaticParams() {
 }
 
 async function getAllProducts(): Promise<ProductCardProps[]> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
+  const apiUrl = getApiUrl();
+  const res = await fetch(`${apiUrl}/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -63,12 +78,17 @@ async function getAllProducts(): Promise<ProductCardProps[]> {
     cache: "no-store",
   });
 
+  if (!res.ok) {
+    throw new Error(`Failed to fetch products: ${res.status}`);
+  }
+
   const { data } = await res.json();
   return data?.getAllProduct || [];
 }
 
 async function getCategoryData(slug: string) {
-  const typeRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
+  const apiUrl = getApiUrl();
+  const typeRes = await fetch(`${apiUrl}/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -84,8 +104,13 @@ async function getCategoryData(slug: string) {
     cache: "no-store",
   });
 
+  if (!typeRes.ok) {
+    throw new Error(`Failed to fetch category data: ${typeRes.status}`);
+  }
+
   const { data } = await typeRes.json();
   console.log({ getCategoryDataBySlug: data });
+  
   // pick whichever is not null
   return (
     data?.getMaterialBySlug ||
@@ -95,16 +120,21 @@ async function getCategoryData(slug: string) {
   );
 }
 
+// Fix: Use the correct PageProps type with Promise for params
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 const Page = async ({ params }: PageProps) => {
-  const allProducts = await getAllProducts();
+  // Await the params promise
   const { slug } = await params;
-  console.log({ allProducts: allProducts });
+  
+  const [allProducts, categoryData] = await Promise.all([
+    getAllProducts(),
+    getCategoryData(slug)
+  ]);
 
-  const categoryData = await getCategoryData(slug);
+  console.log({ allProducts: allProducts });
 
   // 4. Filter products by slug
   const filteredProducts = allProducts.filter((product) =>
@@ -120,9 +150,9 @@ const Page = async ({ params }: PageProps) => {
   return (
     <div className="">
       <AllPagesBanner
-        title={`View our ${categoryData.name || "All"} Products`}
-        description={categoryData.description}
-        imageUrl={categoryData.bannerImage}
+        title={`View our ${categoryData?.name || 'All'} Products`}
+        description={categoryData?.description}
+        imageUrl={categoryData?.bannerImage}
       />
       <Container>
         <div className="border-t-[1px] border-gray-200 flex justify-center">
