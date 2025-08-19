@@ -93,12 +93,18 @@ async function getCategoryData(slug: string) {
     data?.getStyleBySlug ||
     null
   );
-  
 }
 
-const Page = async ({ params }: { params: { slug: string } }) => {
+interface PageProps {
+  params: {
+    slug: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+const Page = async ({ params }: PageProps) => {
   const allProducts = await getAllProducts();
-  const { slug } = params;
+  const { slug } = await params;
   console.log({ allProducts: allProducts });
 
   const categoryData = await getCategoryData(slug);
@@ -117,7 +123,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   return (
     <div className="">
       <AllPagesBanner
-        title={`View our ${categoryData.name || 'All'} Products`}
+        title={`View our ${categoryData.name || "All"} Products`}
         description={categoryData.description}
         imageUrl={categoryData.bannerImage}
       />
