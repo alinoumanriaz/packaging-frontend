@@ -20,7 +20,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ type, onClose, mobile = false }) =>
           <div className={`grid ${mobile ? "grid-cols-1" : "grid-cols-2 md:grid-cols-3 lg:grid-cols-3"} gap-3`}>
             {IndustryItems.map((item, idx) => (
               <Link
-                href="#"
+                href={`${item.slug}`}
                 key={idx}
                 className="group flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 hover:ring-1 hover:ring-gray-200 transition-colors"
                 onClick={onClose}
@@ -37,7 +37,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ type, onClose, mobile = false }) =>
           <div className={`grid ${mobile ? "grid-cols-1" : "grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3"} gap-3`}>
             {materialItems.map((item, idx) => (
               <Link
-                href="#"
+                href={`${item.slug}`}
                 key={idx}
                 className="group flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 hover:ring-1 hover:ring-gray-200 transition-colors"
                 onClick={onClose}
@@ -54,7 +54,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ type, onClose, mobile = false }) =>
           <div className={`grid ${mobile ? "grid-cols-1" : "grid-cols-2 md:grid-cols-3 lg:grid-cols-3"} gap-3`}>
             {StyleItems.map((item, idx) => (
               <Link
-                href="#"
+                href={`${item.slug}`}
                 key={idx}
                 className="group flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 hover:ring-1 hover:ring-gray-200 transition-colors"
                 onClick={onClose}
