@@ -37,7 +37,7 @@ export async function generateStaticParams() {
         }
       `,
     }),
-    cache: "no-store",
+    cache: "force-cache",
   });
 
   if (!res.ok) {
@@ -75,7 +75,7 @@ async function getAllProducts(): Promise<ProductCardProps[]> {
         }
       `,
     }),
-    cache: "no-store",
+    cache: "force-cache",
   });
 
   if (!res.ok) {
@@ -101,7 +101,7 @@ async function getCategoryData(slug: string) {
       `,
       variables: { slug },
     }),
-    cache: "no-store",
+    cache: "force-cache",
   });
 
   if (!typeRes.ok) {
