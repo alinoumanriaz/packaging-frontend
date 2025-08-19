@@ -95,16 +95,13 @@ async function getCategoryData(slug: string) {
   );
 }
 
-// Fix: Use the correct PageProps type with Promise for params
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 const Page = async ({ params }: PageProps) => {
-  // Await the params promise
-  const { slug } = await params;
-  
   const allProducts = await getAllProducts();
+  const { slug } = await params;
   console.log({ allProducts: allProducts });
 
   const categoryData = await getCategoryData(slug);
@@ -123,9 +120,9 @@ const Page = async ({ params }: PageProps) => {
   return (
     <div className="">
       <AllPagesBanner
-        title={`View our ${categoryData?.name || 'All'} Products`}
-        description={categoryData?.description}
-        imageUrl={categoryData?.bannerImage}
+        title={`View our ${categoryData.name || "All"} Products`}
+        description={categoryData.description}
+        imageUrl={categoryData.bannerImage}
       />
       <Container>
         <div className="border-t-[1px] border-gray-200 flex justify-center">
