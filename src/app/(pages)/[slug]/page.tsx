@@ -98,7 +98,7 @@ async function getCategoryData(slug: string) {
 
 const Page = async ({ params }: { params: { slug: string } }) => {
   const allProducts = await getAllProducts();
-  const { slug } = await params;
+  const { slug } = params;
   console.log({ allProducts: allProducts });
 
   const categoryData = await getCategoryData(slug);
