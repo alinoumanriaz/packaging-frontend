@@ -327,7 +327,7 @@ const Header = () => {
         <div 
           onMouseEnter={cancelMenuClose}
           onMouseLeave={handleMenuClose}
-          className="absolute w-full left-0 z-20 hidden md:block"
+          className=" justify-center relative items-center z-20 hidden md:flex"
         >
           <MegaMenu
             onClose={() => setMegaMenu({ open: false, type: "" })}

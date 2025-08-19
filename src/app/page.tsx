@@ -1,30 +1,66 @@
+import BoxFinishingSection from "@/components/home-components/BoxFinishingSection";
+import FeaturedBoxesSections from "@/components/home-components/FeaturedBoxesSections";
 import Features from "@/components/home-components/Features";
 import HeroBanner from "@/components/home-components/HeroBanner";
-import IndustryBoxesSection from "@/components/home-components/IndustryBoxesSection";
-import MaterialBoxesSection from "@/components/home-components/MaterialBoxesSection";
 import QuoteSection from "@/components/home-components/QuoteSection";
-import StyleBoxesSection from "@/components/home-components/StyleBoxesSection";
-import { GET_ALL_MATERIAL } from "@/graphql/queries/material.query";
+import Reviews from "@/components/home-components/Reviews";
 
 export default async function Home() {
-  const res = await fetch(`${process.env.API_URL}/graphql`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      query: GET_ALL_MATERIAL.loc?.source.body,
+      query: `
+        query {
+          getAllMaterial {
+            slug
+            name
+            imageUrl
+          }
+          getAllIndustry {
+            slug
+            name
+            imageUrl
+          }
+          getAllStyle {
+            slug
+            name
+            imageUrl
+          }
+        }
+      `,
     }),
-    cache: "force-cache",
+    cache: "no-cache",
   });
   const { data } = await res.json();
+  const AllIndustries = data?.getAllIndustry || [];
+  const AllMaterials = data?.getAllMaterial || [];
+  const AllStyles = data?.getAllStyle || [];
   console.log({ matdata: data });
   return (
     <div className="flex-col space-y-16 md:space-y-24 mb-20">
       <HeroBanner />
-      <MaterialBoxesSection materials={data?.getAllMaterial} />
-      <IndustryBoxesSection />
-      <StyleBoxesSection />
+      <FeaturedBoxesSections
+        title={"Boxes By Industries"}
+        subTitle="Discover custom packaging tailored for every industry — from cosmetics to apparel, electronics, gifts, and more."
+        featuredData={AllIndustries}
+      />
+
+      <FeaturedBoxesSections
+        title={"Boxes By Material"}
+        subTitle="Choose from durable materials like Cardboard, Kraft, Corrugated, Rigid, and Bux Board to match your packaging needs."
+        featuredData={AllMaterials}
+      />
+
+      <FeaturedBoxesSections
+        title={"Boxes By Styles"}
+        subTitle="Explore a variety of box styles — Display, Tuck Top, Gable, Drawer, Die-Cut, Mailer, and Book Style Boxes."
+        featuredData={AllStyles}
+      />
+      <BoxFinishingSection />
       <Features />
       <QuoteSection />
+      <Reviews />
     </div>
   );
 }

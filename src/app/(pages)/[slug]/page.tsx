@@ -5,8 +5,6 @@ import React from "react";
 
 interface CategoryItem {
   slug: string;
-  name: string;
-  bannerImage: string;
 }
 
 // 1. Generate static params for all slugs
@@ -19,18 +17,12 @@ export async function generateStaticParams() {
         query {
           getAllMaterial {
             slug
-            name
-            bannerImage
           }
           getAllIndustry {
             slug
-            name
-            bannerImage
           }
           getAllStyle {
             slug
-            name
-            bannerImage
           }
         }
       `,
@@ -46,12 +38,9 @@ export async function generateStaticParams() {
 
   return [...materials, ...industries, ...styles].map((item) => ({
     slug: item.slug,
-    name: item.name,
-    bannerImage: item.bannerImage,
   }));
 }
 
-// 2. Fetch all products from GraphQL
 async function getAllProducts(): Promise<ProductCardProps[]> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
     method: "POST",
@@ -78,14 +67,41 @@ async function getAllProducts(): Promise<ProductCardProps[]> {
   return data?.getAllProduct || [];
 }
 
-const Page = async ({
-  params,
-}: {
-  params: { slug: string; name: string; bannerImage: string };
-}) => {
+async function getCategoryData(slug: string) {
+  const typeRes = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `
+        query ($slug: String!) {
+          getMaterialBySlug(slug: $slug) { name description bannerImage }
+          getIndustryBySlug(slug: $slug) { name description bannerImage }
+          getStyleBySlug(slug: $slug) { name description bannerImage }
+        }
+      `,
+      variables: { slug },
+    }),
+    cache: "no-store",
+  });
+
+  const { data } = await typeRes.json();
+  console.log({ getCategoryDataBySlug: data });
+  // pick whichever is not null
+  return (
+    data?.getMaterialBySlug ||
+    data?.getIndustryBySlug ||
+    data?.getStyleBySlug ||
+    null
+  );
+  
+}
+
+const Page = async ({ params }: { params: { slug: string } }) => {
   const allProducts = await getAllProducts();
-  const { slug, name, bannerImage } = await params;
+  const { slug } = await params;
   console.log({ allProducts: allProducts });
+
+  const categoryData = await getCategoryData(slug);
 
   // 4. Filter products by slug
   const filteredProducts = allProducts.filter((product) =>
@@ -101,9 +117,9 @@ const Page = async ({
   return (
     <div className="">
       <AllPagesBanner
-        title={`View our ${name || 'All'} Products`}
-        description="Design and personalized packaging for your brand."
-        imageUrl={bannerImage}
+        title={`View our ${categoryData.name || 'All'} Products`}
+        description={categoryData.description}
+        imageUrl={categoryData.bannerImage}
       />
       <Container>
         <div className="border-t-[1px] border-gray-200 flex justify-center">

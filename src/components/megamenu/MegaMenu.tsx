@@ -17,7 +17,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ type, onClose, mobile = false }) =>
     switch (type) {
       case "Industry":
         return (
-          <div className={`grid ${mobile ? "grid-cols-1" : "grid-cols-2 md:grid-cols-3 lg:grid-cols-4"} gap-3`}>
+          <div className={`grid ${mobile ? "grid-cols-1" : "grid-cols-2 md:grid-cols-3 lg:grid-cols-3"} gap-3`}>
             {IndustryItems.map((item, idx) => (
               <Link
                 href="#"
@@ -34,7 +34,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ type, onClose, mobile = false }) =>
 
       case "Material":
         return (
-          <div className={`grid ${mobile ? "grid-cols-1" : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"} gap-3`}>
+          <div className={`grid ${mobile ? "grid-cols-1" : "grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3"} gap-3`}>
             {materialItems.map((item, idx) => (
               <Link
                 href="#"
@@ -51,7 +51,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ type, onClose, mobile = false }) =>
 
       case "Style":
         return (
-          <div className={`grid ${mobile ? "grid-cols-1" : "grid-cols-2 md:grid-cols-3 lg:grid-cols-4"} gap-3`}>
+          <div className={`grid ${mobile ? "grid-cols-1" : "grid-cols-2 md:grid-cols-3 lg:grid-cols-3"} gap-3`}>
             {StyleItems.map((item, idx) => (
               <Link
                 href="#"
@@ -94,7 +94,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ type, onClose, mobile = false }) =>
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
       onMouseLeave={onClose}
-      className="absolute left-0 right-0 z-20 bg-white shadow-lg border-t border-gray-100"
+      className="absolute top-0 z-20 bg-white shadow-md rounded-md border-1 border-gray-200"
     >
       <div className="container mx-auto px-4 py-6">
         {renderContent()}

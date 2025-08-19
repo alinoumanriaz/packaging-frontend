@@ -1,11 +1,11 @@
-"use client";
-import React from "react";
-import Container from "../Container";
-import Titles from "../Titles";
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react'
+import Titles from '../Titles';
+import Container from '../Container';
 
-export interface IMaterial {
+
+export interface IFeaturedSectionData {
   name: string;
   slug: string;
   iconName: string;
@@ -17,21 +17,23 @@ export interface IMaterial {
 }
 
 interface MaterialBoxesSectionProps {
-  materials: IMaterial[];
+  featuredData: IFeaturedSectionData[];
+  title?: string;
+  subTitle?: string;
 }
 
-const MaterialBoxesSection = ({materials}: MaterialBoxesSectionProps) => {
+const FeaturedBoxesSections = ({featuredData, title, subTitle}: MaterialBoxesSectionProps) => {
   return (
     <Container>
       <div className="flex w-[90%] flex-col items-center space-y-8 md:space-y-12">
         <Titles
-          title="Boxes By Material"
-          subtitle="Packaging offers a variety of custom packaging solutions and project assistance with pricing and service you will love."
+          title={title}
+          subtitle={subTitle}
         />
 
         <div className="w-full ">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-            {materials.map((item: IMaterial, idx: number) => (
+            {featuredData.map((item: IFeaturedSectionData, idx: number) => (
               <Link
                 key={idx}
                 href={item.slug}
@@ -53,16 +55,9 @@ const MaterialBoxesSection = ({materials}: MaterialBoxesSectionProps) => {
             ))}
           </div>
         </div>
-
-        {/* <Link
-          href="/categories"
-          className="inline-block px-6 py-2 border border-gray-700 rounded-md font-medium text-sm md:text-base transition-colors hover:bg-gray-100 hover:border-gray-800"
-        >
-          View All Categories
-        </Link> */}
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default MaterialBoxesSection;
+export default FeaturedBoxesSections
