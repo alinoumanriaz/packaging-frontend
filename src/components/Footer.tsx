@@ -1,22 +1,22 @@
-'use client'
+"use client";
 import Link from "next/link";
 import React from "react";
 import { BiPhone } from "react-icons/bi";
 import { BsChevronRight } from "react-icons/bs";
-import { FcFactory } from "react-icons/fc";
 import Container from "./Container";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const Footer = () => {
   const pathname = usePathname();
-    
-  if (pathname.startsWith('/user')) {
+
+  if (pathname.startsWith("/user")) {
     return null;
   }
-  
+
   return (
     <>
-      <footer className="h-fit bg-green-950 mt-5 sm:pt-0 relative overflow-hidden flex justify-center bg-darkmodebtncolor flex-col items-center">
+      <footer className="h-fit bg-blue-950 mt-5 sm:pt-0 relative overflow-hidden flex justify-center bg-darkmodebtncolor flex-col items-center">
         <Container>
           <div className="border-t border-gray-600/20 border-b flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 my-8 md:my-16 w-full gap-8 md:gap-4">
@@ -28,20 +28,15 @@ const Footer = () => {
                       href="/"
                       className="flex space-x-3 items-center font-medium text-lg md:text-xl text-white"
                     >
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <FcFactory className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <span className="text-white text-2xl font-bold">
-                          PackagePro
-                        </span>
-                        <p className="text-sm text-gray-400">
-                          Premium Packaging Solutions
-                        </p>
-                      </div>
+                      <Image
+                        src={"/unique-custom-boxes.png"}
+                        alt="Unique Custom Boxes"
+                        width={180}
+                        height={50}
+                      />
                     </Link>
                   </div>
-                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">
+                  <p className="text-white/80 leading-relaxed text-sm md:text-sm">
                     Leading manufacturer of custom packaging boxes with over 15
                     years of experience. We specialize in eco-friendly, durable
                     packaging solutions for businesses of all sizes.
@@ -86,7 +81,7 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Information Column */}
               <div className="flex justify-start md:justify-center px-4">
                 <div className="flex flex-col space-y-4 w-full">
@@ -117,7 +112,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              
+
               {/* Products Column */}
               <div className="flex justify-start md:justify-center px-4">
                 <div className="flex flex-col space-y-4 w-full">
@@ -146,7 +141,7 @@ const Footer = () => {
                   </ul>
                 </div>
               </div>
-              
+
               {/* Resources Column */}
               <div className="flex justify-start md:justify-center px-4">
                 <div className="flex flex-col space-y-4 w-full">
