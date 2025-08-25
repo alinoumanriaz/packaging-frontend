@@ -20,6 +20,7 @@ const HeroBanner = () => {
             alt="banner"
             width={600}
             height={600}
+            priority
             />
           </div>
         </div>

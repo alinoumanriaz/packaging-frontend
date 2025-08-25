@@ -93,6 +93,7 @@ const Header = () => {
               alt="Unique Custom Boxes"
               width={160}
               height={50}
+              priority
             />
           </Link>
 

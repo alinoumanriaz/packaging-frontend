@@ -100,7 +100,7 @@ const MiniRequestQuote = () => {
 
             <button
               type="submit"
-              className="w-full bg-green-700 text-white py-3 px-4 rounded-md hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 font-medium"
+              className="w-full bg-blue-700 text-white py-3 px-4 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 font-medium"
             >
               Submit Quick Request
             </button>
