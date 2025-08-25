@@ -8,6 +8,7 @@ import { IndustryItems, materialItems, StyleItems } from "@/custom-data/data";
 
 interface MegaMenuProps {
   type: string;
+  // menuClose: () => void;
   onClose: () => void;
   mobile?: boolean;
 }

@@ -88,6 +88,7 @@ const Header = () => {
 
           <Link href={"/"} className="">
             <Image
+            className="md:w-40 w-32"
               src={"/unique custom boxes.png"}
               alt="Unique Custom Boxes"
               width={160}

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const QuoteSection = () => {
   return (
-    <div className="flex flex-col w-full justify-center items-center md:p-10 space-y-10 bg-[#f1eee3] ">
+    <div className="flex flex-col w-full justify-center items-center md:p-10 space-y-10 bg-[#e9f0f5] ">
       <div className="flex justify-between items-start relative h-full w-full md:space-x-12">
         <div className="w-full md:w-[50%] md:rounded-4xl md:bg-white md:ring-1 md:ring-gray-300 px-8">
           <RequestQuote />
