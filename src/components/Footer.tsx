@@ -16,7 +16,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="h-fit bg-blue-950 mt-5 sm:pt-0 relative overflow-hidden flex justify-center bg-darkmodebtncolor flex-col items-center">
+      <footer className="h-fit bg-blue-900 mt-5 sm:pt-0 relative overflow-hidden flex justify-center bg-darkmodebtncolor flex-col items-center">
         <Container>
           <div className="border-t border-gray-600/20 border-b flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 my-8 md:my-16 w-full gap-8 md:gap-4">
@@ -29,6 +29,7 @@ const Footer = () => {
                       className="flex space-x-3 items-center font-medium text-lg md:text-xl text-white"
                     >
                       <Image
+                      className="w-36 md:w-44"
                         src={"/unique-custom-boxes.png"}
                         alt="Unique Custom Boxes"
                         width={180}
@@ -176,7 +177,7 @@ const Footer = () => {
         </Container>
         <Container>
           <div className="my-4 w-full text-sm text-neutral-400 text-center md:text-left">
-            © 2024 Astra AI INC. All rights reserved.
+            Copyright © 2026. All rights reserved.
           </div>
         </Container>
       </footer>

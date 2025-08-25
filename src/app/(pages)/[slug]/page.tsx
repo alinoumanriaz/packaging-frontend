@@ -150,7 +150,7 @@ const Page = async ({ params }: PageProps) => {
   return (
     <div className="">
       <AllPagesBanner
-        title={`View our ${categoryData?.name || 'All'} Products`}
+        title={`${categoryData?.name || 'All'}`}
         description={categoryData?.description}
         imageUrl={categoryData?.bannerImage}
       />

@@ -46,7 +46,7 @@ const FeaturedBoxesSections = ({featuredData, title, subTitle}: MaterialBoxesSec
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-                    loading="lazy" 
+                    loading="eager" 
                   />
                 </div>
                 <h3 className="font-semibold text-sm md:text-base capitalize transition-colors group-hover:text-green-600">

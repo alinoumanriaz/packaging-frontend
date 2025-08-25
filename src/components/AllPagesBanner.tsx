@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import Image from "next/image";
 
 interface IProps {
   title?: string;
@@ -8,25 +10,34 @@ interface IProps {
 
 const AllPagesBanner = ({ title, description, imageUrl }: IProps) => {
   return (
-      <div
-        style={
-          imageUrl
-            ? {
-                backgroundImage: `url(${imageUrl})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }
-            : {}
-        }
-        className={`flex flex-col justify-center items-center w-full ${
-          imageUrl ? "h-80 my-4 text-white " : "h-60"
-        }`}
-      >
-        <div className="w-full text-center backdrop-blur-sm h-1/2 flex flex-col justify-center items-center">
-          <div className="text-5xl font-bold">{title}</div>
-        <div>{description}</div>
-        </div>
+    <div className="relative flex flex-col justify-center items-center w-full h-44 md:h-80 text-white overflow-hidden">
+      {/* Background image with preload */}
+      {imageUrl && (
+        <Image
+          src={imageUrl}
+          alt={title || "Banner"}
+          fill
+          className="object-cover"
+          priority  // 👈 ensures preloaded
+          sizes="100vw"
+          placeholder="blur" // 👈 optional: nice blur while loading
+          blurDataURL="/blur-placeholder.png" // small low-quality image
+        />
+      )}
+
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      {/* Text content */}
+      <div className="relative z-10 w-full text-center px-4">
+        {title && <h1 className="text-xl md:text-5xl font-bold">{title}</h1>}
+        {description && (
+          <p className="mt-2 text-xs md:text-lg max-w-2xl mx-auto">
+            {description}
+          </p>
+        )}
       </div>
+    </div>
   );
 };
 

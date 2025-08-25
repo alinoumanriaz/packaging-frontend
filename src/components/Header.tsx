@@ -64,15 +64,15 @@ const Header = () => {
   }
 
   return (
-    <header className="relative shadow">
+    <header className=" shadow  sticky top-0 z-30">
       {/* top header */}
       <div className="bg-blue-800 text-xs md:text-sm text-white text-center py-1 px-4 w-full">
         Free shipping on orders over $50
       </div>
 
       {/* main header */}
-      <div className="w-full flex justify-center items-center">
-        <div className="w-full px-4 md:px-6 lg:px-10 flex justify-between items-center py-3 md:py-4 ">
+      <div className="w-full flex justify-center items-center bg-white">
+        <div className="w-full px-2 md:px-6 lg:px-10 flex justify-between items-center py-3 md:py-4 ">
           {/* Mobile menu button */}
           <button
             className="md:hidden w-9 h-9 md:w-10 md:h-10 border border-gray-200 flex justify-center items-center bg-white shadow-xs rounded-md hover:bg-gray-50 transition"
@@ -88,7 +88,7 @@ const Header = () => {
 
           <Link href={"/"} className="">
             <Image
-            className="md:w-40 w-32"
+              className="md:w-40 w-32"
               src={"/unique custom boxes.png"}
               alt="Unique Custom Boxes"
               width={160}
@@ -126,85 +126,30 @@ const Header = () => {
               <GoChevronDown className="size-3.5" />
             </div>
           </div>
-          <button className="flex items-center space-x-4 md:space-x-3 mr-4">
+          <button className="hidden md:flex items-center space-x-4 md:space-x-3 ">
             <div className="w-9 h-9 md:w-10 md:h-10 border border-gray-200 flex justify-center items-center bg-white shadow-xs rounded-md hover:bg-gray-50 transition">
               <BiSearch className="size-6" />
               <span className="sr-only">Search</span>
             </div>
           </button>
-          <button className="md:flex hidden items-center space-x-4 md:space-x-3">
-            <div className="w-9 h-9 md:w-10 md:h-10 border border-gray-200 flex justify-center items-center bg-white shadow-xs rounded-md hover:bg-gray-50 transition">
-              <FaPhoneAlt className="size-5" />
-              <span className="sr-only">Phone</span>
+          <button className="md:hidden w-9 h-9 border border-gray-200 flex justify-center items-center bg-green-600 text-white rounded-md hover:bg-green-700 transition">
+            <FaPhoneAlt className="size-5" />
+          </button>
+          <button className="hidden md:flex items-center ml-6 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-md transition">
+            <FaPhoneAlt className="size-5 mr-2" />
+            <div className="flex flex-col items-start leading-tight">
+              <span className="text-xs font-medium opacity-80">Call Us</span>
+              <span className="text-sm md:text-base font-semibold">
+                +44-7884-529639
+              </span>
             </div>
-            <div className="text-xl">+44-7884-529639</div>
           </button>
         </div>
       </div>
 
-      {/* Desktop navbar */}
-      {/* <div className="hidden md:flex w-full justify-center items-center">
-        <div className="w-full px-6 lg:px-10 flex justify-between items-center text-[15px] text-gray-800">
-          <Link
-            href={"/pages/category"}
-            className="font-semibold hover:text-green-700 transition py-3"
-          >
-            All Products
-          </Link>
-
-          <div className="w-px h-5 bg-gray-200"></div>
-
-          <div
-            className="flex justify-center items-center space-x-6 lg:space-x-8 py-2"
-            ref={navRef}
-          >
-            <div
-              onMouseEnter={() => handleMenuOpen("Industry")}
-              onMouseLeave={handleMenuClose}
-              className="flex justify-center items-center cursor-pointer hover:text-green-700 transition"
-            >
-              <span className="pr-1.5">Boxes By Industry</span>
-              <GoChevronDown className="size-3.5" />
-            </div>
-
-            <div
-              onMouseEnter={() => handleMenuOpen("Material")}
-              onMouseLeave={handleMenuClose}
-              className="flex justify-center items-center cursor-pointer hover:text-green-700 transition"
-            >
-              <span className="pr-1.5">Boxes By Material</span>
-              <GoChevronDown className="size-3.5" />
-            </div>
-
-            <div
-              onMouseEnter={() => handleMenuOpen("Style")}
-              onMouseLeave={handleMenuClose}
-              className="flex justify-center items-center cursor-pointer hover:text-green-700 transition"
-            >
-              <span className="pr-1.5">Boxes By Style</span>
-              <GoChevronDown className="size-3.5" />
-            </div>
-          </div>
-
-          <div className="w-px h-5 bg-gray-200"></div>
-
-          <div className="flex justify-center items-center space-x-6 lg:space-x-8">
-            <Link
-              href="/sustainability"
-              className="hover:text-green-700 transition"
-            >
-              Sustainability
-            </Link>
-            <Link href="/about" className="hover:text-green-700 transition">
-              Company
-            </Link>
-          </div>
-        </div>
-      </div> */}
-
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden w-full bg-white border-b shadow-sm">
+        <div className="md:hidden w-full bg-white border-b h-screen shadow-sm fixed z-50 overflow-auto">
           <div className="px-4 py-3">
             {/* Mobile search */}
             <div className="relative mb-4">
@@ -370,7 +315,7 @@ const Header = () => {
         <div
           onMouseEnter={cancelMenuClose}
           onMouseLeave={handleMenuClose}
-          className=" justify-center relative items-center z-20 hidden md:flex"
+          className=" justify-center relative items-center z-40 hidden md:flex"
         >
           <MegaMenu
             onClose={() => setMegaMenu({ open: false, type: "" })}
