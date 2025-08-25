@@ -6,6 +6,7 @@ import { Poppins } from "next/font/google";
 import ApolloWrapper from "@/helper/ApolloProvider";
 import LoadCurrentUser from "@/components/LoadCurrentUser";
 import { Providers } from "@/redux/providers";
+import WhatsappButton from "@/components/WhatsappButton";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
           <Footer />
         </ApolloWrapper>
         </Providers>
+        <WhatsappButton />
       </body>
     </html>
   );

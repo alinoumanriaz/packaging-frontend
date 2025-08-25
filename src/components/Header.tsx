@@ -135,7 +135,10 @@ const Header = () => {
           <button className="md:hidden w-9 h-9 border border-gray-200 flex justify-center items-center bg-green-600 text-white rounded-md hover:bg-green-700 transition">
             <FaPhoneAlt className="size-5" />
           </button>
-          <button className="hidden md:flex items-center ml-6 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-md transition">
+          <a
+            href="tel:+447884529639"
+            className="hidden md:flex items-center ml-6 px-4 py-2 bg-blue-600 hover:bg-green-700 text-white rounded-full shadow-md transition"
+          >
             <FaPhoneAlt className="size-5 mr-2" />
             <div className="flex flex-col items-start leading-tight">
               <span className="text-xs font-medium opacity-80">Call Us</span>
@@ -143,7 +146,7 @@ const Header = () => {
                 +44-7884-529639
               </span>
             </div>
-          </button>
+          </a>
         </div>
       </div>
 
