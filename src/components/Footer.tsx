@@ -6,6 +6,7 @@ import { BsChevronRight } from "react-icons/bs";
 import Container from "./Container";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { StyleItems } from "@/custom-data/data";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -91,22 +92,46 @@ const Footer = () => {
                   </h3>
                   <ul className="space-y-3 text-sm">
                     {[
-                      "Contact Us",
-                      "About Us",
-                      "Delivery Info",
-                      "Privacy Policy",
-                      "Terms & Conditions",
-                      "Blogs",
-                      "Portfolio",
-                      "Sitemap",
+                      {
+                        name:"Contact Us",
+                        url: '/contact-us'
+                      },
+                      {
+                        name:"About Us",
+                        url: '/about-us'
+                      },
+                      {
+                        name:"Delivery Info",
+                        url: '/delivery-info'
+                      },
+                      {
+                        name:"Privacy Policy",
+                        url: '/privacy-policy'
+                      },
+                      {
+                        name:"Terms & Conditions",
+                        url: '/terms-conditions'
+                      },
+                      {
+                        name:"Blogs",
+                        url: '/blogs'
+                      },
+                      {
+                        name:"Portfolio",
+                        url: '/portfolio'
+                      },
+                      {
+                        name:"Sitemap",
+                        url: '/sitemap'
+                      }
                     ].map((item, index) => (
                       <li key={index}>
                         <Link
-                          href="#"
+                          href={`/${item.url}`}
                           className="flex items-center text-white/50 hover:text-white transition-colors group"
                         >
                           <BsChevronRight className="w-3 h-3 mr-2 text-white/50 group-hover:text-white transition-colors" />
-                          {item}
+                          {item.name}
                         </Link>
                       </li>
                     ))}
@@ -121,21 +146,14 @@ const Footer = () => {
                     Popular Products
                   </h3>
                   <ul className="space-y-3 text-sm">
-                    {[
-                      "Soap Boxes",
-                      "Pillow Boxes",
-                      "Rigid Boxes",
-                      "Kraft Boxes",
-                      "Mylar Bags",
-                      "Gable Boxes",
-                    ].map((item, index) => (
+                    {StyleItems.map((item, index) => (
                       <li key={index}>
                         <Link
-                          href="#"
+                          href={`/${item.slug}`}
                           className="flex items-center text-white/50 hover:text-white transition-colors group"
                         >
                           <BsChevronRight className="w-3 h-3 mr-2 text-white/50 group-hover:text-white transition-colors" />
-                          {item}
+                          {item.name}
                         </Link>
                       </li>
                     ))}

@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const HeroBanner = () => {
   return (
     <section className="w-full bg-blue-50">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-16 py-12 md:py-20">
+      <div className="w-full mx-auto px-6 md:px-12 lg:px-16 flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-16 py-12 md:py-20">
         
         {/* Left Content */}
         <div className="flex flex-col text-center md:text-left space-y-6 md:space-y-8 max-w-xl">
@@ -17,9 +18,9 @@ const HeroBanner = () => {
             customers worldwide.
           </p>
           <div>
-            <button className="bg-blue-700 hover:bg-blue-800 transition-colors text-white rounded-lg px-6 md:py-3 py-2 text-base font-medium shadow-md">
+            <Link href={'#quoteSection'} className="bg-blue-700 hover:bg-blue-800 transition-colors text-white rounded-lg px-6 md:py-3 py-2 text-base font-medium shadow-md">
               Request a Quote
-            </button>
+            </Link>
           </div>
         </div>
 

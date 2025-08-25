@@ -9,6 +9,7 @@ import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 import MegaMenu from "./megamenu/MegaMenu";
 import Image from "next/image";
 import { FaPhoneAlt } from "react-icons/fa";
+import SearchBox from "./SearchBox";
 
 type MegaMenuType = "Industry" | "Material" | "Style" | "";
 
@@ -25,6 +26,7 @@ const Header = () => {
     type: "",
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openSearchBox, setOpenSearchBox] = useState(false);
   const menuTimer = useRef<NodeJS.Timeout | null>(null);
   // const navRef = useRef<HTMLDivElement>(null);
 
@@ -126,18 +128,18 @@ const Header = () => {
               <GoChevronDown className="size-3.5" />
             </div>
           </div>
-          <button className="hidden md:flex items-center space-x-4 md:space-x-3 ">
+          <button onClick={()=>setOpenSearchBox(true)} className="hidden md:flex items-center space-x-4 md:space-x-3 ">
             <div className="w-9 h-9 md:w-10 md:h-10 border border-gray-200 flex justify-center items-center bg-white shadow-xs rounded-md hover:bg-gray-50 transition">
               <BiSearch className="size-6" />
               <span className="sr-only">Search</span>
             </div>
           </button>
-          <button className="md:hidden w-9 h-9 border border-gray-200 flex justify-center items-center bg-green-600 text-white rounded-md hover:bg-green-700 transition">
+          <button className="md:hidden w-9 h-9 border border-gray-200 flex justify-center items-center bg-blue-600 text-white rounded-md hover:bg-green-700 transition">
             <FaPhoneAlt className="size-5" />
           </button>
           <a
             href="tel:+447884529639"
-            className="hidden md:flex items-center ml-6 px-4 py-2 bg-blue-600 hover:bg-green-700 text-white rounded-full shadow-md transition"
+            className="hidden md:flex items-center ml-6 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md transition"
           >
             <FaPhoneAlt className="size-5 mr-2" />
             <div className="flex flex-col items-start leading-tight">
@@ -155,7 +157,7 @@ const Header = () => {
         <div className="md:hidden w-full bg-white border-b h-screen shadow-sm fixed z-50 overflow-auto">
           <div className="px-4 py-3">
             {/* Mobile search */}
-            <div className="relative mb-4">
+            <div onClick={()=>setOpenSearchBox(true)} className="relative mb-4">
               <input
                 className="border border-gray-300 placeholder:text-gray-400/60 text-sm w-full outline-none focus:ring-1 focus:ring-gray-700/40 py-2 pl-3 pr-8 bg-white rounded-md"
                 placeholder="Search products..."
@@ -166,13 +168,6 @@ const Header = () => {
             </div>
 
             <div className="flex flex-col space-y-4">
-              <Link
-                href="/pages/category"
-                className="font-medium hover:text-green-700 transition py-1"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                All Products
-              </Link>
 
               <div className="border-t border-gray-100 pt-2">
                 <button
@@ -325,6 +320,12 @@ const Header = () => {
             type={megaMenu.type}
           />
         </div>
+      )}
+
+      {openSearchBox && (
+        <SearchBox
+          onClose={() => setOpenSearchBox(false)}
+        />
       )}
     </header>
   );

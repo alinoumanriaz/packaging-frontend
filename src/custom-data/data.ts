@@ -12,14 +12,14 @@ import {
   LuShirt,
   LuArchive,
   LuBookOpen,
-  LuScissors,
+  // LuScissors,
   LuMail,
   LuList,
   LuPackage,
   LuLayers,
-  LuLayoutGrid,
-  LuGrid2X2,
-  LuLayoutList,
+  // LuLayoutGrid,
+  // LuGrid2X2,
+  // LuLayoutList,
 } from "react-icons/lu";
 
 export const IndustryItems = [
@@ -37,14 +37,14 @@ export const IndustryItems = [
 
 export const StyleItems = [
   { name: "Mailer Boxes", icon: LuMail, slug: "mailer-boxes" },
-  { name: "Display Boxes", icon: LuLayoutList, slug: "display-boxes" },
+  // { name: "Display Boxes", icon: LuLayoutList, slug: "display-boxes" },
   { name: "Tuck Top Boxes", icon: LuList, slug: "tuck-top-boxes" },
   { name: "Gable Boxes", icon: LuPackage, slug: "gable-boxes" },
   { name: "Drawer Boxes", icon: LuLayers, slug: "drawer-boxes" },
   { name: "Book Style Boxes", icon: LuBookOpen, slug: "book-style-boxes" },
-  { name: "Custom Printed Boxes", icon: LuGrid2X2, slug: "custom-printed-boxes" },
-  { name: "Window Cutout Boxes", icon: LuLayoutGrid, slug: "window-cutout-boxes" },
-  { name: "Die-Cut Boxes", icon: LuScissors, slug: "die-cut-boxes" }
+  // { name: "Custom Printed Boxes", icon: LuGrid2X2, slug: "custom-printed-boxes" },
+  // { name: "Window Cutout Boxes", icon: LuLayoutGrid, slug: "window-cutout-boxes" },
+  // { name: "Die-Cut Boxes", icon: LuScissors, slug: "die-cut-boxes" }
 ];
 
 export const materialItems = [
