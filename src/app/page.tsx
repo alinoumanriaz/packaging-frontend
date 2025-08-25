@@ -1,4 +1,4 @@
-import BoxFinishingSection from "@/components/home-components/BoxFinishingSection";
+// import BoxFinishingSection from "@/components/home-components/BoxFinishingSection";
 import FeaturedBoxesSections from "@/components/home-components/FeaturedBoxesSections";
 import Features from "@/components/home-components/Features";
 import HeroBanner from "@/components/home-components/HeroBanner";
@@ -57,7 +57,7 @@ export default async function Home() {
         subTitle="Explore a variety of box styles — Display, Tuck Top, Gable, Drawer, Die-Cut, Mailer, and Book Style Boxes."
         featuredData={AllStyles}
       />
-      <BoxFinishingSection />
+      {/* <BoxFinishingSection /> */}
       <Features />
       <QuoteSection />
       <Reviews />

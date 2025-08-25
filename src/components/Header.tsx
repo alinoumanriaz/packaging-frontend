@@ -3,11 +3,12 @@ import { useAppSelector } from "@/redux/hooks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState, useRef, useEffect } from "react";
-import { BiPhoneOutgoing, BiSearch } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
 import { GoChevronDown } from "react-icons/go";
 import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 import MegaMenu from "./megamenu/MegaMenu";
 import Image from "next/image";
+import { FaPhoneAlt } from "react-icons/fa";
 
 type MegaMenuType = "Industry" | "Material" | "Style" | "";
 
@@ -25,7 +26,7 @@ const Header = () => {
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuTimer = useRef<NodeJS.Timeout | null>(null);
-  const navRef = useRef<HTMLDivElement>(null);
+  // const navRef = useRef<HTMLDivElement>(null);
 
   const handleMenuOpen = (type: MegaMenuType) => {
     if (menuTimer.current) {
@@ -63,7 +64,7 @@ const Header = () => {
   }
 
   return (
-    <header className="relative">
+    <header className="relative shadow">
       {/* top header */}
       <div className="bg-blue-800 text-xs md:text-sm text-white text-center py-1 px-4 w-full">
         Free shipping on orders over $50
@@ -85,41 +86,62 @@ const Header = () => {
             )}
           </button>
 
-          <Link
-            href={"/"}
-            className=""
-          >
+          <Link href={"/"} className="">
             <Image
               src={"/unique custom boxes.png"}
               alt="Unique Custom Boxes"
-              width={140}
+              width={160}
               height={50}
             />
           </Link>
 
           {/* Search bar - hidden on mobile */}
-          <div className="hidden md:block relative flex-1 max-w-md mx-4">
-            <input
-              className="border border-gray-300 placeholder:text-gray-400/60 text-sm w-full outline-none focus:ring-1 focus:ring-gray-700/40 py-2 pl-3 pr-8 bg-white rounded-md"
-              placeholder="Search by product, categories..."
-              type="search"
-              aria-label="Search products"
-            />
-            <BiSearch className="absolute size-5 top-2.5 right-3 z-10 text-gray-500" />
-          </div>
+          <div className="px-12 relative md:flex flex-1 justify-start items-center space-x-6 hidden">
+            <div
+              onMouseEnter={() => handleMenuOpen("Industry")}
+              onMouseLeave={handleMenuClose}
+              className="flex justify-center items-center cursor-pointer hover:text-green-700 transition"
+            >
+              <span className="pr-1.5">Boxes By Industry</span>
+              <GoChevronDown className="size-3.5" />
+            </div>
 
-          <button className="flex items-center space-x-4 md:space-x-3">
+            <div
+              onMouseEnter={() => handleMenuOpen("Material")}
+              onMouseLeave={handleMenuClose}
+              className="flex justify-center items-center cursor-pointer hover:text-green-700 transition"
+            >
+              <span className="pr-1.5">Boxes By Material</span>
+              <GoChevronDown className="size-3.5" />
+            </div>
+
+            <div
+              onMouseEnter={() => handleMenuOpen("Style")}
+              onMouseLeave={handleMenuClose}
+              className="flex justify-center items-center cursor-pointer hover:text-green-700 transition"
+            >
+              <span className="pr-1.5">Boxes By Style</span>
+              <GoChevronDown className="size-3.5" />
+            </div>
+          </div>
+          <button className="flex items-center space-x-4 md:space-x-3 mr-4">
             <div className="w-9 h-9 md:w-10 md:h-10 border border-gray-200 flex justify-center items-center bg-white shadow-xs rounded-md hover:bg-gray-50 transition">
-              <BiPhoneOutgoing className="size-5" />
+              <BiSearch className="size-6" />
+              <span className="sr-only">Search</span>
+            </div>
+          </button>
+          <button className="md:flex hidden items-center space-x-4 md:space-x-3">
+            <div className="w-9 h-9 md:w-10 md:h-10 border border-gray-200 flex justify-center items-center bg-white shadow-xs rounded-md hover:bg-gray-50 transition">
+              <FaPhoneAlt className="size-5" />
               <span className="sr-only">Phone</span>
             </div>
-            <div className="text-2xl">010-324-7823</div>
+            <div className="text-xl">+44-7884-529639</div>
           </button>
         </div>
       </div>
 
       {/* Desktop navbar */}
-      <div className="hidden md:flex w-full justify-center items-center">
+      {/* <div className="hidden md:flex w-full justify-center items-center">
         <div className="w-full px-6 lg:px-10 flex justify-between items-center text-[15px] text-gray-800">
           <Link
             href={"/pages/category"}
@@ -160,10 +182,6 @@ const Header = () => {
               <span className="pr-1.5">Boxes By Style</span>
               <GoChevronDown className="size-3.5" />
             </div>
-
-            {/* <Link href="/blog" className="hover:text-green-700 transition">
-              Blog
-            </Link> */}
           </div>
 
           <div className="w-px h-5 bg-gray-200"></div>
@@ -180,7 +198,7 @@ const Header = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
