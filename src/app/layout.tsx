@@ -7,6 +7,7 @@ import ApolloWrapper from "@/helper/ApolloProvider";
 import LoadCurrentUser from "@/components/LoadCurrentUser";
 import { Providers } from "@/redux/providers";
 import WhatsappButton from "@/components/WhatsappButton";
+import NextTopLoader from "nextjs-toploader";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Providers>
         <ApolloWrapper>
           <LoadCurrentUser />
+          <NextTopLoader color="White" showSpinner={false} />
           <Header />
           {children}
           <Footer />

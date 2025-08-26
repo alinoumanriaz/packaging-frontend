@@ -47,7 +47,7 @@ const PackagingTabs = () => {
               key={tab}
               className={`px-5 py-2 rounded-md font-medium ${
                 activeTab === tab
-                  ? "bg-green-700 text-white"
+                  ? "bg-blue-700 text-white"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
               onClick={() => setActiveTab(tab)}

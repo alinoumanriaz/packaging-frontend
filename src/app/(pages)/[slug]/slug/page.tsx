@@ -6,8 +6,8 @@ import Titles from "@/components/Titles";
 import Image from "next/image";
 import React from "react";
 
-const page = async() => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
+const page = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -25,7 +25,7 @@ const page = async() => {
   });
   const { data } = await res.json();
   const AllIndustries = data?.getAllIndustry || [];
-//   console.log({ matdata: data });
+  //   console.log({ matdata: data });
   return (
     <div className="flex-col w-full space-y-12 mb-20">
       <Container>
@@ -69,9 +69,9 @@ const page = async() => {
               <h1 className="font-semibold text-4xl">
                 Printed Color Postal Box
               </h1>
-              
-            <MiniRequestQuote />
-            <p className="text-gray-600">
+
+              <MiniRequestQuote />
+              <p className="text-gray-600">
                 Sturdy cardboard box with a color printed brand. designed to
                 make shipments from your ecommerce.
               </p>
@@ -82,18 +82,59 @@ const page = async() => {
       <Container>
         <div className="w-[90%] flex flex-col space-y-14">
           <div className=" flex flex-col justify-center items-center">
-            <Titles title="Product Description" />
+            <Titles title="Description" />
             <div>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dicta aut a id tempora quod veritatis commodi obcaecati rerum beatae cupiditate vel maxime officiis unde nemo minima exercitationem voluptates officia, saepe perspiciatis nostrum hic adipisci aperiam rem? Recusandae itaque consectetur, delectus dolor magnam vitae quo illum rerum corrupti provident maiores dolorem et magni adipisci cum, enim rem sed, inventore placeat velit modi deserunt corporis sequi. Cum quibusdam, molestiae itaque blanditiis sint velit voluptatem inventore eius quaerat omnis dolorum? Tempore voluptatem excepturi error porro? Alias placeat veniam ipsam fugiat quis in repudiandae, ipsum nesciunt unde optio culpa quos odit suscipit debitis beatae sunt. Quaerat tempora dolorum, cumque atque quo mollitia pariatur et, veritatis excepturi molestias unde, vero dolorem! Delectus odio itaque at consectetur amet, est dolor fugit optio accusamus eum, facilis, quos dolores enim nulla officiis! Fugit expedita laudantium commodi suscipit nostrum dolore deserunt dolorem veniam magnam eum consequuntur iste quisquam, blanditiis quidem autem, fuga dolorum eligendi? Omnis beatae magnam atque nulla iste voluptatibus optio tempora, quidem minus voluptates necessitatibus dolores veniam nobis doloremque quae deleniti nam suscipit doloribus provident neque vitae quo corporis. Vero molestiae voluptas doloribus reiciendis sapiente mollitia ipsam iure. A sed aut officiis maxime nam omnis tempora, id repellat. Dicta laudantium dolor praesentium aliquid nostrum blanditiis, at numquam magnam, nisi optio deserunt ex, amet minus provident libero nobis sunt porro recusandae! Veritatis corporis nulla, fuga, ipsam iste nobis suscipit facere deserunt, aliquam quis velit ullam quisquam possimus temporibus at quaerat harum ipsa quae. Quia ipsa, animi perspiciatis vitae obcaecati repellendus hic repudiandae corporis odit illo aliquam, sequi laboriosam voluptatum reiciendis error fugiat quibusdam? Ipsa sunt, corporis, ea voluptate aut quidem facilis quo magnam, dolor ipsum nostrum voluptates. Error quas quae unde ex officiis repudiandae sit temporibus sapiente vel praesentium! Numquam similique maiores asperiores dolorum dolore quis! Voluptates?
+                Our Printed Color Postal Boxes are crafted from high-quality
+                corrugated cardboard, offering maximum protection for your
+                products during transit. With vibrant CMYK and Pantone printing
+                options, your brand colors will pop, ensuring a memorable first
+                impression. Available in custom sizes, these boxes are ideal for
+                cosmetics, clothing, electronics, subscription boxes, and more.
               </p>
             </div>
           </div>
           <div className=" flex flex-col justify-center items-center">
-            <Titles title="Product Specification" />
+            <Titles title="Specification" />
             <div>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dicta aut a id tempora quod veritatis commodi obcaecati rerum beatae cupiditate vel maxime officiis unde nemo minima exercitationem voluptates officia, saepe perspiciatis nostrum hic adipisci aperiam rem? Recusandae itaque consectetur, delectus dolor magnam vitae quo illum rerum corrupti provident maiores dolorem et magni adipisci cum, enim rem sed, inventore placeat velit modi deserunt corporis sequi. Cum quibusdam, molestiae itaque blanditiis sint velit voluptatem inventore eius quaerat omnis dolorum? Tempore voluptatem excepturi error porro? Alias placeat veniam ipsam fugiat quis in repudiandae, ipsum nesciunt unde optio culpa quos odit suscipit debitis beatae sunt. Quaerat tempora dolorum, cumque atque quo mollitia pariatur et, veritatis excepturi molestias unde, vero dolorem! Delectus odio itaque at consectetur amet, est dolor fugit optio accusamus eum, facilis, quos dolores enim nulla officiis! Fugit expedita laudantium commodi suscipit nostrum dolore deserunt dolorem veniam magnam eum consequuntur iste quisquam, blanditiis quidem autem, fuga dolorum eligendi? Omnis beatae magnam atque nulla iste voluptatibus optio tempora, quidem minus voluptates necessitatibus dolores veniam nobis doloremque quae deleniti nam suscipit doloribus provident neque vitae quo corporis. Vero molestiae voluptas doloribus reiciendis sapiente mollitia ipsam iure. A sed aut officiis maxime nam omnis tempora, id repellat. Dicta laudantium dolor praesentium aliquid nostrum blanditiis, at numquam magnam, nisi optio deserunt ex, amet minus provident libero nobis sunt porro recusandae! Veritatis corporis nulla, fuga, ipsam iste nobis suscipit facere deserunt, aliquam quis velit ullam quisquam possimus temporibus at quaerat harum ipsa quae. Quia ipsa, animi perspiciatis vitae obcaecati repellendus hic repudiandae corporis odit illo aliquam, sequi laboriosam voluptatum reiciendis error fugiat quibusdam? Ipsa sunt, corporis, ea voluptate aut quidem facilis quo magnam, dolor ipsum nostrum voluptates. Error quas quae unde ex officiis repudiandae sit temporibus sapiente vel praesentium! Numquam similique maiores asperiores dolorum dolore quis! Voluptates?
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 text-gray-600 text-sm text-left">
+                  <div>
+                    <p>
+                      <span className="font-semibold">Material:</span> Kraft /
+                      White Corrugated Board
+                    </p>
+                    <p>
+                      <span className="font-semibold">Thickness:</span> 3mm –
+                      5mm (Custom)
+                    </p>
+                    <p>
+                      <span className="font-semibold">Printing:</span> CMYK /
+                      Pantone / Digital
+                    </p>
+                    <p>
+                      <span className="font-semibold">Coating:</span> Gloss,
+                      Matte, Aqueous, UV
+                    </p>
+                  </div>
+                  <div>
+                    <p>
+                      <span className="font-semibold">Closure:</span> Tuck-in /
+                      Adhesive Strip
+                    </p>
+                    <p>
+                      <span className="font-semibold">Eco-Friendly:</span> 100%
+                      Recyclable
+                    </p>
+                    <p>
+                      <span className="font-semibold">MOQ:</span> 100 Units
+                    </p>
+                    <p>
+                      <span className="font-semibold">Lead Time:</span> 7 – 12
+                      Business Days
+                    </p>
+                  </div>
+                </div>
               </p>
             </div>
           </div>
@@ -102,10 +143,10 @@ const page = async() => {
       <PackagingTabs />
       <Container>
         <FeaturedBoxesSections
-        title={"Related Products"}
-        subTitle="Discover custom packaging tailored for every industry — from cosmetics to apparel, electronics, gifts, and more."
-        featuredData={AllIndustries}
-      />
+          title={"Related Products"}
+          subTitle="Discover custom packaging tailored for every industry — from cosmetics to apparel, electronics, gifts, and more."
+          featuredData={AllIndustries}
+        />
       </Container>
     </div>
   );
