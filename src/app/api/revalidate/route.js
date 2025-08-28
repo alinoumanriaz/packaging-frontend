@@ -3,8 +3,8 @@ import { revalidatePath } from "next/cache";
 export async function POST(req) {
   const body = await req.json();
   const { paths, token } = body;
-  console.log({frontendRevalidaationAPIWork: paths})
-  console.log({frontendRevalidaationAPIWork: token})
+  console.log({ frontendRevalidaationAPIWork: paths });
+  console.log({ frontendRevalidaationAPIWork: token });
 
   // Check for authorization token
   if (token !== process.env.FRONTEND_REVALIDATE_SECRET) {
@@ -22,6 +22,13 @@ export async function POST(req) {
   }
 
   try {
+    if (paths.length === 1 && paths[0] === "All") {
+      await revalidatePath("/", "layout"); // revalidate root layout
+      return new Response(
+        JSON.stringify({ message: "Revalidated entire site via root layout" }),
+        { status: 200 }
+      );
+    }
     // Revalidate all paths in parallel
     await Promise.all(
       paths.map(async (path) => {
