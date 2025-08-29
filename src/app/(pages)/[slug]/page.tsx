@@ -68,9 +68,9 @@ async function getAllProducts(): Promise<ProductCardProps[]> {
             name
             slug
             imageUrl
-            material { slug }
+            materials { slug }
             industry { slug }
-            style { slug }
+            styles { slug }
           }
         }
       `,
@@ -83,6 +83,7 @@ async function getAllProducts(): Promise<ProductCardProps[]> {
   }
 
   const { data } = await res.json();
+  console.log({ getAllProducts: data?.getAllProduct || [] });
   return data?.getAllProduct || [];
 }
 
@@ -110,7 +111,7 @@ async function getCategoryData(slug: string) {
 
   const { data } = await typeRes.json();
   console.log({ getCategoryDataBySlug: data });
-  
+
   // pick whichever is not null
   return (
     data?.getMaterialBySlug ||
@@ -128,21 +129,20 @@ interface PageProps {
 const Page = async ({ params }: PageProps) => {
   // Await the params promise
   const { slug } = await params;
-  
+
   const [allProducts, categoryData] = await Promise.all([
     getAllProducts(),
-    getCategoryData(slug)
+    getCategoryData(slug),
   ]);
 
   console.log({ allProducts: allProducts });
 
   // 4. Filter products by slug
-  const filteredProducts = allProducts.filter((product) =>
-    [
-      product.material?.slug,
-      product.industry?.slug,
-      product.style?.slug,
-    ].includes(slug)
+  const filteredProducts = allProducts.filter(
+    (product) =>
+      product.industry?.slug === slug ||
+      product.materials?.some((m) => m.slug === slug) ||
+      product.styles?.some((s) => s.slug === slug)
   );
 
   console.log({ filteredProducts: filteredProducts });
@@ -150,7 +150,7 @@ const Page = async ({ params }: PageProps) => {
   return (
     <div className="">
       <AllPagesBanner
-        title={`${categoryData?.name || 'All'}`}
+        title={`${categoryData?.name || "All"}`}
         description={categoryData?.description}
         imageUrl={categoryData?.bannerImage}
       />

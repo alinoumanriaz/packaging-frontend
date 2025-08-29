@@ -6,9 +6,9 @@ export interface ProductCardProps {
     name: string;
     slug: string;
     imageUrl: string[];
-    material?: { slug: string };
+    materials?: { slug: string }[];
     industry?: { slug: string };
-    style?: { slug: string };
+    styles?: { slug: string }[];
 };
 
 const ProductCard = ({ data }: { data: ProductCardProps }) => {
