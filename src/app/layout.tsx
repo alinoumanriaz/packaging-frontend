@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
+// import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Poppins } from "next/font/google";
 import ApolloWrapper from "@/helper/ApolloProvider";
@@ -8,6 +8,7 @@ import LoadCurrentUser from "@/components/LoadCurrentUser";
 import { Providers } from "@/redux/providers";
 import WhatsappButton from "@/components/WhatsappButton";
 import NextTopLoader from "nextjs-toploader";
+import MainHeader from "@/components/MainHeader";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -36,7 +37,7 @@ export default function RootLayout({
         <ApolloWrapper>
           <LoadCurrentUser />
           <NextTopLoader color="White" showSpinner={false} />
-          <Header />
+          <MainHeader />
           {children}
           <Footer />
         </ApolloWrapper>

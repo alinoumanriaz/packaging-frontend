@@ -6,7 +6,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
 import { GoChevronDown } from "react-icons/go";
 import { RiMenuLine, RiCloseLine } from "react-icons/ri";
-import MegaMenu from "./megamenu/MegaMenu";
+import MegaMenu from './megamenu/MegaMenu';
 import Image from "next/image";
 import { FaPhoneAlt } from "react-icons/fa";
 import SearchBox from "./SearchBox";
@@ -18,7 +18,17 @@ interface MegaMenuState {
   type: MegaMenuType;
 }
 
-const Header = () => {
+interface MenuData {
+  getAllIndustry: Array<{ imageUrl: string; name: string; slug: string }>;
+  getAllMaterial: Array<{ imageUrl: string; name: string; slug: string }>;
+  getAllStyle: Array<{ imageUrl: string; name: string; slug: string }>;
+}
+
+interface HeaderProps {
+  menuData: MenuData;
+}
+
+const Header = ({ menuData }: HeaderProps) => {
   const pathname = usePathname();
   const { user } = useAppSelector((state) => state.currentUser);
   const [megaMenu, setMegaMenu] = useState<MegaMenuState>({
@@ -28,7 +38,6 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSearchBox, setOpenSearchBox] = useState(false);
   const menuTimer = useRef<NodeJS.Timeout | null>(null);
-  // const navRef = useRef<HTMLDivElement>(null);
 
   const handleMenuOpen = (type: MegaMenuType) => {
     if (menuTimer.current) {
@@ -195,6 +204,9 @@ const Header = () => {
                       type="Industry"
                       mobile
                       onClose={() => setMegaMenu({ open: false, type: "" })}
+                      industries={menuData.getAllIndustry}
+                      materials={menuData.getAllMaterial}
+                      styles={menuData.getAllStyle}
                     />
                   </div>
                 )}
@@ -226,6 +238,9 @@ const Header = () => {
                       type="Material"
                       mobile
                       onClose={() => setMegaMenu({ open: false, type: "" })}
+                      industries={menuData.getAllIndustry}
+                      materials={menuData.getAllMaterial}
+                      styles={menuData.getAllStyle}
                     />
                   </div>
                 )}
@@ -257,6 +272,9 @@ const Header = () => {
                       type="Style"
                       mobile
                       onClose={() => setMegaMenu({ open: false, type: "" })}
+                      industries={menuData.getAllIndustry}
+                      materials={menuData.getAllMaterial}
+                      styles={menuData.getAllStyle}
                     />
                   </div>
                 )}
@@ -318,6 +336,9 @@ const Header = () => {
           <MegaMenu
             onClose={() => setMegaMenu({ open: false, type: "" })}
             type={megaMenu.type}
+            industries={menuData.getAllIndustry}
+            materials={menuData.getAllMaterial}
+            styles={menuData.getAllStyle}
           />
         </div>
       )}

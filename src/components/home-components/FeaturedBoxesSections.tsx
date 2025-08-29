@@ -43,9 +43,10 @@ const FeaturedBoxesSections = ({featuredData, title, subTitle}: MaterialBoxesSec
                   <Image
                     src={item.imageUrl || "/moe.png"}
                     alt={item.name}
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105"
-                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
+                    width={200}
+                    height={200}
+                    className="object-cover transition-transform group-hover:scale-105 w-full h-full"
+                    // sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                     loading="eager" 
                   />
                 </div>
