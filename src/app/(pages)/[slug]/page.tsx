@@ -19,7 +19,7 @@ function getApiUrl(): string {
 // 1. Generate static params for all slugs
 export async function generateStaticParams() {
   const apiUrl = getApiUrl();
-  const res = await fetch(`${apiUrl}`, {
+  const res = await fetch(`${apiUrl}/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -57,7 +57,7 @@ export async function generateStaticParams() {
 
 async function getAllProducts(): Promise<ProductCardProps[]> {
   const apiUrl = getApiUrl();
-  const res = await fetch(`${apiUrl}`, {
+  const res = await fetch(`${apiUrl}/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
