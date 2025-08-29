@@ -22,7 +22,7 @@ export async function POST(req) {
   }
 
   try {
-    if (paths.length === 1 && paths[0] === "All") {
+    if (paths.length === 1 && paths[0] === "all") {
       await revalidatePath("/", "layout"); // revalidate root layout
       return new Response(
         JSON.stringify({ message: "Revalidated entire site via root layout" }),
