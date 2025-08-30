@@ -30,12 +30,16 @@ const Footer = () => {
                       className="flex space-x-3 items-center font-medium text-lg md:text-xl text-white"
                     >
                       <Image
-                      className="w-36 md:w-44"
-                        src={"/unique-custom-boxes.png"}
+                        className="md:w-12 w-10"
+                        src={"/logo.svg"}
                         alt="Unique Custom Boxes"
-                        width={180}
+                        width={60}
                         height={50}
+                        priority
                       />
+                      <div className="text-lg md:text-xl font-bold">
+                        PackBox
+                      </div>
                     </Link>
                   </div>
                   <p className="text-white/80 leading-relaxed text-sm md:text-sm">
@@ -93,37 +97,37 @@ const Footer = () => {
                   <ul className="space-y-3 text-sm">
                     {[
                       {
-                        name:"Contact Us",
-                        url: '/contact-us'
+                        name: "Contact Us",
+                        url: "/contact-us",
                       },
                       {
-                        name:"About Us",
-                        url: '/about-us'
+                        name: "About Us",
+                        url: "/about-us",
                       },
                       {
-                        name:"Delivery Info",
-                        url: '/delivery-info'
+                        name: "Delivery Info",
+                        url: "/delivery-info",
                       },
                       {
-                        name:"Privacy Policy",
-                        url: '/privacy-policy'
+                        name: "Privacy Policy",
+                        url: "/privacy-policy",
                       },
                       {
-                        name:"Terms & Conditions",
-                        url: '/terms-conditions'
+                        name: "Terms & Conditions",
+                        url: "/terms-conditions",
                       },
                       {
-                        name:"Blogs",
-                        url: '/blogs'
+                        name: "Blogs",
+                        url: "/blogs",
                       },
                       {
-                        name:"Portfolio",
-                        url: '/portfolio'
+                        name: "Portfolio",
+                        url: "/portfolio",
                       },
                       {
-                        name:"Sitemap",
-                        url: '/sitemap'
-                      }
+                        name: "Sitemap",
+                        url: "/sitemap",
+                      },
                     ].map((item, index) => (
                       <li key={index}>
                         <Link

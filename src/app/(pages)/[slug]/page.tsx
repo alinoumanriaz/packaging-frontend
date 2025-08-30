@@ -156,10 +156,10 @@ const Page = async ({ params }: PageProps) => {
       />
       <Container>
         <div className="border-t-[1px] border-gray-200 flex justify-center">
-          <div className="w-[80%] p-4 h-full flex flex-col space-y-8">
+          <div className="w-[90%] py-4 h-full flex flex-col space-y-8">
             {filteredProducts.length > 0 ? (
               <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
                   {filteredProducts.map((product) => (
                     <ProductCard key={product._id} data={product} />
                   ))}
@@ -168,9 +168,9 @@ const Page = async ({ params }: PageProps) => {
             ) : (
               <div className="text-center py-12">
                 <h3 className="text-lg font-medium">No products found</h3>
-                <p className="text-gray-500 mt-2">
+                <div className="text-gray-500 mt-2">
                   There are no products matching this category.
-                </p>
+                </div>
               </div>
             )}
           </div>

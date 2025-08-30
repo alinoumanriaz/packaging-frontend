@@ -97,15 +97,16 @@ const Header = ({ menuData }: HeaderProps) => {
             )}
           </button>
 
-          <Link href={"/"} className="">
+          <Link href={"/"} className="flex justify-center items-center space-x-2">
             <Image
-              className="md:w-40 w-32"
-              src={"/unique custom boxes.png"}
+              className="md:w-12 w-10"
+              src={"/logo.svg"}
               alt="Unique Custom Boxes"
-              width={160}
+              width={60}
               height={50}
               priority
             />
+            <div className="text-lg md:text-xl font-bold">PackBox</div>
           </Link>
 
           {/* Search bar - hidden on mobile */}

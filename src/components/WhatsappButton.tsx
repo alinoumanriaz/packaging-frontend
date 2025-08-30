@@ -5,14 +5,14 @@ import React from "react";
 
 const WhatsappButton = () => {
   return (
-    <div className="fixed bottom-8 right-10 z-50">
+    <div className="fixed bottom-4 right-4 md:bottom-8 md:right-10 z-50  ">
       <Link
         href="https://wa.me/447884529639?text=Hello%20Unique%20Custom%20Boxes%20Team%2C%20I%20would%20like%20to%20get%20a%20quote."
         target="_blank"
         rel="noopener noreferrer"
       >
         <Image
-          className="hover:scale-110 transition-transform cursor-pointer drop-shadow-lg"
+          className="hover:scale-110 h-12 w-12 md:h-16 md:w-16 transition-transform cursor-pointer drop-shadow-lg"
           src={"/whatsapp.png"}
           alt="unique custom boxes"
           width={50}

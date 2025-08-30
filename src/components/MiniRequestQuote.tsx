@@ -37,7 +37,7 @@ const MiniRequestQuote = () => {
     <div className="w-full p-6 rounded-lg  ring-1 ring-gray-200">
       <div className=" w-full">
         <div className="w-full flex-col flex space-y-2">
-          <h1 className="text-2xl font-bold">Request Quote</h1>
+          <h1 className="md:text-2xl text-xl font-bold">Request Quote</h1>
           <p className="text-gray-600 text-sm">
             Fill out the form below to get a personalized quote
           </p>
