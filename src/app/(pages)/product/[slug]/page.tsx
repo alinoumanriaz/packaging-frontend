@@ -44,7 +44,11 @@ export async function generateStaticParams() {
   }));
 }
 
-const Page = async ({ params }: { params: { slug: string } }) => {
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+const Page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const products = await getAllProducts();
   const product = products.find((p: any) => p.slug === slug);
