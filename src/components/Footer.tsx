@@ -173,13 +173,19 @@ const Footer = () => {
                   </h3>
                   <ul className="space-y-3 text-sm">
                     {[
-                      "Packaging Calculator",
-                      "Size Guide",
-                      "Material Specifications",
-                      "Design Templates",
-                      "Sustainability Report",
-                      "Case Studies",
-                      "FAQ",
+                      // "Packaging Calculator",
+                      // "Size Guide",
+                      // "Material Specifications",
+                      // "Design Templates",
+                      // "Sustainability Report",
+                      // "Case Studies",
+                      // "FAQ",
+                      "packaging",
+                      "packaging",
+                      "packaging",
+                      "packaging",
+                      "packaging",
+                      "packaging",
                     ].map((item, index) => (
                       <li key={index}>
                         <Link
