@@ -147,18 +147,19 @@ const Header = ({ menuData }: HeaderProps) => {
           <button className="md:hidden w-9 h-9 border border-gray-200 flex justify-center items-center bg-blue-600 text-white rounded-md hover:bg-green-700 transition">
             <FaPhoneAlt className="size-5" />
           </button>
-          <a
-            href="tel:+447884529639"
+          <Link
+            // href="tel:+447884529639"
+            href="/"
             className="hidden md:flex items-center ml-6 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md transition"
           >
             <FaPhoneAlt className="size-5 mr-2" />
             <div className="flex flex-col items-start leading-tight">
               <span className="text-xs font-medium opacity-80">Call Us</span>
               <span className="text-sm md:text-base font-semibold">
-                +44-7884-529639
+                +84-7839-500009
               </span>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
 

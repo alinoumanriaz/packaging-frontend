@@ -7,7 +7,8 @@ const WhatsappButton = () => {
   return (
     <div className="fixed bottom-4 right-4 md:bottom-8 md:right-10 z-50  ">
       <Link
-        href="https://wa.me/447884529639?text=Hello%20Unique%20Custom%20Boxes%20Team%2C%20I%20would%20like%20to%20get%20a%20quote."
+        // href="https://wa.me/447884529639?text=Hello%20Unique%20Custom%20Boxes%20Team%2C%20I%20would%20like%20to%20get%20a%20quote."
+        href="/"
         target="_blank"
         rel="noopener noreferrer"
       >
