@@ -18,8 +18,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Unique Custom Boxes | Packaging That Speaks Your Brand.",
-  description: "Unique Custom Boxes specializes in high-quality, tailor-made packaging solutions designed to elevate your brand. Whether you're a small business or a large enterprise, our custom boxes are crafted to impress, protect, and deliver unforgettable unboxing experiences.",
+  title: "Custom Boxes | Packaging That Speaks Your Brand.",
+  description: "Custom Boxes specializes in high-quality, tailor-made packaging solutions designed to elevate your brand. Whether you're a small business or a large enterprise, our custom boxes are crafted to impress, protect, and deliver unforgettable unboxing experiences.",
   icons: {
     icon: '/logo.svg',
   },
