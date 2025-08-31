@@ -75,14 +75,14 @@ const Header = ({ menuData }: HeaderProps) => {
   }
 
   return (
-    <header className=" shadow  sticky top-0 z-30">
+    <header className=" sticky top-0 z-30">
       {/* top header */}
-      <div className="bg-blue-800 text-xs md:text-sm text-white text-center py-1 px-4 w-full">
+      <div className="bg-primary-800 text-xs md:text-sm text-white text-center py-1 px-4 w-full">
         Free shipping on orders over $50
       </div>
 
       {/* main header */}
-      <div className="w-full flex justify-center items-center bg-white">
+      <div className="w-full flex justify-center items-center bg-primary-50">
         <div className="w-full px-2 md:px-6 lg:px-10 flex justify-between items-center py-3 md:py-4 ">
           {/* Mobile menu button */}
           <button
@@ -98,14 +98,14 @@ const Header = ({ menuData }: HeaderProps) => {
           </button>
 
           <Link href={"/"} className="flex justify-center items-center space-x-2">
-            <Image
+            {/* <Image
               className="md:w-12 w-10"
               src={"/logo.svg"}
               alt="Unique Custom Boxes"
               width={60}
               height={50}
               priority
-            />
+            /> */}
             <div className="text-lg md:text-xl font-bold">PackBox</div>
           </Link>
 
@@ -144,13 +144,13 @@ const Header = ({ menuData }: HeaderProps) => {
               <span className="sr-only">Search</span>
             </div>
           </button>
-          <button className="md:hidden w-9 h-9 border border-gray-200 flex justify-center items-center bg-blue-600 text-white rounded-md hover:bg-green-700 transition">
+          <button className="md:hidden w-9 h-9 border border-gray-200 flex justify-center items-center bg-primary-800 text-white rounded-md hover:bg-green-700 transition">
             <FaPhoneAlt className="size-5" />
           </button>
           <Link
             // href="tel:+447884529639"
             href="/"
-            className="hidden md:flex items-center ml-6 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-md transition"
+            className="hidden md:flex items-center ml-6 px-4 py-2 bg-primary-800 hover:bg-blue-700 text-white rounded-full shadow-md transition"
           >
             <FaPhoneAlt className="size-5 mr-2" />
             <div className="flex flex-col items-start leading-tight">

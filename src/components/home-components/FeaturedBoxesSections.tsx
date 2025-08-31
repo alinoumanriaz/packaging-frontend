@@ -50,7 +50,7 @@ const FeaturedBoxesSections = ({featuredData, title, subTitle}: MaterialBoxesSec
                     loading="eager" 
                   />
                 </div>
-                <h3 className="font-semibold text-sm md:text-base capitalize transition-colors group-hover:text-green-600">
+                <h3 className="font-semibold text-sm md:text-base capitalize transition-colors group-hover:text-primary-600">
                   {item.name}
                 </h3>
               </Link>

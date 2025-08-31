@@ -2,6 +2,7 @@ import React from "react";
 import Titles from "../Titles";
 import Container from "../Container";
 import FinishingBoxCard from "../FinishingBoxCard";
+import Image from "next/image";
 
 const BoxFinishingSection = () => {
   return (
@@ -16,8 +17,14 @@ const BoxFinishingSection = () => {
         <div className="w-full ">
           <div className="w-full flex flex-col justify-center items-center space-y-2">
             <div className="h-72 flex space-x-2 w-full">
-              <div className="w-[70%] rounded-md ring-1 ring-gray-300">
-                
+              <div className="w-[70%] overflow-hidden h-72 rounded-md ring-1 ring-gray-300">
+                <Image
+                src={'/embossing.jpg'}
+                alt="embossing"
+                width={1200}
+                height={400}
+                className="cover-full w-full h-72 hover:scale-110 transition-all duration-300 ease-in-out"
+                />
               </div>
               <div className="w-[30%] rounded-md ring-1 ring-gray-300">
                 <FinishingBoxCard

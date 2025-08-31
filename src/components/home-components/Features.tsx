@@ -40,10 +40,10 @@ const Features = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="group flex flex-col p-6 md:p-8 bg-[#f7fcff] ring-1 ring-blue-200 rounded-xl transition-all duration-300"
+                className="group flex flex-col p-6 md:p-8 bg-primary-50 ring-1 ring-primary-200 rounded-xl transition-all duration-300"
               >
-                <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-white shadow-sm group-hover:bg-green-50 transition-colors">
-                  <feature.icon className="size-6 text-blue-600" />
+                <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-white shadow-sm group-hover:bg-primary-200 transition-colors">
+                  <feature.icon className="size-6 text-primary-600" />
                 </div>
                 <h3 className="md:text-xl text-md font-bold mb-2 text-gray-900">
                   {feature.title}
