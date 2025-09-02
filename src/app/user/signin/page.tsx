@@ -18,7 +18,7 @@ const Page = () => {
   const [newError, setNewError] = useState("");
   const [registerUser] = useMutation(USER_REGISTER);
   const [loginUser] = useMutation(LOGIN_USER);
-  const Router = useRouter();
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const [form, setForm] = useState({
     username: "",
@@ -65,7 +65,7 @@ const Page = () => {
 
     } finally {
       console.log({ res: "login suces" });
-      Router.push("/");
+      router.push("/");
     }
   };
   return (
