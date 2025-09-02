@@ -11,7 +11,6 @@ import { PiEye, PiEyeClosed } from "react-icons/pi";
 import { TbPasswordFingerprint } from "react-icons/tb";
 import { TiUser } from "react-icons/ti";
 import { useRouter } from "next/navigation";
-import { loginUser } from '../../../../../backend/src/controllers/user.controller';
 
 const Page = () => {
   const [islogin, setIslogin] = useState(true);
