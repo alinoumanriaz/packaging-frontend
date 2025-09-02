@@ -25,14 +25,14 @@ interface MaterialBoxesSectionProps {
 const FeaturedBoxesSections = ({featuredData, title, subTitle}: MaterialBoxesSectionProps) => {
   return (
     <Container>
-      <div className="flex w-[90%] flex-col items-center space-y-8 md:space-y-12">
+      <div className="flex flex-col items-center space-y-8 md:space-y-12">
         <Titles
           title={title}
           subtitle={subTitle}
         />
 
-        <div className="w-full ">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+        <div className="">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
             {featuredData.map((item: IFeaturedSectionData, idx: number) => (
               <Link
                 key={idx}
@@ -50,7 +50,7 @@ const FeaturedBoxesSections = ({featuredData, title, subTitle}: MaterialBoxesSec
                     loading="eager" 
                   />
                 </div>
-                <h3 className="font-semibold text-sm md:text-base capitalize transition-colors group-hover:text-primary-600">
+                <h3 className="font-semibold text-sm md:text-base capitalize transition-colors group-hover:text-primary-800">
                   {item.name}
                 </h3>
               </Link>

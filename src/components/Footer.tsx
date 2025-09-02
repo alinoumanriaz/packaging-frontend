@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="border-t border-gray-600/20 border-b flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 my-8 md:my-16 w-full gap-8 md:gap-4">
               {/* Company Info - spans full width on mobile, 2 cols on md, 2 cols on lg */}
-              <div className="col-span-1 md:col-span-2 lg:col-span-2 p-4 text-sm flex">
+              <div className="col-span-1 md:col-span-2 lg:col-span-2 text-sm flex">
                 <div className="flex flex-col space-y-4">
                   <div>
                     <Link
@@ -50,11 +50,11 @@ const Footer = () => {
 
                   {/* Contact Info Cards */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="bg-slate-800/50 border-slate-700 rounded-xl">
+                    <div className="bg-primary-800/5 border-slate-700 rounded-xl">
                       <div className="p-4">
                         <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center">
-                            <BiPhone className="w-5 h-5 text-blue-400" />
+                          <div className="w-10 h-10 bg-primary-800/20 rounded-lg flex items-center justify-center">
+                            <BiPhone className="w-5 h-5 text-primary-800" />
                           </div>
                           <div>
                             <p className="text-white font-medium">
@@ -67,11 +67,11 @@ const Footer = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="bg-slate-800/50 border-slate-700 rounded-xl">
+                    <div className="bg-primary-800/5 border-slate-700 rounded-xl">
                       <div className="p-4">
                         <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center">
-                            <BiPhone className="w-5 h-5 text-blue-400" />
+                          <div className="w-10 h-10 bg-primary-800/20 rounded-lg flex items-center justify-center">
+                            <BiPhone className="w-5 h-5 text-primary-800" />
                           </div>
                           <div>
                             <p className="text-white font-medium">

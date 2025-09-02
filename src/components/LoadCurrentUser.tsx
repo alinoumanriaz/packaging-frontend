@@ -15,7 +15,7 @@ const LoadCurrentUser = () => {
 
   useEffect(() => {
     if (!loading) {
-        console.log({currentUserdata:data})
+        // console.log({currentUserdata:data})
       if (data?.getCurrentUser) {
         dispatch(setUser(data.getCurrentUser.user));
       } else {
@@ -24,7 +24,7 @@ const LoadCurrentUser = () => {
     }
   }, [data, loading, dispatch]);
 
-  return null; // no UI needed
+  return null;
 };
 
 export default LoadCurrentUser;

@@ -99,7 +99,7 @@ const PackagingTabs = () => {
                 key={tab}
                 className={`px-4 py-2 rounded-md font-medium text-sm md:text-base md:px-5 md:py-2.5 transition-colors ${
                   activeTab === tab
-                    ? "bg-blue-600 text-white shadow-md"
+                    ? "bg-primary-800 text-white shadow-md"
                     : "text-gray-700 hover:bg-gray-100"
                 }`}
                 onClick={() => setActiveTab(tab)}
@@ -114,9 +114,9 @@ const PackagingTabs = () => {
         <div className="max-w-6xl mx-auto">
           {/* Materials Tab */}
           {activeTab === "Materials" && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+            <div className="grid relative grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
               {/* Left text */}
-              <div className="text-gray-700 leading-relaxed space-y-4">
+              <div className="text-gray-700 sticky top-36 h-fit leading-relaxed space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900">Premium Materials</h3>
                 <p>
                   Experience the real quality with our premium stock, as we source
@@ -128,8 +128,8 @@ const PackagingTabs = () => {
                   material satisfies our rigorous standards.
                 </p>
                 <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                  <h4 className="font-semibold text-blue-800 mb-2">Custom Material Options</h4>
-                  <p className="text-blue-700">We can source specialized materials based on your specific requirements and sustainability goals.</p>
+                  <h4 className="font-semibold text-primary-800 mb-2">Custom Material Options</h4>
+                  <p className="text-primary-800/80">We can source specialized materials based on your specific requirements and sustainability goals.</p>
                 </div>
               </div>
 
@@ -157,8 +157,8 @@ const PackagingTabs = () => {
 
           {/* Ad-Ons & Finishing Tab */}
           {activeTab === "Ad-Ons & Finishing" && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-              <div className="text-gray-700 leading-relaxed space-y-4">
+            <div className="grid relative grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+              <div className="text-gray-700 sticky top-36 h-fit leading-relaxed space-y-4">
                 <h3 className="text-2xl font-semibold text-gray-900">Enhance Your Packaging</h3>
                 <p>
                   Make your packaging stand out with our premium finishing options. 
@@ -187,8 +187,8 @@ const PackagingTabs = () => {
 
           {/* Paper Weight Tab */}
           {activeTab === "Paper Weight" && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-              <div className="text-gray-700 leading-relaxed space-y-4">
+            <div className="grid relative grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+              <div className="text-gray-700 sticky top-36 h-fit leading-relaxed space-y-4">
                 <h3 className="text-2xl font-semibold text-gray-900">Choosing the Right Weight</h3>
                 <p>
                   Paper weight significantly impacts both the durability and perceived 
@@ -218,8 +218,8 @@ const PackagingTabs = () => {
 
           {/* Shipping Tab */}
           {activeTab === "Shipping" && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-              <div className="text-gray-700 leading-relaxed space-y-4">
+            <div className="grid relative grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+              <div className="text-gray-700 sticky top-36 h-fit leading-relaxed space-y-4">
                 <h3 className="text-2xl font-semibold text-gray-900">Delivery Options</h3>
                 <p>
                   We offer flexible shipping solutions to meet your timeline and budget requirements. 

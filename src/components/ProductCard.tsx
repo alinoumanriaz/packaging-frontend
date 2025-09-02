@@ -6,7 +6,14 @@ export interface ProductCardProps {
   _id: string;
   name: string;
   slug: string;
+  h1Tag: string;
+  description: string;
+  specification: string;
+  shortDescription: string;
+  metaTitle: string;
+  metaDescription: string;
   imageUrl: string[];
+  tags: string[];
   materials?: { slug: string }[];
   industry?: { slug: string };
   styles?: { slug: string }[];
@@ -15,7 +22,7 @@ export interface ProductCardProps {
 const ProductCard = ({ data }: { data: ProductCardProps }) => {
   return (
     <Link
-      href={`/product/${data.slug}`}
+      href={`/${data.slug}`}
       className="group text-center flex flex-col space-y-3 transition-transform hover:scale-[1.02]"
     >
       <div className="relative aspect-square overflow-hidden rounded-xl shadow-md">
@@ -29,7 +36,7 @@ const ProductCard = ({ data }: { data: ProductCardProps }) => {
           loading="eager"
         />
       </div>
-      <h3 className=" line-clamp-3 text-sm md:text-sm capitalize transition-colors group-hover:text-blue-500">
+      <h3 className=" line-clamp-3 text-sm md:text-sm capitalize transition-colors group-hover:text-primary-800">
         {data.name}
       </h3>
     </Link>

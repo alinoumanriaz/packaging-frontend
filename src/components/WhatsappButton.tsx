@@ -13,7 +13,7 @@ const WhatsappButton = () => {
         rel="noopener noreferrer"
       >
         <Image
-          className="hover:scale-110 h-12 w-12 md:h-16 md:w-16 transition-transform cursor-pointer drop-shadow-lg"
+          className="hover:scale-110 h-12 w-12 md:h-14 md:w-14 transition-transform cursor-pointer drop-shadow-lg"
           src={"/whatsapp.png"}
           alt="unique custom boxes"
           width={50}

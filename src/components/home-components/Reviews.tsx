@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Titles from "@/components/Titles";
+import Container from "../Container";
 
 const Reviews = () => {
   const [expandedReviews, setExpandedReviews] = useState<{
@@ -89,8 +90,8 @@ const Reviews = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
-      <div className="container mx-auto px-4 sm:px-6">
+    <Container>
+      <div className="mx-auto w-full">
         <div className="text-center mb-12">
           <Titles
             title="Customer Reviews"
@@ -134,10 +135,10 @@ const Reviews = () => {
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index} className="px-1">
-              <div className="bg-white p-6 rounded-xl shadow-sm my-4 h-full flex flex-col transition-all duration-300 hover:shadow-md ring-1 ring-gray-200">
+              <div className="p-6 rounded-xl shadow-sm my-4 h-full flex flex-col transition-all duration-300 hover:shadow-md ring-1 ring-gray-200 bg-white">
                 <div className="mb-4 flex-grow">
                   <div className="flex items-start mb-4">
-                    <div className="bg-gradient-to-br from-primary-500 to-primary-600 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold mr-3 flex-shrink-0">
+                    <div className="bg-gradient-to-br from-primary-800 to-primary-800 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold mr-3 flex-shrink-0">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div className="flex flex-col">
@@ -175,7 +176,7 @@ const Reviews = () => {
                 {testimonial.content.length > 150 && (
                   <button
                     onClick={() => toggleReview(index)}
-                    className="text-sm text-primary-600 hover:text-parimary-800 font-medium mt-auto"
+                    className="text-sm text-primary-800 hover:text-parimary-800 font-medium mt-auto"
                   >
                     {expandedReviews[index] ? "Read Less" : "Read More"}
                   </button>
@@ -185,9 +186,9 @@ const Reviews = () => {
           ))}
 
           {/* Custom navigation buttons */}
-          <div className="review-swiper-button-next absolute top-1/2 -translate-y-1/2 right-0 z-10 cursor-pointer bg-white rounded-full shadow-md p-2 hidden md:flex items-center justify-center w-10 h-10">
+          <div className="review-swiper-button-next bg-black/60 absolute top-1/2 -translate-y-1/2 right-0 z-10 cursor-pointer rounded-full shadow-md p-2 hidden md:flex items-center justify-center w-10 h-10">
             <svg
-              className="w-5 h-5 text-gray-700"
+              className="w-5 h-5 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -200,9 +201,9 @@ const Reviews = () => {
               />
             </svg>
           </div>
-          <div className="review-swiper-button-prev absolute top-1/2 -translate-y-1/2 left-0 z-10 cursor-pointer bg-white rounded-full shadow-md p-2 hidden md:flex items-center justify-center w-10 h-10">
+          <div className="review-swiper-button-prev bg-black/60 hover:bg-primary-800 absolute top-1/2 -translate-y-1/2 left-0 z-10 cursor-pointer rounded-full shadow-md p-2 hidden md:flex items-center justify-center w-10 h-10">
             <svg
-              className="w-5 h-5 text-gray-700"
+              className="w-5 h-5 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -245,7 +246,7 @@ const Reviews = () => {
           color: white;
         }
       `}</style>
-    </section>
+    </Container>
   );
 };
 

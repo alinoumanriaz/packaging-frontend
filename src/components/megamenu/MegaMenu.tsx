@@ -30,7 +30,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
               mobile
                 ? "grid-cols-1"
                 : "grid-cols-2 md:grid-cols-3 lg:grid-cols-3"
-            } gap-3`}
+            } gap-3 w-[900px]`}
           >
             {industries.map((item, idx) => (
               <Link
@@ -65,7 +65,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
               mobile
                 ? "grid-cols-1"
                 : "grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3"
-            } gap-3`}
+            } gap-3 w-[900px]`}
           >
             {materials.map((item, idx) => (
               <Link
@@ -100,7 +100,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
               mobile
                 ? "grid-cols-1"
                 : "grid-cols-2 md:grid-cols-3 lg:grid-cols-3"
-            } gap-3`}
+            } gap-3  w-[900px]`}
           >
             {styles.map((item, idx) => (
               <Link

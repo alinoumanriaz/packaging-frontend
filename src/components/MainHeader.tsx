@@ -32,7 +32,10 @@ async function getMenuData(): Promise<MenuData> {
 
   const res = await fetch(`${apiUrl}/graphql`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "x-secret-key": process.env.API_SECRET_KEY!,
+    },
     body: JSON.stringify({
       query: `
         query {

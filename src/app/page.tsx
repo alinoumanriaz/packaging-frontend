@@ -8,7 +8,10 @@ import Reviews from "@/components/home-components/Reviews";
 export default async function Home() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "x-secret-key": process.env.API_SECRET_KEY!,
+    },
     body: JSON.stringify({
       query: `
         query {
