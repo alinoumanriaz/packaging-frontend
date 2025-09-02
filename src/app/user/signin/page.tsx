@@ -5,203 +5,215 @@ import { LOGIN_USER, USER_REGISTER } from "@/graphql/queries/user.query";
 import { useAppDispatch } from "@/redux/hooks";
 import { setUser } from "@/redux/slicers/currentUser";
 import { useMutation } from "@apollo/client";
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { PiEye, PiEyeClosed } from "react-icons/pi";
 import { TbPasswordFingerprint } from "react-icons/tb";
 import { TiUser } from "react-icons/ti";
 import { useRouter } from "next/navigation";
 
-const Page = () => {
-  const [islogin, setIslogin] = useState(true);
+const AuthPage = () => {
+  const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [newError, setNewError] = useState("");
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [registerUser] = useMutation(USER_REGISTER);
   const [loginUser] = useMutation(LOGIN_USER);
   const router = useRouter();
   const dispatch = useAppDispatch();
+  
   const [form, setForm] = useState({
     username: "",
     email: "",
     password: "",
   });
+  
+  const [formErrors, setFormErrors] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (formErrors[name as keyof typeof formErrors]) {
+      setFormErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+    
+    if (error) setError("");
+    if (successMessage) setSuccessMessage("");
   };
 
-  // const changeformhandler = () => {
-  //   setIslogin(!islogin);
-  // };
+  const validateForm = () => {
+    const errors = {
+      username: "",
+      email: "",
+      password: "",
+    };
+    
+    let isValid = true;
+    
+    if (!isLogin && !form.username.trim()) {
+      errors.username = "Username is required";
+      isValid = false;
+    }
+    
+    if (!form.email.trim()) {
+      errors.email = "Email is required";
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      errors.email = "Please enter a valid email address";
+      isValid = false;
+    }
+    
+    if (!form.password) {
+      errors.password = "Password is required";
+      isValid = false;
+    } else if (form.password.length < 6) {
+      errors.password = "Password must be at least 6 characters";
+      isValid = false;
+    }
+    
+    setFormErrors(errors);
+    return isValid;
+  };
 
-  const onsubmithandler = async () => {
+  const toggleFormMode = () => {
+    setIsLogin(!isLogin);
+    setError("");
+    setSuccessMessage("");
+    setFormErrors({ username: "", email: "", password: "" });
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+    
     setLoading(true);
+    setError("");
+    
     try {
-      if (islogin) {
+      if (isLogin) {
         const loginForm = {
           email: form.email,
           password: form.password,
         };
-        console.log("submit login form");
-        console.log({ loginForm: loginForm });
 
         const { data } = await loginUser({
           variables: { input: loginForm },
-          fetchPolicy: "no-cache", // Important for auth
+          fetchPolicy: "no-cache",
         });
-        console.log({cUSer:data})
-        dispatch(setUser(data?.loginUser?.user));
+        
+        if (data?.loginUser?.user) {
+          dispatch(setUser(data.loginUser.user));
+          router.push("/");
+        } else {
+          setError("Login failed. Please check your credentials.");
+        }
       } else {
-        console.log(form);
-        const { data } = await registerUser({ variables: { input: form } });
-        console.log("submit registior form");
-        console.log(data);
+        const { data } = await registerUser({ 
+          variables: { input: form },
+          fetchPolicy: "no-cache",
+        });
+        
+        if (data?.registerUser) {
+          setSuccessMessage("Registration successful! Please login.");
+          setIsLogin(true);
+          setForm({ username: "", email: "", password: "" });
+        }
       }
-    } catch (error) {
-      console.log({ res: error });
-      setNewError(`Unauthorized user detected`);
-      setLoading(false);
-
+    } catch (error: any) {
+      console.error("Auth error:", error);
+      setError(error.message || "An error occurred. Please try again.");
     } finally {
-      console.log({ res: "login suces" });
-      router.push("/");
+      console.log('login successfully')
     }
   };
+
   return (
-    <div className="bg-yellow-100 w-full h-dvh flex justify-center items-center">
-      <div className="w-[400px] bg-white rounded-xl shadow-md">
-        <div className="flex flex-col justify-center items-center space-y-4 p-10">
-          <div className="flex flex-col justify-center items-center space-y-1">
-            <div
-              className={`bg-white ${
-                newError === "" ? "ring-gray-300" : "ring-red-300 text-red-600"
-              } ring-1 rounded-full p-2 shadow-md`}
-            >
-              <TiUser className="size-12" />
+    <div className="bg-yellow-100 min-h-dvh flex justify-center items-center p-4">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="p-6 sm:p-8">
+          <div className="flex flex-col items-center space-y-2">
+            <div className={`bg-white rounded-full p-3 shadow-md ring-2 ${
+              error ? "ring-red-300" : successMessage ? "ring-green-300" : "ring-gray-300"
+            }`}>
+              <TiUser className="size-10" />
             </div>
-            <div className="font-semibold text-xl">
-              {newError === "" ? (
-                <>Wellcome Back</>
-              ) : (
-                <div className="text-red-600 text-lg font-mono">{newError}</div>
-              )}
-            </div>
-            <p className="text-gray-400 text-sm">
-              Please enter your detail here
+            
+            <h2 className="text-2xl font-bold text-gray-800">
+              {isLogin ? "Welcome Back" : "Create Account"}
+            </h2>
+            
+            <p className="text-gray-500 text-sm text-center">
+              {isLogin 
+                ? "Please sign in to continue" 
+                : "Create an account to get started"
+              }
             </p>
-            <div>
-              {/* <button className="ring-1 ring-gray-500 rounded-2xl px-6 py-2">
-                Login with Google
-              </button> */}
-            </div>
           </div>
-          {!islogin && (
-            <InputBox
-              firstIcon={TiUser}
-              onChange={handleOnChange}
-              label="Username"
-              name="username"
-              type="text"
-              value={form.username}
-              placeholder="Username"
-            />
+
+          {error && (
+            <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
+              {error}
+            </div>
+          )}
+          
+          {successMessage && (
+            <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-md text-sm">
+              {successMessage}
+            </div>
           )}
 
-          <InputBox
-            firstIcon={MdOutlineAlternateEmail}
-            onChange={handleOnChange}
-            label="Email Address"
-            name="email"
-            type="email"
-            value={form.email}
-            placeholder="Email"
-          />
-          <InputBox
-            onChange={handleOnChange}
-            firstIcon={TbPasswordFingerprint}
-            secondIcon={PiEye}
-            thirdIcon={PiEyeClosed}
-            label="Password"
-            name="password"
-            type="password"
-            value={form.password}
-            placeholder="Password"
-          />
-
-          <div className="w-full flex flex-col justify-center items-center">
-            {/* {islogin && (
-              <div className="w-full text-xs text-right text-green-700 ">
-                <div>Forget Password?</div>
-              </div>
-            )} */}
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <div>
+              <InputBox
+                firstIcon={MdOutlineAlternateEmail}
+                onChange={handleOnChange}
+                label="Email Address"
+                name="email"
+                type="email"
+                value={form.email}
+                placeholder="Email"
+              />
+            </div>
+            <div>
+              <InputBox
+                firstIcon={TbPasswordFingerprint}
+                secondIcon={PiEye}
+                thirdIcon={PiEyeClosed}
+                onChange={handleOnChange}
+                label="Password"
+                name="password"
+                type="password"
+                value={form.password}
+                placeholder="Password"
+              />
+            </div>
             <button
-              disabled={loading}
-              onClick={onsubmithandler}
               type="submit"
-              className={` ${
-                loading ? "bg-primary-800/80" : "bg-primary-800"
-              } flex justify-center items-center h-10 text-white w-full my-4 py-2 rounded-md`}
+              disabled={loading}
+              className={`w-full py-2 px-4 mt-6 rounded-md text-white font-medium ${
+                loading ? "bg-primary-800/70 cursor-not-allowed" : "bg-primary-800 hover:bg-primary-800"
+              } transition-colors duration-200 flex items-center justify-center`}
             >
               {loading ? (
-                <>
-                  <LoaderSpin color="text-white" />
-                </>
+                <LoaderSpin color="text-white" />
+              ) : isLogin ? (
+                "Sign In"
               ) : (
-                <>{islogin ? <>Sign In</> : <>Registor</>}</>
+                "Register"
               )}
             </button>
-            {/* {dbErrorMessage && (
-              <div
-                className={` ${
-                  codestatus
-                    ? "text-green-800 bg-green-100"
-                    : "text-red-600 bg-red-200"
-                }  text-center  w-[99%] text-xs rounded-md py-1`}
-              >
-                {dbErrorMessage}
-              </div>
-            )} */}
-          </div>
-          {/* <div className="flex justify-center items-center flex-col text-sm space-y-4 w-full">
-            <div>
-              {islogin ? (
-                <>Don&#39;t have an account:</>
-              ) : (
-                <>Already have an account:</>
-              )}
-              <span
-                onClick={changeformhandler}
-                className="text-blue-600 text-sm cursor-pointer "
-              >
-                {" "}
-                {islogin ? <>Sign Up</> : <>Sign In</>}
-              </span>
-            </div>
-            <div className="bg-gray-400 w-full h-[1px] flex justify-center items-center relative">
-              <span className="bg-white w-8 flex justify-center items-center absolute">
-                OR
-              </span>
-            </div>
-            <div className="w-full flex justify-between px-2 py-2 ">
-              <button className="flex space-x-2 ring-1 ring-gray-300 bg-gray-200 w-full justify-center items-center py-2 shadow-md rounded-md">
-                <Image
-                  src={
-                    "https://www.vectorlogo.zone/logos/facebook/facebook-official.svg"
-                  }
-                  alt="facebook"
-                  width={18}
-                  height={18}
-                />
-                <span>Facebook</span>
-              </button>
-            </div>
-          </div> */}
-          {/* {newError && <div className="text-red-600">{newError}</div>} */}
+          </form>
         </div>
       </div>
     </div>
   );
 };
 
-export default Page;
+export default AuthPage;

@@ -1,9 +1,14 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const WhatsappButton = () => {
+  const pathName = usePathname();
+  if (pathName === "/user/signin") {
+    return null;
+  }
   return (
     <div className="fixed bottom-4 right-4 md:bottom-8 md:right-10 z-50  ">
       <Link
