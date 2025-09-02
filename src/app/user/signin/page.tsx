@@ -136,7 +136,7 @@ const AuthPage = () => {
 
   return (
     <div className="bg-yellow-100 min-h-dvh flex justify-center items-center p-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-md overflow-hidden">
+      <div className="w-full max-w-sm bg-white rounded-xl shadow-md overflow-hidden">
         <div className="p-6 sm:p-8">
           <div className="flex flex-col items-center space-y-2">
             <div className={`bg-white rounded-full p-3 shadow-md ring-2 ${
@@ -197,7 +197,7 @@ const AuthPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full py-2 px-4 mt-6 rounded-md text-white font-medium ${
+              className={`w-full h-10 px-4 mt-6 rounded-md text-white font-medium ${
                 loading ? "bg-primary-800/70 cursor-not-allowed" : "bg-primary-800 hover:bg-primary-800"
               } transition-colors duration-200 flex items-center justify-center`}
             >
