@@ -8,12 +8,10 @@ export function middleware(req: NextRequest) {
   const publicPaths = ["/user/signin", "/user/signup"];
 
   if (!token) {
-    // If not logged in → allow only public pages, redirect others to /user/signin
     if (!publicPaths.includes(pathname)) {
       return NextResponse.redirect(new URL("/user/signin", req.url));
     }
   } else {
-    // If logged in → prevent access to login/signup pages
     if (publicPaths.includes(pathname)) {
       return NextResponse.redirect(new URL("/", req.url));
     }
