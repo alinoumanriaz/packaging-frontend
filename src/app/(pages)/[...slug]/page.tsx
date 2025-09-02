@@ -7,6 +7,7 @@ import PackagingTabs from "@/components/PackagingTabs";
 import Titles from "@/components/Titles";
 import Markdown from "react-markdown";
 import React from "react";
+// import type { Metadata } from 'next';
 
 interface CategoryItem {
   slug: string;

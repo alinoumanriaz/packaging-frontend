@@ -116,7 +116,7 @@ const PackagingTabs = () => {
           {activeTab === "Materials" && (
             <div className="grid relative grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
               {/* Left text */}
-              <div className="text-gray-700 sticky top-36 h-fit leading-relaxed space-y-4">
+              <div className="text-gray-700 md:sticky md:top-36 h-fit leading-relaxed space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900">Premium Materials</h3>
                 <p>
                   Experience the real quality with our premium stock, as we source
@@ -158,7 +158,7 @@ const PackagingTabs = () => {
           {/* Ad-Ons & Finishing Tab */}
           {activeTab === "Ad-Ons & Finishing" && (
             <div className="grid relative grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-              <div className="text-gray-700 sticky top-36 h-fit leading-relaxed space-y-4">
+              <div className="text-gray-700 md:sticky md:top-36 h-fit leading-relaxed space-y-4">
                 <h3 className="text-2xl font-semibold text-gray-900">Enhance Your Packaging</h3>
                 <p>
                   Make your packaging stand out with our premium finishing options. 
@@ -188,7 +188,7 @@ const PackagingTabs = () => {
           {/* Paper Weight Tab */}
           {activeTab === "Paper Weight" && (
             <div className="grid relative grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-              <div className="text-gray-700 sticky top-36 h-fit leading-relaxed space-y-4">
+              <div className="text-gray-700 md:sticky md:top-36 h-fit leading-relaxed space-y-4">
                 <h3 className="text-2xl font-semibold text-gray-900">Choosing the Right Weight</h3>
                 <p>
                   Paper weight significantly impacts both the durability and perceived 
@@ -219,7 +219,7 @@ const PackagingTabs = () => {
           {/* Shipping Tab */}
           {activeTab === "Shipping" && (
             <div className="grid relative grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-              <div className="text-gray-700 sticky top-36 h-fit leading-relaxed space-y-4">
+              <div className="text-gray-700 md:sticky md:top-36 h-fit leading-relaxed space-y-4">
                 <h3 className="text-2xl font-semibold text-gray-900">Delivery Options</h3>
                 <p>
                   We offer flexible shipping solutions to meet your timeline and budget requirements. 

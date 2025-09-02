@@ -11,6 +11,7 @@ import { PiEye, PiEyeClosed } from "react-icons/pi";
 import { TbPasswordFingerprint } from "react-icons/tb";
 import { TiUser } from "react-icons/ti";
 import { useRouter } from "next/navigation";
+import { loginUser } from '../../../../../backend/src/controllers/user.controller';
 
 const Page = () => {
   const [islogin, setIslogin] = useState(true);
@@ -50,8 +51,8 @@ const Page = () => {
           variables: { input: loginForm },
           fetchPolicy: "no-cache", // Important for auth
         });
-        dispatch(setUser(data?.user));
-        Router.push("/");
+        console.log({cUSer:data})
+        dispatch(setUser(data?.loginUser?.user));
       } else {
         console.log(form);
         const { data } = await registerUser({ variables: { input: form } });
@@ -62,9 +63,10 @@ const Page = () => {
       console.log({ res: error });
       setNewError(`Unauthorized user detected`);
       setLoading(false);
+
     } finally {
       console.log({ res: "login suces" });
-      setLoading(false);
+      Router.push("/");
     }
   };
   return (
