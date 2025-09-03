@@ -81,13 +81,6 @@ const AuthPage = () => {
     return isValid;
   };
 
-  const toggleFormMode = () => {
-    setIsLogin(!isLogin);
-    setError("");
-    setSuccessMessage("");
-    setFormErrors({ username: "", email: "", password: "" });
-  };
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     
