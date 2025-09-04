@@ -1,5 +1,5 @@
-import React from 'react'
-import Header from './Header'
+import React from "react";
+import Header from "./Header";
 
 interface MenuData {
   getAllIndustry: Array<{ imageUrl: string; name: string; slug: string }>;
@@ -9,17 +9,17 @@ interface MenuData {
 
 // Preload function using link preload (most efficient)
 const preloadImages = (urls: string[]) => {
-  if (typeof window === 'undefined') return; // Only run on client
-  
-  urls.forEach(url => {
+  if (typeof window === "undefined") return; // Only run on client
+
+  urls.forEach((url) => {
     if (url) {
       // Method 1: Link preload (most efficient)
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'image';
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
       link.href = url;
       document.head.appendChild(link);
-      
+
       // Method 2: Image preloading (fallback)
       new Image().src = url;
     }
@@ -46,6 +46,7 @@ async function getMenuData(): Promise<MenuData> {
       `,
     }),
     cache: "force-cache",
+    next: { revalidate: 3600 },
   });
 
   if (!res.ok) {
@@ -60,7 +61,7 @@ const MainHeader = async () => {
   let menuData: MenuData = {
     getAllIndustry: [],
     getAllMaterial: [],
-    getAllStyle: []
+    getAllStyle: [],
   };
 
   try {
@@ -70,19 +71,17 @@ const MainHeader = async () => {
   }
 
   // Preload images on client side
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     const allImageUrls = [
-      ...menuData.getAllIndustry.map(item => item.imageUrl),
-      ...menuData.getAllMaterial.map(item => item.imageUrl),
-      ...menuData.getAllStyle.map(item => item.imageUrl)
-    ].filter(url => url);
-    
+      ...menuData.getAllIndustry.map((item) => item.imageUrl),
+      ...menuData.getAllMaterial.map((item) => item.imageUrl),
+      ...menuData.getAllStyle.map((item) => item.imageUrl),
+    ].filter((url) => url);
+
     preloadImages(allImageUrls);
   }
 
-  return (
-    <Header menuData={menuData} />
-  )
-}
+  return <Header menuData={menuData} />;
+};
 
-export default MainHeader
+export default MainHeader;

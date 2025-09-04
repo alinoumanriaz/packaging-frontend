@@ -39,7 +39,7 @@ export default async function Home() {
   const AllIndustries = data?.getAllIndustry || [];
   const AllMaterials = data?.getAllMaterial || [];
   const AllStyles = data?.getAllStyle || [];
-  console.log({ matdata: data });
+  
   return (
     <div className="flex-col space-y-16 md:space-y-24 mb-20">
       <HeroBanner />
