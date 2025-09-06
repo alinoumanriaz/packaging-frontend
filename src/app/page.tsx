@@ -4,6 +4,8 @@ import Features from "@/components/home-components/Features";
 import HeroBanner from "@/components/home-components/HeroBanner";
 import QuoteSection from "@/components/home-components/QuoteSection";
 import Reviews from "@/components/home-components/Reviews";
+import PagesSEOContent from "../components/PagesSEOContent";
+import BoxesInCarousel from "@/components/home-components/BoxesInCarousel";
 
 export default async function Home() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
@@ -39,7 +41,7 @@ export default async function Home() {
   const AllIndustries = data?.getAllIndustry || [];
   const AllMaterials = data?.getAllMaterial || [];
   const AllStyles = data?.getAllStyle || [];
-  
+
   return (
     <div className="flex-col space-y-16 md:space-y-24 mb-20">
       <HeroBanner />
@@ -49,21 +51,22 @@ export default async function Home() {
         featuredData={AllIndustries}
       />
 
-      <FeaturedBoxesSections
+      <BoxesInCarousel
         title={"Boxes By Material"}
         subTitle="Choose from durable materials like Cardboard, Kraft, Corrugated, Rigid, and Bux Board to match your packaging needs."
-        featuredData={AllMaterials}
+        Data={AllMaterials}
       />
 
-      <FeaturedBoxesSections
+      <BoxesInCarousel
         title={"Boxes By Styles"}
         subTitle="Explore a variety of box styles — Display, Tuck Top, Gable, Drawer, Die-Cut, Mailer, and Book Style Boxes."
-        featuredData={AllStyles}
+        Data={AllStyles}
       />
       <BoxFinishingSection />
       <Features />
       <QuoteSection />
       <Reviews />
+      <PagesSEOContent />
     </div>
   );
 }

@@ -154,7 +154,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.2 }}
       onMouseLeave={onClose}
-      className="absolute -top-4 z-20 bg-white shadow-md rounded-md border-1 border-gray-200"
+      className="absolute -top-2 z-20 bg-white shadow-md rounded-md border-1 border-gray-200"
     >
       <div className="container mx-auto px-4 py-6">{renderContent()}</div>
     </motion.div>

@@ -1,8 +1,8 @@
 import React from "react";
 import Titles from "../Titles";
 import Container from "../Container";
-import FinishingBoxCard from "../FinishingBoxCard";
-import Image from "next/image";
+// import FinishingBoxCard from "../FinishingBoxCard";
+// import Image from "next/image";
 
 const BoxFinishingSection = () => {
   return (
@@ -15,7 +15,7 @@ const BoxFinishingSection = () => {
           }
         />
         <div className="w-full">
-          <div className="w-full flex flex-col justify-center items-center space-y-2">
+          {/* <div className="w-full flex flex-col justify-center items-center space-y-2">
             <div className="h-72 flex md:space-x-2 w-full">
               <div className="w-[70%] rounded-xl overflow-hidden h-72 ring-1 ring-gray-300 hidden md:flex">
                 <Image
@@ -54,6 +54,13 @@ const BoxFinishingSection = () => {
                 />
               </div>
             </div>
+          </div> */}
+
+          <div className="parent">
+            <div className="div1">1</div>
+            <div className="div6">6</div>
+            <div className="div7">7</div>
+            <div className="div8">8</div>
           </div>
         </div>
       </div>

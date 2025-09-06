@@ -118,7 +118,7 @@ const Footer = () => {
                       },
                       {
                         name: "Blogs",
-                        url: "/blogs",
+                        url: "/blog",
                       },
                       {
                         name: "Portfolio",
@@ -131,7 +131,7 @@ const Footer = () => {
                     ].map((item, index) => (
                       <li key={index}>
                         <Link
-                          href={`/${item.url}`}
+                          href={`${item.url}`}
                           className="flex items-center text-white/50 hover:text-white transition-colors group"
                         >
                           <BsChevronRight className="w-3 h-3 mr-2 text-white/50 group-hover:text-white transition-colors" />

@@ -2,6 +2,8 @@
 import { useState } from "react";
 import InputBox from "./InputBox";
 import { FiUpload, FiX, FiFile, FiImage } from "react-icons/fi";
+import { BookmarkX } from "lucide-react";
+import Image from "next/image";
 
 export default function RequestQuote() {
   const [formData, setFormData] = useState({
@@ -22,7 +24,8 @@ export default function RequestQuote() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [uploadProgress, setUploadProgress] = useState(0);
-  const [loading, setLoading] = useState(false); // Added missing loading state
+  const [loading, setLoading] = useState(false);
+  const [showfilebox, setShowfilebox] = useState("needDesign");
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -117,9 +120,9 @@ export default function RequestQuote() {
         {
           method: "POST",
           body: formPayload,
-          headers:{
+          headers: {
             "x-secret-key": process.env.NEXT_PUBLIC_API_SECRET_KEY!,
-          }
+          },
         }
       );
 
@@ -172,7 +175,7 @@ export default function RequestQuote() {
   };
 
   return (
-    <div className="w-full py-6 px-6">
+    <div className="w-full py-6 md:px-6">
       <div className="w-full">
         <div className="w-full">
           <h1 className="text-xl font-semibold md:mb-3 mb-2">Request Quote</h1>
@@ -194,7 +197,7 @@ export default function RequestQuote() {
               <InputBox
                 type="text"
                 name="fullName"
-                label="Full Name *"
+                // label="Full Name *"
                 placeholder="Enter your full name"
                 value={formData.fullName}
                 onChange={handleChange}
@@ -202,7 +205,7 @@ export default function RequestQuote() {
               <InputBox
                 type="email"
                 name="email"
-                label="Email *"
+                // label="Email *"
                 placeholder="Enter your email"
                 value={formData.email}
                 onChange={handleChange}
@@ -210,7 +213,7 @@ export default function RequestQuote() {
               <InputBox
                 type="tel"
                 name="contactNumber"
-                label="Contact Number *"
+                // label="Contact Number *"
                 placeholder="+1 (555) 000-0000"
                 value={formData.contactNumber}
                 onChange={handleChange}
@@ -218,23 +221,23 @@ export default function RequestQuote() {
               <InputBox
                 name="quantity"
                 type="number"
-                label="Stack Quantity"
+                // label="Stack Quantity"
                 placeholder="Enter quantity needed"
                 value={formData.quantity}
                 onChange={handleChange}
               />
             </div>
 
-            <div className="mb-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="mb-4 grid grid-cols-1 md:grid-cols-3 gap-4 px-0.5">
               <div>
-                <label className="block text-sm text-gray-700 mb-1">
+                {/* <label className="block text-sm text-gray-700 mb-1">
                   Box Style
-                </label>
+                </label> */}
                 <select
                   name="boxStyle"
                   value={formData.boxStyle}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">Select Box Style</option>
                   <option value="Mailer Boxes">Mailer Boxes</option>
@@ -245,14 +248,14 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <label className="block text-sm text-gray-700 mb-1">
+                {/* <label className="block text-sm text-gray-700 mb-1">
                   Material
-                </label>
+                </label> */}
                 <select
                   name="productType"
                   value={formData.productType}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">Select Material</option>
                   <option value="Corrugated Cardboard">
@@ -265,14 +268,14 @@ export default function RequestQuote() {
               </div>
 
               <div>
-                <label className="block text-sm text-gray-700 mb-1">
+                {/* <label className="block text-sm text-gray-700 mb-1">
                   Color
-                </label>
+                </label> */}
                 <select
                   name="color"
                   value={formData.color}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">Select Color</option>
                   <option value="White">White</option>
@@ -284,9 +287,9 @@ export default function RequestQuote() {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm text-gray-700 mb-2">
+              {/* <label className="block text-sm text-gray-700 mb-2">
                 Dimensions (cm)
-              </label>
+              </label> */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <InputBox
                   type="number"
@@ -312,21 +315,76 @@ export default function RequestQuote() {
               </div>
             </div>
 
-            <div className="mb-6">
-              <label className="block text-sm text-gray-700 mb-2">
-                Additional Comments
-              </label>
-              <textarea
-                name="comments"
-                placeholder="Any specific requirements, printing needs, or additional information."
-                className="w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows={4}
-                value={formData.comments}
-                onChange={handleChange}
-              ></textarea>
+            <div className="flex flex-col-reverse md:flex-row justify-center md:space-x-3 items-center w-full">
+              <div className="flex lg:w-[40%] w-full text-sm flex-col space-y-3 pb-1">
+                <label htmlFor="havedesign">
+                  <div className="flex w-full justify-center items-center ring-1 ring-gray-200 p-2 rounded-md">
+                    <div>
+                      <Image
+                        className="w-6 h-6"
+                        src={"/brush.png"}
+                        alt="i need design"
+                        width={20}
+                        height={20}
+                      />
+                    </div>
+                    <div className="mr-auto ml-2 text-nowrap">
+                      I need design
+                    </div>
+                    <input
+                      checked={showfilebox === "needDesign"}
+                      type="radio"
+                      name="designfile"
+                      id="havedesign"
+                      value={"needDesign"}
+                      onChange={(e) => setShowfilebox(e.target.value)}
+                    />
+                  </div>
+                </label>
+                <label htmlFor="nodesign">
+                  <div className="flex justify-center items-center ring-1 ring-gray-200 p-2 rounded-md">
+                    <div>
+                      <Image
+                        className="w-6 h-6"
+                        src={"/box-idea.png"}
+                        alt="i have design"
+                        width={20}
+                        height={20}
+                      />
+                    </div>
+                    <div className="mr-auto ml-2 text-nowrap">
+                      I have design
+                    </div>
+                    <input
+                      checked={showfilebox === "haveDesign"}
+                      type="radio"
+                      name="designfile"
+                      id="nodesign"
+                      value={"haveDesign"}
+                      onChange={(e) => setShowfilebox(e.target.value)}
+                    />
+                  </div>
+                </label>
+              </div>
+              <div className="mb-6 w-full">
+                <label className="block text-sm text-gray-700 mb-2">
+                  Additional Comments
+                </label>
+                <textarea
+                  name="comments"
+                  placeholder="Any specific requirements, printing needs, or additional information."
+                  className="w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  rows={4}
+                  value={formData.comments}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
             </div>
-
-            <div className="mb-6">
+            <div
+              className={` ${
+                showfilebox === "needDesign" ? "hidden" : ""
+              } mt-4 md:mt-0`}
+            >
               <label className="block text-sm text-gray-700 mb-2">
                 Attachments (Optional)
               </label>
@@ -351,44 +409,44 @@ export default function RequestQuote() {
                   onChange={handleFileChange}
                 />
               </div>
-
-              {formData.files.length > 0 && (
-                <div className="space-y-2">
-                  <p className="text-sm text-gray-600">
-                    {formData.files.length} file(s) selected
-                  </p>
-                  {formData.files.map((file, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border"
-                    >
-                      <div className="flex items-center">
-                        {file.type.startsWith("image/") ? (
-                          <FiImage className="text-gray-500 mr-3" />
-                        ) : (
-                          <FiFile className="text-gray-500 mr-3" />
-                        )}
-                        <div>
-                          <p className="text-sm font-medium text-gray-800">
-                            {file.name}
-                          </p>
-                          <p className="text-xs text-gray-500">
-                            {formatFileSize(file.size)}
-                          </p>
-                        </div>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => removeFile(index)}
-                        className="text-gray-500 hover:text-red-500"
-                      >
-                        <FiX />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
+
+            {formData.files.length > 0 && (
+              <div className="space-y-2">
+                <p className="text-sm text-gray-600">
+                  {formData.files.length} file(s) selected
+                </p>
+                {formData.files.map((file, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border"
+                  >
+                    <div className="flex items-center">
+                      {file.type.startsWith("image/") ? (
+                        <FiImage className="text-gray-500 mr-3" />
+                      ) : (
+                        <FiFile className="text-gray-500 mr-3" />
+                      )}
+                      <div>
+                        <p className="text-sm font-medium text-gray-800">
+                          {file.name}
+                        </p>
+                        <p className="text-xs text-gray-500">
+                          {formatFileSize(file.size)}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => removeFile(index)}
+                      className="text-gray-500 hover:text-red-500"
+                    >
+                      <FiX />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {uploadProgress > 0 && (
               <div className="mb-4">
@@ -409,7 +467,7 @@ export default function RequestQuote() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-primary-800 text-white py-3 px-4 rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-800 focus:ring-offset-2 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-primary-800 mt-4  text-white py-2 px-4 rounded-md hover:bg-primary-800/90 focus:outline-none focus:ring-2 focus:ring-primary-800 focus:ring-offset-2 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Submitting..." : "Submit Quote Request"}
             </button>

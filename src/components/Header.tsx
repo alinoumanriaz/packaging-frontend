@@ -11,6 +11,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import SearchBox from "./SearchBox";
 import { IoMail } from "react-icons/io5";
 import Container from "./Container";
+import Image from "next/image";
 
 type MegaMenuType = "Industry" | "Material" | "Style" | "";
 
@@ -103,7 +104,7 @@ const Header = ({ menuData }: HeaderProps) => {
       </div>
 
       {/* main header */}
-      <div className="w-full flex justify-center items-center bg-primary-50">
+      <div className="w-full bg-white flex justify-center items-center bg-primary-50">
         <Container>
           <div className="w-full flex justify-between items-center py-3 md:py-4 ">
             {/* Mobile menu button */}
@@ -123,15 +124,15 @@ const Header = ({ menuData }: HeaderProps) => {
               href={"/"}
               className="flex justify-center items-center space-x-2"
             >
-              {/* <Image
-              className="md:w-12 w-10"
-              src={"/logo.svg"}
-              alt="Unique Custom Boxes"
+              <Image
+              className="md:w-14 w-10"
+              src={"/logo.png"}
+              alt="E Custom Boxes"
               width={60}
               height={50}
               priority
-            /> */}
-              <div className="text-lg md:text-xl font-bold">PackBox</div>
+            />
+              <div className="text-lg md:text-xl font-bold">ECustomBoxes</div>
             </Link>
 
             {/* Search bar - hidden on mobile */}

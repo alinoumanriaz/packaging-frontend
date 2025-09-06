@@ -33,6 +33,7 @@ const HeroBanner = () => {
             <div className="relative h-auto">
               <Image
                 src="/Untitled-t.png"
+                // src="/banner-orange.png"
                 alt="Custom Packaging"
                 width={600}
                 height={600}
