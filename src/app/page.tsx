@@ -6,6 +6,7 @@ import QuoteSection from "@/components/home-components/QuoteSection";
 import Reviews from "@/components/home-components/Reviews";
 import PagesSEOContent from "../components/PagesSEOContent";
 import BoxesInCarousel from "@/components/home-components/BoxesInCarousel";
+import TrustFactor from "@/components/home-components/TrustFactor";
 
 export default async function Home() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
@@ -44,7 +45,10 @@ export default async function Home() {
 
   return (
     <div className="flex-col space-y-16 md:space-y-24 mb-20">
-      <HeroBanner />
+      <div>
+        <HeroBanner />
+        <TrustFactor />
+      </div>
       <FeaturedBoxesSections
         title={"Boxes By Industries"}
         subTitle="Discover custom packaging tailored for every industry — from cosmetics to apparel, electronics, gifts, and more."

@@ -13,7 +13,7 @@ const PagesSEOContent = () => {
     <Container>
       <div>
         {/* Sticky Box */}
-        <div className="ring-1 ring-gray-200 rounded-xl w-5xl p-10 h-[calc(100dvh-120px)] bg-white">
+        <div className="ring-1 ring-gray-200 rounded-xl p-10 h-[calc(100dvh-120px)] bg-white">
           <div
             className={`${poppins.className} pr-6 overflow-y-auto h-full prose prose-lg`}
           >

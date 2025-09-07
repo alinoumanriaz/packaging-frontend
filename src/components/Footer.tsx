@@ -31,7 +31,7 @@ const Footer = () => {
                     >
                       <Image
                         className="md:w-12 w-10"
-                        src={"/logo.svg"}
+                        src={"/logo.png"}
                         alt="Unique Custom Boxes"
                         width={60}
                         height={50}
