@@ -7,6 +7,8 @@ import PackagingTabs from "@/components/PackagingTabs";
 import Titles from "@/components/Titles";
 import Markdown from "react-markdown";
 import React from "react";
+import PagesSEOContent from "@/components/PagesSEOContent";
+import QuoteSection from "@/components/home-components/QuoteSection";
 // import type { Metadata } from 'next';
 
 interface CategoryItem {
@@ -88,14 +90,14 @@ async function getAllProducts(): Promise<ProductCardProps[]> {
   try {
     const apiUrl = getApiUrl();
     const res = await fetch(`${apiUrl}/graphql`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "x-secret-key": process.env.API_SECRET_KEY!,
-    "x-apollo-operation-name": "GetAllProduct",
-  },
-  body: JSON.stringify({
-    query: `
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-secret-key": process.env.API_SECRET_KEY!,
+        "x-apollo-operation-name": "GetAllProduct",
+      },
+      body: JSON.stringify({
+        query: `
       query GetAllProduct {
         getAllProduct {
           _id
@@ -115,12 +117,12 @@ async function getAllProducts(): Promise<ProductCardProps[]> {
         }
       }
     `,
-    operationName: "GetAllProduct",
-  }),
-  cache: "force-cache",
-  next: { revalidate: 60 },
-});
-    
+        operationName: "GetAllProduct",
+      }),
+      cache: "force-cache",
+      next: { revalidate: 60 },
+    });
+
     if (!res.ok) {
       throw new Error(`Failed to fetch products: ${res.status}`);
     }
@@ -252,14 +254,13 @@ const ProductPage = ({
                   {product.h1Tag || product.name}
                 </h1>
 
-                <div className="border-gray-200">
-                  <MiniRequestQuote />
-                </div>
-
-                <p className="text-sm text-gray-600 leading-relaxed px-4">
+                <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
                   {product.shortDescription ||
                     "High-quality packaging solution designed for your needs."}
                 </p>
+                <div className="border-gray-200">
+                  <MiniRequestQuote />
+                </div>
 
                 {/* Tags */}
                 {/* {product.tags && product.tags.length > 0 && (
@@ -281,46 +282,36 @@ const ProductPage = ({
       </section>
 
       {/* Description & Specification Section */}
-      <Container>
-        <div className="flex flex-col space-y-8 md:space-y-20 w-full max-w-4xl mx-auto px-4">
+        <div className="flex flex-col space-y-8 md:space-y-20 w-full">
           {/* Description */}
-          <section className="flex flex-col space-y-6">
-            <Titles title="Description" />
-            <div className="prose prose-lg max-w-none text-gray-700 prose-headings:text-gray-900 prose-strong:text-gray-900 prose-a:text-blue-600 hover:prose-a:text-blue-800">
-              {product.description ? (
-                <Markdown>{product.description}</Markdown>
-              ) : (
-                <p>No description available.</p>
-              )}
-            </div>
-          </section>
+          {product.description && (
+            <section className="flex flex-col space-y-6 w-full ">
+              <Titles title="Description" />
+              <PagesSEOContent />
+            </section>
+          )}
 
           {/* Specification */}
           {product.specification && (
             <section className="flex flex-col space-y-6">
               <Titles title="Specification" />
-              <div className="prose prose-lg max-w-none text-gray-700 prose-headings:text-gray-900 prose-strong:text-gray-900 prose-a:text-blue-600 hover:prose-a:text-blue-800">
-                <Markdown>{product.specification}</Markdown>
-              </div>
+              <PagesSEOContent />
             </section>
           )}
         </div>
-      </Container>
 
       {/* Packaging Tabs Section */}
-      <section className="bg-gray-50 py-12">
-        <Container>
+      <section className="py-6">
           <PackagingTabs />
-        </Container>
       </section>
 
       {/* Related Products Section */}
       {allProducts.filter((p) => p._id !== product._id).length > 0 && (
-        <section className="bg-gray-50 py-12 flex flex-col space-y-8 md:space-y-12">
-            <Titles 
-            title="Related Products" 
+        <section className="py-12 flex flex-col space-y-8 md:space-y-12">
+          <Titles
+            title="Related Products"
             subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab repellendus laborum quo architecto illo quod?"
-            />
+          />
           <Container>
             <div className="flex justify-center">
               <div className="w-full">
@@ -362,35 +353,46 @@ const CategoryPage = async ({
   );
 
   return (
-    <div className="min-h-screen">
+    <div className="">
       <AllPagesBanner
-        title={categoryData?.name || "Products"}
-        description={categoryData?.description}
+        // title={categoryData?.name || "Products"}
+        // description={categoryData?.description}
         imageUrl={categoryData?.bannerImage}
       />
 
       <Container>
-        <div className="border-t border-gray-200 py-8">
-          <div className="w-full">
-            {filteredProducts.length > 0 ? (
-              <>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
-                  {filteredProducts.map((product) => (
-                    <ProductCard key={product._id} data={product} />
-                  ))}
-                </div>
-              </>
-            ) : (
-              <div className="text-center py-16">
-                <h3 className="text-lg font-medium text-gray-900">
-                  No products found
-                </h3>
-                <p className="text-gray-500 mt-2 max-w-md mx-auto">
-                  There are no products matching this category. Please check
-                  back later or browse our other categories.
-                </p>
-              </div>
+        <div className="w-full">
+          <div className="flex flex-col justify-center items-center w-full my-10">
+            {categoryData?.name && (
+              <h1 className="text-xl md:text-4xl font-bold">
+                {categoryData?.name || "Products"}
+              </h1>
             )}
+          </div>
+          <div className=" w-full flex flex-col md:space-y-24 space-y-16 mb-20 ">
+            <div className="w-full">
+              {filteredProducts.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+                    {filteredProducts.map((product) => (
+                      <ProductCard key={product._id} data={product} />
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="text-center py-16">
+                  <h3 className="text-lg font-medium text-gray-900">
+                    No products found
+                  </h3>
+                  <p className="text-gray-500 mt-2 max-w-md mx-auto">
+                    There are no products matching this category. Please check
+                    back later or browse our other categories.
+                  </p>
+                </div>
+              )}
+            </div>
+            <QuoteSection />
+            <PagesSEOContent />
           </div>
         </div>
       </Container>

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import InputBox from "./InputBox";
 import { FiUpload, FiX, FiFile, FiImage } from "react-icons/fi";
-import { BookmarkX } from "lucide-react";
 import Image from "next/image";
 
 export default function RequestQuote() {
@@ -175,7 +174,7 @@ export default function RequestQuote() {
   };
 
   return (
-    <div className="w-full py-6 md:px-6">
+    <div className="w-full py-6  md:px-6">
       <div className="w-full">
         <div className="w-full">
           <h1 className="text-xl font-semibold md:mb-3 mb-2">Request Quote</h1>
@@ -290,7 +289,7 @@ export default function RequestQuote() {
               {/* <label className="block text-sm text-gray-700 mb-2">
                 Dimensions (cm)
               </label> */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 md:gap-4">
                 <InputBox
                   type="number"
                   name="length"

@@ -81,7 +81,7 @@ const PackagingTabs = () => {
   ];
 
   return (
-    <section className=" py-8 px-4 bg-gray-50">
+    <section className=" py-8 px-4 ">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <div className="text-center mx-auto mb-10 max-w-3xl">

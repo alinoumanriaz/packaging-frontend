@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import Titles from "../Titles";
 import Container from "../Container";
 import { motion } from "framer-motion";
@@ -29,20 +29,29 @@ const FeaturedBoxesSections = ({
   title,
   subTitle,
 }: MaterialBoxesSectionProps) => {
+  const sectionRef = useRef(null);
+
   return (
     <Container>
-      <div className="flex flex-col items-center space-y-8 md:space-y-12">
+      <div ref={sectionRef} className="flex flex-col items-center space-y-8 md:space-y-12">
         <Titles title={title} subtitle={subTitle} />
 
-        <div className="">
+        <div className="w-full">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
             {featuredData.map((item: IFeaturedSectionData, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.10 }}
-                viewport={{ once: false, amount: 0.2 }} // 👈 replay when scrolled back
+                whileInView={{ 
+                  opacity: 1, 
+                  y: 0,
+                  transition: {
+                    duration: 0.4,
+                    delay: idx * 0.1, // Reduced delay between items
+                    ease: "easeOut"
+                  }
+                }}
+                viewport={{ once: true, amount: 0.1 }} // Reduced threshold
               >
                 <Link
                   href={`/${item.slug}`}
@@ -57,6 +66,8 @@ const FeaturedBoxesSections = ({
                       className="object-cover transition-transform group-hover:scale-105 w-full h-full"
                       loading="eager"
                     />
+                    {/* Hover overlay effect */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
                   </div>
                   <h3 className="font-semibold text-sm md:text-base capitalize transition-colors group-hover:text-primary-800">
                     {item.name}

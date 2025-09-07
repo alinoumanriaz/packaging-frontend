@@ -37,7 +37,7 @@ export default function ImageGallery({ images }: ProductGalleryProps) {
           alt="Product Preview"
           width={600}
           height={600}
-          className=" rounded-xl w-full"
+          className=" rounded-xl w-full h-[28rem]"
           priority
         />
       </div>

@@ -11,11 +11,11 @@ const poppins = Poppins({
 const PagesSEOContent = () => {
   return (
     <Container>
-      <div>
+      <div className="w-full ">
         {/* Sticky Box */}
-        <div className="ring-1 ring-gray-200 rounded-xl p-10 h-[calc(100dvh-120px)] bg-white">
+        <div className="w-full ring-1 ring-gray-200 rounded-xl p-4 md:p-10 h-[calc(100dvh-120px)] bg-white">
           <div
-            className={`${poppins.className} pr-6 overflow-y-auto h-full prose prose-lg`}
+            className={`${poppins.className} pr-4 md:pr-6 overflow-y-auto h-full prose prose-lg`}
           >
             <Markdown>
               {`

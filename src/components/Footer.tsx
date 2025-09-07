@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { BiPhone } from "react-icons/bi";
+import { BiPhone, BiEnvelope, BiMap } from "react-icons/bi";
 import { BsChevronRight } from "react-icons/bs";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import Container from "./Container";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -48,41 +49,22 @@ const Footer = () => {
                     packaging solutions for businesses of all sizes.
                   </p>
 
-                  {/* Contact Info Cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="bg-primary-800/5 border-slate-700 rounded-xl">
-                      <div className="p-4">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-primary-800/20 rounded-lg flex items-center justify-center">
-                            <BiPhone className="w-5 h-5 text-primary-800" />
-                          </div>
-                          <div>
-                            <p className="text-white font-medium">
-                              Sales Hotline
-                            </p>
-                            <p className="text-sm text-gray-400">
-                              1-800-PACK-BOX
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-primary-800/5 border-slate-700 rounded-xl">
-                      <div className="p-4">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-primary-800/20 rounded-lg flex items-center justify-center">
-                            <BiPhone className="w-5 h-5 text-primary-800" />
-                          </div>
-                          <div>
-                            <p className="text-white font-medium">
-                              Support Line
-                            </p>
-                            <p className="text-sm text-gray-400">
-                              1-800-SUPPORT
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                  {/* Social Media Links */}
+                  <div className="flex flex-col space-y-3">
+                    <h4 className="text-white font-semibold">Follow Us</h4>
+                    <div className="flex space-x-4">
+                      <a href="#" className="w-10 h-10 bg-gray-700 hover:bg-primary-800 rounded-full flex items-center justify-center transition-colors">
+                        <FaFacebookF className="w-4 h-4 text-white" />
+                      </a>
+                      <a href="#" className="w-10 h-10 bg-gray-700 hover:bg-blue-400 rounded-full flex items-center justify-center transition-colors">
+                        <FaTwitter className="w-4 h-4 text-white" />
+                      </a>
+                      <a href="#" className="w-10 h-10 bg-gray-700 hover:bg-pink-600 rounded-full flex items-center justify-center transition-colors">
+                        <FaInstagram className="w-4 h-4 text-white" />
+                      </a>
+                      <a href="#" className="w-10 h-10 bg-gray-700 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors">
+                        <FaLinkedinIn className="w-4 h-4 text-white" />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -165,39 +147,39 @@ const Footer = () => {
                 </div>
               </div>
 
-              {/* Resources Column */}
+              {/* Contact & Address Column (Replaces Resources) */}
               <div className="flex justify-start md:justify-center px-4">
                 <div className="flex flex-col space-y-4 w-full">
                   <h3 className="text-white pl-2 font-bold text-lg md:text-xl">
-                    Resources
+                    Contact Us
                   </h3>
-                  <ul className="space-y-3 text-sm">
-                    {[
-                      // "Packaging Calculator",
-                      // "Size Guide",
-                      // "Material Specifications",
-                      // "Design Templates",
-                      // "Sustainability Report",
-                      // "Case Studies",
-                      // "FAQ",
-                      "packaging",
-                      "packaging",
-                      "packaging",
-                      "packaging",
-                      "packaging",
-                      "packaging",
-                    ].map((item, index) => (
-                      <li key={index}>
-                        <Link
-                          href="#"
-                          className="flex items-center text-white/50 hover:text-white transition-colors group"
-                        >
-                          <BsChevronRight className="w-3 h-3 mr-2 text-white/50 group-hover:text-white transition-colors" />
-                          {item}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <BiPhone className="w-5 h-5 text-primary-800 mt-1 flex-shrink-0" />
+                      <span className="text-white/80 text-sm">(404) 400-4933</span>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <BiEnvelope className="w-5 h-5 text-primary-800 mt-1 flex-shrink-0" />
+                      <span className="text-white/80 text-sm">xiongpongxia0@yip.com</span>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <BiMap className="w-5 h-5 text-primary-800 mt-1 flex-shrink-0" />
+                      <div>
+                        <p className="text-white/80 text-sm">31839 Enterprise Drive</p>
+                        <p className="text-white/80 text-sm">Suite 350, Toronto, CA 36250</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-3">
+                      <BiMap className="w-5 h-5 text-primary-800 mt-1 flex-shrink-0" />
+                      <div>
+                        <p className="text-white/80 text-sm">34004 Central Key</p>
+                        <p className="text-white/80 text-sm">#181-227 #to-nonews, TX 76169</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
