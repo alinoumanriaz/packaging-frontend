@@ -286,7 +286,7 @@ const ProductPage = ({
           {product.description && (
             <section className="flex flex-col space-y-6 w-full ">
               <Titles title="Description" />
-              <PagesSEOContent />
+              <PagesSEOContent content={product.description} />
             </section>
           )}
 
@@ -294,7 +294,7 @@ const ProductPage = ({
           {product.specification && (
             <section className="flex flex-col space-y-6">
               <Titles title="Specification" />
-              <PagesSEOContent />
+              <PagesSEOContent content={product.specification} />
             </section>
           )}
         </div>
@@ -391,7 +391,7 @@ const CategoryPage = async ({
               )}
             </div>
             <QuoteSection />
-            <PagesSEOContent />
+            <PagesSEOContent content={categoryData.content}/>
           </div>
         </div>
       </Container>

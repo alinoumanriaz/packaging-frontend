@@ -11,6 +11,7 @@ const page = () => {
         imageUrl="https://oxopackaging.com/assets/blog-posts/gift-packaging-ideas.webp"
       />
       <Container>
+        {/* <PagesSEOContent content={} /> */}
         <div className="border-t-[1px] border-gray-200 flex justify-center items-center">
           <div className="w-[90%] p-4 h-full flex flex-col space-y-8">
             <div className="font-semibold text-3xl w-full ">10 Trendy Gift Packaging Ideas for This Season in 2025</div>
