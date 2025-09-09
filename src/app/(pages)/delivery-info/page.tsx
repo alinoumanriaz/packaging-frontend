@@ -14,7 +14,7 @@ const page =  async () => {
       body: JSON.stringify({
         query: `
           query {
-            getPageContent(slug: "about-us") {
+            getPageContent(slug: "delivery-info") {
               success
               message
               data {

@@ -5,7 +5,6 @@ import ImageGallery from "@/components/ImageGallery";
 import MiniRequestQuote from "@/components/MiniRequestQuote";
 import PackagingTabs from "@/components/PackagingTabs";
 import Titles from "@/components/Titles";
-import Markdown from "react-markdown";
 import React from "react";
 import PagesSEOContent from "@/components/PagesSEOContent";
 import QuoteSection from "@/components/home-components/QuoteSection";
