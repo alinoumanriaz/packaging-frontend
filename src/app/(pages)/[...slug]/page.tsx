@@ -391,7 +391,7 @@ const CategoryPage = async ({
               )}
             </div>
             <QuoteSection />
-            <PagesSEOContent content={categoryData.content}/>
+            <PagesSEOContent content={categoryData?.content}/>
           </div>
         </div>
       </Container>

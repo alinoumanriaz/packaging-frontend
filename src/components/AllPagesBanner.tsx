@@ -14,7 +14,7 @@ const AllPagesBanner = ({ title, description, imageUrl }: IProps) => {
       aria-label={title || "Banner Image"}
       className={`relative ${
         !imageUrl ? "text-black" : "text-white"
-      } flex flex-col justify-center items-center w-full h-44 md:h-80 overflow-hidden`}
+      } flex flex-col justify-center items-center w-full h-44 md:h-[calc(100dvh-120px)] overflow-hidden`}
     >
       {/* Background image with preload */}
       {imageUrl && (

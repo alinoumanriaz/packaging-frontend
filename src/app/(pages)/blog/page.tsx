@@ -14,7 +14,7 @@ const page = () => {
         <div className="border-t-[1px] border-gray-200 flex">
           {/* <Sidebar /> */}
           <div className="w-full p-4 h-full flex flex-col space-y-8">
-            <div className="grid grid-cols-4 gap-x-4 gap-y-12">
+            <div className="grid grid-cols-3 gap-x-4 gap-y-12">
               {[...Array(20)].map((_, idx) => (
                 <div key={idx}>
                   <BlogCard />

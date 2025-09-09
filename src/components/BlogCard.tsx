@@ -5,7 +5,7 @@ const BlogCard = () => {
   return (
     <div className="w-full ">
       <Image
-        className="rounded-md w-[32rem] max-h-[32rem]"
+        className="rounded-md w-full max-h-[14rem]"
         src={"/moe.png"}
         alt="image"
         width={300}
