@@ -46,7 +46,7 @@ async function getPaginatedBlogs(page: number) {
   return data?.getPaginatedBlogs;
 }
 
-const Page = async ({ searchParams }: { searchParams: { page?: string } }) => {
+const Page = async ({ searchParams }: { searchParams: Promise<{ page?: string }> }) => {
   const { page } = await searchParams;
   const currentPage = Number(page) || 1;
 
