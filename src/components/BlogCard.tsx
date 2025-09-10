@@ -1,32 +1,34 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
-const BlogCard = () => {
+interface BlogCardProps {
+  blog: {
+    id: string;
+    title: string;
+    slug: string;
+    excerpt: string;
+    imageUrl: string;
+  };
+}
+
+const BlogCard: React.FC<{ blog: BlogCardProps["blog"] }> = ({ blog }) => {
   return (
-    <div className="w-full ">
+    <Link href={`/blog/${blog.slug}`} className="w-full">
       <Image
-        className="rounded-md w-full max-h-[14rem]"
-        src={"/moe.png"}
-        alt="image"
+        className="rounded-md w-full max-h-[14rem] object-cover"
+        src={blog.imageUrl[0] || "/placeholder.png"} // fallback if no image
+        alt={blog.title}
         width={300}
-        height={60}
+        height={160}
       />
       <div className="p-2 flex flex-col space-y-1">
-        <h3 className=" text-md font-semibold line-clamp-2">
-          10 Trendy Gift Packaging Ideas for This Season in 2025
-        </h3>
+        <h3 className="text-md font-semibold line-clamp-2">{blog.title}</h3>
         <div className="text-gray-600 line-clamp-3 text-sm">
-          There is something magical about receiving a beautifully wrapped gift.
-          The excitement, the effort, and the aesthetic all speak volumes.
-          Whether prepping for a birthday bash or brainstorming Christmas gift
-          wrapping ideas, the right presentation can make your gift feel even
-          more meaningful. Unwrap some of the trendy and stylish gift packaging
-          ideas to elevate your gift-giving game in this blog. From sustainable
-          choices to over-the-top glam, we have got you covered. So, stay with
-          us till the end!
+          {blog.excerpt}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -27,21 +27,21 @@ const TrustFactor = () => {
           <div className="flex flex-wrap justify-center gap-6 md:gap-4">
             <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
               <div className="bg-white p-1.5 rounded-full">
-                <Image src={"/put.png"} alt="Quick Turnaround" height={24} width={24} />
+                <Image src={"/put.png"} alt="Quick Turnaround" height={30} width={30} />
               </div>
               <div className=" font-medium text-sm">Quick Turnaround</div>
             </div>
             
             <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
               <div className="bg-white p-1.5 rounded-full">
-                <Image src={"/cube.png"} alt="Free Design" height={24} width={24} />
+                <Image src={"/cube.png"} alt="Free Design" height={30} width={30} />
               </div>
               <div className=" font-medium text-sm">Free Design</div>
             </div>
             
             <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg">
               <div className="bg-white p-1.5 rounded-full">
-                <Image src={"/fast-delivery.png"} alt="Fast Delivery" height={24} width={24} />
+                <Image src={"/fast-delivery.png"} alt="Fast Delivery" height={30} width={30} />
               </div>
               <div className=" font-medium text-sm">Fast Delivery</div>
             </div>

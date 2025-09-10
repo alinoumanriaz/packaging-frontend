@@ -1,114 +1,83 @@
+// app/blog/page.tsx
 import AllPagesBanner from "@/components/AllPagesBanner";
 import BlogCard from "@/components/BlogCard";
 import Container from "@/components/Container";
-import React from "react";
+import Pagination from "@/components/Pagination";
 
-const page = () => {
+function getApiUrl(): string {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  if (!apiUrl)
+    throw new Error("NEXT_PUBLIC_API_URL environment variable is not defined");
+  return apiUrl;
+}
+
+const ITEMS_PER_PAGE = 12;
+
+async function getPaginatedBlogs(page: number) {
+  const apiUrl = getApiUrl();
+  const res = await fetch(`${apiUrl}/graphql`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-secret-key": process.env.API_SECRET_KEY!,
+    },
+    cache: "no-store",
+    body: JSON.stringify({
+      query: `
+        query GetPaginatedBlogs($page: Int!, $limit: Int!) {
+          getPaginatedBlogs(page: $page, limit: $limit) {
+            blogs {
+              _id
+              title
+              imageUrl
+              slug
+              excerpt
+            }
+            totalBlogs
+          }
+        }
+      `,
+      variables: { page, limit: ITEMS_PER_PAGE },
+    }),
+  });
+
+  if (!res.ok) throw new Error("Failed to fetch blogs");
+  const { data } = await res.json();
+  return data?.getPaginatedBlogs;
+}
+
+const Page = async ({ searchParams }: { searchParams: { page?: string } }) => {
+  const { page } = await searchParams;
+  const currentPage = Number(page) || 1;
+
+  const data = await getPaginatedBlogs(currentPage);
+  const blogs = data?.blogs || [];
+  const totalBlogs = data?.totalBlogs || 0;
+  const totalPages = Math.ceil(totalBlogs / ITEMS_PER_PAGE);
+
   return (
-    <div className="">
+    <div>
       <AllPagesBanner
         title="View our all Blogs"
         description="Design and personalized packaging for your brand."
       />
       <Container>
-        <div className="border-t-[1px] border-gray-200 flex">
-          {/* <Sidebar /> */}
-          <div className="w-full p-4 h-full flex flex-col space-y-8">
-            <div className="grid grid-cols-3 gap-x-4 gap-y-12">
-              {[...Array(20)].map((_, idx) => (
-                <div key={idx}>
-                  <BlogCard />
-                </div>
+        <div className="border-t border-gray-200 flex">
+          <div className="w-full p-4 flex flex-col space-y-8">
+            {/* Blogs Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-12">
+              {blogs.map((blog: any) => (
+                <BlogCard key={blog._id} blog={blog} />
               ))}
             </div>
-            <div className="w-full flex justify-between items-center">
-              <div className="text-gray-600">Showing 1 to 10 of 97 results</div>
-              <div>
-                <nav
-                  aria-label="Pagination"
-                  className="isolate inline-flex -space-x-px rounded-md shadow-xs"
-                >
-                  <a
-                    href="#"
-                    className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                  >
-                    <span className="sr-only">Previous</span>
-                    <svg
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      data-slot="icon"
-                      aria-hidden="true"
-                      className="size-5"
-                    >
-                      <path
-                        d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
-                        clipRule="evenodd"
-                        fillRule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href="#"
-                    aria-current="page"
-                    className="relative z-10 inline-flex items-center bg-green-950 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    1
-                  </a>
-                  <a
-                    href="#"
-                    className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                  >
-                    2
-                  </a>
-                  <a
-                    href="#"
-                    className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
-                  >
-                    3
-                  </a>
-                  <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-gray-300 ring-inset focus:outline-offset-0">
-                    ...
-                  </span>
-                  <a
-                    href="#"
-                    className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
-                  >
-                    8
-                  </a>
-                  <a
-                    href="#"
-                    className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                  >
-                    9
-                  </a>
-                  <a
-                    href="#"
-                    className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                  >
-                    10
-                  </a>
-                  <a
-                    href="#"
-                    className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-                  >
-                    <span className="sr-only">Next</span>
-                    <svg
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      data-slot="icon"
-                      aria-hidden="true"
-                      className="size-5"
-                    >
-                      <path
-                        d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                        clipRule="evenodd"
-                        fillRule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </nav>
-              </div>
-            </div>
+
+            {/* ✅ Pagination */}
+            <Pagination 
+              currentPage={currentPage} 
+              totalPages={totalPages} 
+              itemsPerPage={ITEMS_PER_PAGE}
+              totalItems={totalBlogs}
+            />
           </div>
         </div>
       </Container>
@@ -116,4 +85,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

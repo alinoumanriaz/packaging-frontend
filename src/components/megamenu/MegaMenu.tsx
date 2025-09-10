@@ -8,9 +8,9 @@ interface MegaMenuProps {
   type: string;
   onClose: () => void;
   mobile?: boolean;
-  industries: Array<{ imageUrl: string; name: string; slug: string }>;
-  materials: Array<{ imageUrl: string; name: string; slug: string }>;
-  styles: Array<{ imageUrl: string; name: string; slug: string }>;
+  industries: Array<{ iconImageUrl: string; name: string; slug: string }>;
+  materials: Array<{ iconImageUrl: string; name: string; slug: string }>;
+  styles: Array<{ iconImageUrl: string; name: string; slug: string }>;
 }
 
 const MegaMenu: React.FC<MegaMenuProps> = ({
@@ -39,13 +39,13 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                 className="group flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 hover:ring-1 hover:ring-gray-200 transition-colors"
                 onClick={onClose}
               >
-                {item.imageUrl ? (
+                {item.iconImageUrl ? (
                   <Image
-                    src={item.imageUrl}
+                    src={item.iconImageUrl}
                     alt={item.name}
                     width={50}
                     height={50}
-                    className="flex-shrink-0 object-cover rounded-md w-12 h-12"
+                    className="flex-shrink-0 object-cover rounded-md w-8 h-8"
                   />
                 ) : (
                   <div className="size-5 bg-gray-200 rounded flex items-center justify-center">
@@ -74,13 +74,13 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                 className="group flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 hover:ring-1 hover:ring-gray-200 transition-colors"
                 onClick={onClose}
               >
-                {item.imageUrl ? (
+                {item.iconImageUrl ? (
                   <Image
-                    src={item.imageUrl}
+                    src={item.iconImageUrl}
                     alt={item.name}
                     width={50}
                     height={50}
-                    className="flex-shrink-0 object-cover rounded-md w-12 h-12"
+                    className="flex-shrink-0 object-cover rounded-md w-8 h-8"
                   />
                 ) : (
                   <div className="size-5 bg-gray-200 rounded flex items-center justify-center">
@@ -109,14 +109,14 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                 className="group flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 hover:ring-1 hover:ring-gray-200 transition-colors"
                 onClick={onClose}
               >
-                {item.imageUrl ? (
+                {item.iconImageUrl ? (
                   <Image
-                    src={item.imageUrl}
+                    src={item.iconImageUrl}
                     alt={item.name}
                     width={50}
                     height={50}
                     loading="eager"
-                    className="flex-shrink-0 object-cover rounded-md w-12 h-12"
+                    className="flex-shrink-0 object-cover rounded-md w-8 h-8"
                   />
                 ) : (
                   <div className="size-5 bg-gray-200 rounded flex items-center justify-center">

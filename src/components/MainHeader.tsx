@@ -2,9 +2,9 @@ import React from "react";
 import Header from "./Header";
 
 interface MenuData {
-  getAllIndustry: Array<{ imageUrl: string; name: string; slug: string }>;
-  getAllMaterial: Array<{ imageUrl: string; name: string; slug: string }>;
-  getAllStyle: Array<{ imageUrl: string; name: string; slug: string }>;
+  getAllIndustry: Array<{ iconImageUrl: string; name: string; slug: string }>;
+  getAllMaterial: Array<{ iconImageUrl: string; name: string; slug: string }>;
+  getAllStyle: Array<{ iconImageUrl: string; name: string; slug: string }>;
 }
 
 // Preload function using link preload (most efficient)
@@ -39,9 +39,9 @@ async function getMenuData(): Promise<MenuData> {
     body: JSON.stringify({
       query: `
         query {
-          getAllIndustry { imageUrl name slug }
-          getAllMaterial { imageUrl name slug }
-          getAllStyle { imageUrl name slug }
+          getAllIndustry { iconImageUrl name slug }
+          getAllMaterial { iconImageUrl name slug }
+          getAllStyle { iconImageUrl name slug }
         }
       `,
     }),
@@ -73,9 +73,9 @@ const MainHeader = async () => {
   // Preload images on client side
   if (typeof window !== "undefined") {
     const allImageUrls = [
-      ...menuData.getAllIndustry.map((item) => item.imageUrl),
-      ...menuData.getAllMaterial.map((item) => item.imageUrl),
-      ...menuData.getAllStyle.map((item) => item.imageUrl),
+      ...menuData.getAllIndustry.map((item) => item.iconImageUrl),
+      ...menuData.getAllMaterial.map((item) => item.iconImageUrl),
+      ...menuData.getAllStyle.map((item) => item.iconImageUrl),
     ].filter((url) => url);
 
     preloadImages(allImageUrls);

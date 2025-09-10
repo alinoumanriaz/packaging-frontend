@@ -6,10 +6,11 @@ export const GET_ALL_MATERIAL = gql`
       _id
       name
       slug
-      iconName
+      iconImageUrl
       imageUrl
       bannerImage
       description
+      content
       createdAt
       updatedAt
     }

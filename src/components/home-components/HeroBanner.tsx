@@ -36,7 +36,7 @@ const HeroBanner = () => {
                 </svg>
               </Link>
               <Link
-                href={"#portfolioSection"}
+                href={"/portfolio"}
                 className="border-1 border-primary-800 text-primary-800 hover:bg-primary-800 hover:text-white transition-all duration-300 rounded-xl px-8 py-2 text-md font-semibold shadow-sm hover:shadow-md transform hover:-translate-y-1 inline-flex items-center justify-center"
               >
                 View Portfolio

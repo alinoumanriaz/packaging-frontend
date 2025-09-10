@@ -8,6 +8,7 @@ import Titles from "@/components/Titles";
 import React from "react";
 import PagesSEOContent from "@/components/PagesSEOContent";
 import QuoteSection from "@/components/home-components/QuoteSection";
+import Image from "next/image";
 // import type { Metadata } from 'next';
 
 interface CategoryItem {
@@ -152,18 +153,21 @@ async function getCategoryData(slug: string) {
               name 
               description 
               bannerImage 
+              content
             }
             getIndustryBySlug(slug: $slug) { 
               _id
               name 
               description 
               bannerImage 
+              content
             }
             getStyleBySlug(slug: $slug) { 
               _id
               name 
               description 
               bannerImage 
+              content
             }
           }
         `,
@@ -243,7 +247,21 @@ const ProductPage = ({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
             {/* Product Images */}
             <div className="">
-              <ImageGallery images={product.imageUrl} />
+              <div className="flex flex-col md:flex-row gap-6 sticky top-32 h-fit">
+                {/* Initial server-rendered main image (SEO) */}
+                <div className="relative flex-1 w-full order-1 md:order-2">
+                  <Image
+                    src={product.imageUrl[0]}
+                    alt="Main product image"
+                    width={600}
+                    height={600}
+                    sizes="(max-width: 768px) 100vw, 600px"
+                    className="rounded-xl w-full h-[28rem] object-cover"
+                    priority
+                  />
+                </div>
+                <ImageGallery images={product.imageUrl} />
+              </div>
             </div>
 
             {/* Product Info */}
@@ -281,27 +299,27 @@ const ProductPage = ({
       </section>
 
       {/* Description & Specification Section */}
-        <div className="flex flex-col space-y-8 md:space-y-20 w-full">
-          {/* Description */}
-          {product.description && (
-            <section className="flex flex-col space-y-6 w-full ">
-              <Titles title="Description" />
-              <PagesSEOContent content={product.description} />
-            </section>
-          )}
+      <div className="flex flex-col space-y-8 md:space-y-20 w-full">
+        {/* Description */}
+        {product?.description && (
+          <section className="flex flex-col space-y-6 w-full ">
+            <Titles title="Description" />
+            <PagesSEOContent content={product.description} />
+          </section>
+        )}
 
-          {/* Specification */}
-          {product.specification && (
-            <section className="flex flex-col space-y-6">
-              <Titles title="Specification" />
-              <PagesSEOContent content={product.specification} />
-            </section>
-          )}
-        </div>
+        {/* Specification */}
+        {product?.specification && (
+          <section className="flex flex-col space-y-6">
+            <Titles title="Specification" />
+            <PagesSEOContent content={product.specification} />
+          </section>
+        )}
+      </div>
 
       {/* Packaging Tabs Section */}
       <section className="py-6">
-          <PackagingTabs />
+        <PackagingTabs />
       </section>
 
       {/* Related Products Section */}
@@ -343,6 +361,8 @@ const CategoryPage = async ({
   allProducts: ProductCardProps[];
 }) => {
   const categoryData = await getCategoryData(slug);
+
+  console.log({ categoryData: categoryData });
 
   const filteredProducts = allProducts.filter(
     (product) =>
@@ -391,7 +411,9 @@ const CategoryPage = async ({
               )}
             </div>
             <QuoteSection />
-            <PagesSEOContent content={categoryData?.content}/>
+            {categoryData?.content && (
+              <PagesSEOContent content={categoryData?.content} />
+            )}
           </div>
         </div>
       </Container>

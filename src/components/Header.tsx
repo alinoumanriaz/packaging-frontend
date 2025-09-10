@@ -21,9 +21,9 @@ interface MegaMenuState {
 }
 
 interface MenuData {
-  getAllIndustry: Array<{ imageUrl: string; name: string; slug: string }>;
-  getAllMaterial: Array<{ imageUrl: string; name: string; slug: string }>;
-  getAllStyle: Array<{ imageUrl: string; name: string; slug: string }>;
+  getAllIndustry: Array<{ iconImageUrl: string; name: string; slug: string }>;
+  getAllMaterial: Array<{ iconImageUrl: string; name: string; slug: string }>;
+  getAllStyle: Array<{ iconImageUrl: string; name: string; slug: string }>;
 }
 
 interface HeaderProps {

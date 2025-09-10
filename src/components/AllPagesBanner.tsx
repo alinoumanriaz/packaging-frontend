@@ -34,10 +34,10 @@ const AllPagesBanner = ({ title, description, imageUrl }: IProps) => {
       )}
 
       {/* Text content */}
-      <div className={`relative z-10 w-full text-center px-4 `}>
+      <div className={`relative z-10 max-w-[80%] text-center px-4 `}>
         {title && <h1 className="text-xl md:text-5xl font-bold">{title}</h1>}
         {description && (
-          <p className="mt-2 text-xs md:text-lg max-w-2xl mx-auto">
+          <p className="mt-2 hidden md:flex text-xs md:text-lg max-w-4xl line-clamp-3 mx-auto">
             {description}
           </p>
         )}
