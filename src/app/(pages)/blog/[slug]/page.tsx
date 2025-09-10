@@ -52,7 +52,11 @@ async function getAllBlogs() {
   return data?.getAllBlogs || [];
 }
 
-const Page = async ({ params }: { params: { slug: string } }) => {
+interface PageProps {
+  params: Promise<{ slug?: string }>;
+}
+
+const Page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const blogs = await getAllBlogs();
   const blog = blogs.find((b: any) => b.slug === slug);
