@@ -177,8 +177,7 @@ const Header = ({ menuData }: HeaderProps) => {
               <FaPhoneAlt className="size-5" />
             </button>
             <Link
-              // href="tel:+447884529639"
-              href="/"
+              href={"#quoteSection"}
               className="hidden md:flex items-center ml-6 px-4 py-2 bg-primary-800 hover:bg-primary-800 text-white rounded-md transition"
             >
               <div className="flex flex-col items-start leading-tight">

@@ -108,10 +108,10 @@ const BoxFinishingSection = () => {
               // >
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.2 }}
-                viewport={{ once: true, amount: 0.2 }}
+                // initial={{ opacity: 0, scale: 0.8 }}
+                // whileInView={{ opacity: 1, scale: 1 }}
+                // transition={{ duration: 0.4, delay: index * 0.2 }}
+                // viewport={{ once: true, amount: 0.2 }}
                 onMouseEnter={() => setActiveEffect(effect.id)}
                 onMouseLeave={() => setActiveEffect(null)}
                 whileHover={{ y: -5, scale: 1.01 }}

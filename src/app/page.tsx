@@ -3,10 +3,10 @@ import FeaturedBoxesSections from "@/components/home-components/FeaturedBoxesSec
 import Features from "@/components/home-components/Features";
 import HeroBanner from "@/components/home-components/HeroBanner";
 import QuoteSection from "@/components/home-components/QuoteSection";
-import Reviews from "@/components/home-components/Reviews";
 import PagesSEOContent from "../components/PagesSEOContent";
 import BoxesInCarousel from "@/components/home-components/BoxesInCarousel";
 import TrustFactor from "@/components/home-components/TrustFactor";
+import ReviewsSection from "@/components/home-components/ReviewSection";
 
 export default async function Home() {
   let AllIndustries = [];
@@ -124,7 +124,7 @@ export default async function Home() {
       <BoxFinishingSection />
       <Features />
       <QuoteSection />
-      <Reviews />
+      <ReviewsSection />
       <PagesSEOContent content={pageContent} />
     </div>
   );

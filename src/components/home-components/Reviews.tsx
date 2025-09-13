@@ -7,8 +7,8 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Titles from "@/components/Titles";
-import Container from "../Container";
+// import Titles from "@/components/Titles";
+// import Container from "../Container";
 import { motion } from "framer-motion";
 
 const Reviews = () => {
@@ -91,19 +91,20 @@ const Reviews = () => {
   };
 
   return (
-    <Container>
-      <div className="mx-auto w-full">
-        <div className="text-center mb-12">
+    <>
+      <div className="w-full">
+        {/* <div className="text-center mb-12">
           <Titles
             title="Customer Reviews"
             subtitle="Discover what our clients say about our packaging solutions and services"
           />
-        </div>
+        </div> */}
 
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={24}
           slidesPerView={1}
+          loop={true}
           navigation={{
             nextEl: ".review-swiper-button-next",
             prevEl: ".review-swiper-button-prev",
@@ -128,9 +129,6 @@ const Reviews = () => {
             1024: {
               slidesPerView: 3,
             },
-            1280: {
-              slidesPerView: 4,
-            },
           }}
           className="pb-16 relative"
         >
@@ -142,7 +140,7 @@ const Reviews = () => {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true, amount: 0.2 }}
               >
-                <div className="p-6 rounded-xl shadow-sm my-4 h-full flex flex-col transition-all duration-300 hover:shadow-md ring-1 ring-gray-200 bg-white">
+                <div className="p-3 rounded-xl shadow-sm my-1 h-full flex flex-col transition-all duration-300 hover:shadow-md ring-1 ring-gray-200 bg-white">
                   <div className="mb-4 flex-grow">
                     <div className="flex items-start mb-4">
                       <div className="bg-gradient-to-br from-primary-800 to-primary-800 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold mr-3 flex-shrink-0">
@@ -254,7 +252,7 @@ const Reviews = () => {
           color: white;
         }
       `}</style>
-    </Container>
+    </>
   );
 };
 
