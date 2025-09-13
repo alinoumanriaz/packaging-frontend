@@ -1,6 +1,7 @@
 import { revalidatePath } from "next/cache";
+import { NextRequest } from "next/server";
 
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   const body = await req.json();
   const { paths, token } = body;
   console.log({ frontendRevalidaationAPIWork: paths });

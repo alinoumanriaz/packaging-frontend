@@ -57,7 +57,6 @@ export async function generateStaticParams() {
         operationName: "GetAllData",
       }),
       cache: "force-cache",
-      next: { revalidate: 3600 },
     });
 
     if (!res.ok) {
@@ -120,7 +119,6 @@ async function getAllProducts(): Promise<ProductCardProps[]> {
         operationName: "GetAllProduct",
       }),
       cache: "force-cache",
-      next: { revalidate: 60 },
     });
 
     if (!res.ok) {

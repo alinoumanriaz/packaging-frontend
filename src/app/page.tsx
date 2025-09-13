@@ -86,7 +86,7 @@ export default async function Home() {
           }
         `,
       }),
-      // cache: "force-cache",
+      cache: "force-cache",
     });
     
     if (contentRes.ok) {

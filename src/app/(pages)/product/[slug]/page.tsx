@@ -29,8 +29,8 @@ async function getAllProducts() {
           }
         }
       `,
+      cache: "force-cache",
     }),
-    next: { revalidate: 60 }, // ✅ ISR every 60s
   });
 
   const { data } = await res.json();

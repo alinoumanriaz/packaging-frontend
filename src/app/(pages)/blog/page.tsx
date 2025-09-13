@@ -21,7 +21,6 @@ async function getPaginatedBlogs(page: number) {
       "Content-Type": "application/json",
       "x-secret-key": process.env.API_SECRET_KEY!,
     },
-    cache: "no-store",
     body: JSON.stringify({
       query: `
         query GetPaginatedBlogs($page: Int!, $limit: Int!) {
@@ -39,6 +38,7 @@ async function getPaginatedBlogs(page: number) {
       `,
       variables: { page, limit: ITEMS_PER_PAGE },
     }),
+    cache: "force-cache",
   });
 
   if (!res.ok) throw new Error("Failed to fetch blogs");
@@ -46,7 +46,11 @@ async function getPaginatedBlogs(page: number) {
   return data?.getPaginatedBlogs;
 }
 
-const Page = async ({ searchParams }: { searchParams: Promise<{ page?: string }> }) => {
+const Page = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) => {
   const { page } = await searchParams;
   const currentPage = Number(page) || 1;
 
@@ -72,9 +76,9 @@ const Page = async ({ searchParams }: { searchParams: Promise<{ page?: string }>
             </div>
 
             {/* ✅ Pagination */}
-            <Pagination 
-              currentPage={currentPage} 
-              totalPages={totalPages} 
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
               itemsPerPage={ITEMS_PER_PAGE}
               totalItems={totalBlogs}
             />

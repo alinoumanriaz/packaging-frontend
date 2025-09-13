@@ -3,8 +3,6 @@ import Container from "@/components/Container";
 import PagesSEOContent from "@/components/PagesSEOContent";
 import React from "react";
 
-export const revalidate = 60; // Revalidate every 60 seconds
-
 function getApiUrl(): string {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   if (!apiUrl)
@@ -20,7 +18,6 @@ async function getAllBlogs() {
       "Content-Type": "application/json",
       "x-secret-key": process.env.API_SECRET_KEY!,
     },
-    next: { revalidate: 60 }, // ISR enabled
     body: JSON.stringify({
       query: `
         query GetAllBlogs {
@@ -43,8 +40,9 @@ async function getAllBlogs() {
               updatedAt
           }
         }
-      `,
+        `,
     }),
+    cache: "force-cache",
   });
 
   if (!res.ok) throw new Error("Failed to fetch blogs");

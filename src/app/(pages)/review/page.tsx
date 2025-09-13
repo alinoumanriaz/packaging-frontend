@@ -37,7 +37,6 @@ const ReviewsPage = () => {
       limit: itemsPerPage,
       search: debouncedSearch || undefined,
     },
-    fetchPolicy: "network-only",
   });
 
   const reviews: Review[] = data?.getAllReviews?.reviews || [];
