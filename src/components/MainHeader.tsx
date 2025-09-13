@@ -46,7 +46,6 @@ async function getMenuData(): Promise<MenuData> {
       `,
     }),
     cache: "force-cache",
-    next: { revalidate: 3600 },
   });
 
   if (!res.ok) {
